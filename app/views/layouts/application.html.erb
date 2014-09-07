@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html ng-app="Spree" lang="<%= I18n.locale %>"  xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=1100" />
+  <title>Webwinkelenin.nl</title>
+  <script>
+    var Spree = {};
+    //Spree.api_key = '5cb05a7baf88a4ef045cd053719d0f4691ebd44d6e502f30';
+  </script>
+  <%= stylesheet_link_tag    "application", media: "screen", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tag %>
+
+  <%= yield :head %>
+</head>
+
+<body data-ng-cloak>
+<div class="top-nav">
+  <div class="header container">
+
+    <div class="logo">
+      <a href="/">
+        <%= image_tag 'frontend/logo.png', title: "Webwinkelenin", alt: "Webwinkelenin" %>
+      </a>
+    </div>
+
+    <div class="header-right">
+      <div class="shoppingbag">
+        <%= render 'shared/minicart' %>
+      </div>
+    </div>
+
+    <div class="language">
+      <form action='#'>
+        <%=
+          select_tag :locale,
+            options_for_select(
+              [
+                ['Nederland', 'nl'],
+                ['Deutsch', 'de'],
+                ['English', 'en'],
+              ],
+              selected: I18n.locale
+            ),
+            class: 'styled',
+            onchange: "this.form.submit()"
+        %>
+      </form>
+    </div>
+
+    <ul class="topmenu" data-ng-controller="NavCtrl">
+      <li data-access-level='accessLevels.anon'>
+        <a href="/login">Klant Login</a>
+      </li>
+      <li data-access-level='accessLevels.anon'>
+        <a href="/register">Register</a>
+      </li>
+      <li data-access-level='accessLevels.user'>
+        <%= image_tag "frontend/user.png", class: "cart", alt: "user" %>
+         <a href="/myboard">Test User</a>
+      </li>
+      <li data-access-level='accessLevels.user'>
+        <a href='' data-ng-click="logout()">Log out</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="container">
+<div class="mainmenu">
+<ul>
+<li class="home"><a href="/"><%= image_tag "frontend/home.png", alt: "Home" %></a></li>
+<li><a href="/">Over ons</a></li>
+<li><a href="/products">Productcategorie</a></li>
+<li><a href="/products">Shop</a>
+<div id="foldoutmenu-2911" class="foldoutmenu">
+<div id="cats">
+
+<ul class="subcats">
+<li>
+<h3><a href="">Dames</a></h3>
+<ul>
+<li><h4><a href="#/products">New Arrivals</a></h4></li>
+<li><h4><a href="#/products">Sale</a></h4></li>
+<li><h4><a href="#/products">Schoenen</a></h4></li>
+<li><h4><a href="#/products">Jassen</a></h4></li>
+<li><h4><a href="#/products">Jurken</a></h4></li>
+<li><h4><a href="#/products">Tassen</a></h4></li>
+<li><h4><a href="#/products">Truien & Vesten</a></h4></li>
+<li><h4><a href="#/products">Tops</a></h4></li>
+<li><h4><a href="#/products">Jeans</a></h4></li>
+<li><h4><a href="#/products">Rokken</a></h4></li>
+<li><h4><a href="#/products">Broeken</a></h4></li>
+<li><h4><a href="#/products">Lingerie</a></h4></li>
+</ul>
+</li>
+</ul>
+
+<ul class="subcats">
+<li>
+<h3><a href="#/products">Heren</a></h3>
+<ul>
+<li><h4><a href="#/products">Sale</a></h4></li>
+<li><h4><a href="#/products">Schoenen</a></h4></li>
+<li><h4><a href="#/products">Jassen</a></h4></li>
+<li><h4><a href="#/products">Jurken</a></h4></li>
+<li><h4><a href="#/products">Tassen</a></h4></li>
+<li><h4><a href="#/products">Truien & Vesten</a></h4></li>
+<li><h4><a href="#/products">Tops</a></h4></li>
+<li><h4><a href="#/products">Jeans</a></h4></li>
+<li><h4><a href="#/products">Rokken</a></h4></li>
+<li><h4><a href="#/products">Broeken</a></h4></li>
+</ul>
+</li>
+</ul>
+
+<ul class="subcats">
+<li>
+<h3><a href="#/products">Kinderen</a></h3>
+<ul>
+<li><h4><a href="#/products">Sale</a></h4></li>
+<li><h4><a href="#/products">Schoenen</a></h4></li>
+<li><h4><a href="#/products">Jassen</a></h4></li>
+<li><h4><a href="#/products">Jurken</a></h4></li>
+<li><h4><a href="#/products">Tassen</a></h4></li>
+<li><h4><a href="#/products">Truien & Vesten</a></h4></li>
+<li><h4><a href="#/products">Tops</a></h4></li>
+<li><h4><a href="#/products">Jeans</a></h4></li>
+<li><h4><a href="#/products">Rokken</a></h4></li>
+<li><h4><a href="#/products">Broeken</a></h4></li>
+</ul>
+</li>
+</ul>
+
+<ul class="subcats">
+<li>
+<h3><a href="#/products">Accessoires</a></h3>
+<ul>
+<li><h4><a href="#/products">Sale</a></h4></li>
+<li><h4><a href="#/products">Schoenen</a></h4></li>
+<li><h4><a href="#/products">Jassen</a></h4></li>
+<li><h4><a href="#/products">Jurken</a></h4></li>
+<li><h4><a href="#/products">Tassen</a></h4></li>
+<li><h4><a href="#/products">Truien & Vesten</a></h4></li>
+<li><h4><a href="#/products">Tops</a></h4></li>
+<li><h4><a href="#/products">Jeans</a></h4></li>
+<li><h4><a href="#/products">Rokken</a></h4></li>
+<li><h4><a href="#/products">Broeken</a></h4></li>
+</ul>
+</li>
+</ul>
+
+</div>
+<div class="shadow"></div>
+</div>
+
+</li>
+<li><a href="/">Storelocator</a></li>
+</ul>
+</div>
+<div class="search">
+  <form name="productsearchform" method="get">
+    <input type="hidden" value="Y" name="simple_search">
+    <input type="hidden" value="search" name="mode">
+    <input type="hidden" value="Y" name="posted_data[by_title]">
+    <input type="hidden" value="Y" name="posted_data[by_shortdescr]">
+    <input type="hidden" value="Y" name="posted_data[by_fulldescr]">
+    <input type="hidden" value="Y" name="posted_data[by_sku]">
+    <input type="hidden" value="all" name="posted_data[including]">
+    <input type="text" placeholder="Zoeken..." name="q" size="24" ng-model='q'>
+    <a href="/#/search/{{q}}">
+      <%= image_tag "frontend/search.png", alt: "Zoeken"  %>
+    </a>
+  </form>
+</div>
+
+  <% if notice || alert %>
+    <div class="row">
+      <% if notice || alert %>
+        <div class="flash_messages">
+          <%= raw "<div data-alert class='alert-box warning'> #{notice} <a href='' class='close'>&times;</a></div>"  if notice %>
+          <%= raw "<div data-alert class='alert-box alert'>#{alert} <a href='' class='close'>&times;</a></div>"     if alert %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+<div class="usp">
+Gratis Verzending vanaf &euro; 50!&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Vóór 17 uur besteld morgen in huis&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Gratis retourneren&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Kies je afleverdatum
+</div>
+
+<div data-ng-show="error">
+  <button type='button' data-ng-click="error = null;"></button>
+  <span data-ng-bind="error"></span>
+</div>
+
+<div class="clearfix"></div>
+
+<%= yield %>
+
+
+<div class="clearfix"></div>
+<div class="footer">
+
+<div class="footer-menu">
+
+<div class="footer-block">
+<h5>Collecties</h5>
+<ul>
+<li><a href="/">Damesmode</a></li>
+<li><a href="/">Herenmode</a></li>
+<li><a href="/">Accessoires</a></li>
+<li><a href="/">Sale</a></li>
+</ul>
+</div>
+
+<div class="footer-block">
+<h5>Informatie</h5>
+<ul>
+<li><a href="/">Sed ut perspiciatis </a></li>
+<li><a href="/">Unde omnis iste natus</a></li>
+<li><a href="/">Error sit voluptatem</a></li>
+<li><a href="/">Accusantium doloremque</a></li>
+<li><a href="/">Laudantium</a></li>
+<li><a href="/">Totam rem aperiam</a></li>
+</ul>
+</div>
+
+<div class="footer-block">
+<h5>Klantenservice</h5>
+<ul>
+<li><a href="/">Sed ut perspiciatis </a></li>
+<li><a href="/">Unde omnis iste natus</a></li>
+<li><a href="/">Error sit voluptatem</a></li>
+<li><a href="/">Accusantium doloremque</a></li>
+<li><a href="/">Laudantium</a></li>
+<li><a href="/">Totam rem aperiam</a></li>
+</ul>
+</div>
+
+<div class="footer-block">
+<h5>Overig</h5>
+<ul>
+<li><a href="/">Sed ut perspiciatis </a></li>
+<li><a href="/">Unde omnis iste natus</a></li>
+<li><a href="/">Error sit voluptatem</a></li>
+<li><a href="/">Accusantium doloremque</a></li>
+<li><a href="/">Laudantium</a></li>
+<li><a href="/">Totam rem aperiam</a></li>
+</ul>
+</div>
+
+<div class="footer-block">
+<h5>Webwinkelenin.nl</h5>
+<ul>
+<li>WWI Utrecht</li>
+<li>WWI Amsterdam</li>
+<li>WWI Rotterdam</li>
+<li>&nbsp;</li>
+<li>Ma t/m vrij 10.00 - 21.00 uur</li>
+<li>Zat 10.00 - 17.00 uur</li>
+<li>&nbsp;</li>
+<li>Amsterdam & Utrecht:</li>
+<li>(maandag gesloten)</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+
+
+
+<div class="secondfooter">
+
+<ul class="secondfooter-links">
+
+<li><a href="/">Sitemap</a></li>
+<li>|</li>
+<li><a href="/">Over ons</a></li>
+<li>|</li>
+<li><a href="/">Disclaimer</a></li>
+<li>|</li>
+<li><a href="/">Contact</a></li>
+</ul>
+
+<ul class="copyright">
+  <li>Copyright (c) 2014&nbsp;&nbsp;|&nbsp;&nbsp;Powered by Online Exposure</li>
+</ul>
+
+</div>
+</div>
+
+</div>
+
+  <%# javascript_include_tag 'application' %>
+  <%= yield :bottom %>
+<script>
+function writeDollar ( ammount ) {
+  ammount = ( 1.35 * parseFloat(ammount) );
+  $("#dollar").text( '$' + ammount.toFixed(2) );
+}
+
+$(function(){
+
+  // Run noUiSlider
+  $('.noUiSlider').noUiSlider({
+     range: [0,100]
+    ,start: [20,80]
+    ,behaviour: 'extend-tap'
+    ,handles: 2
+    ,serialization: {
+      to: [$("#min-euro"),
+      $("#max-euro")]
+
+    }
+  });
+});
+
+</script>
+</body>
+</html>

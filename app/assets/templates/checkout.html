@@ -1,0 +1,303 @@
+<div class="breadcrumb">
+  <a href="/">Home</a>&nbsp;&raquo;&nbsp;One Page Checkout
+</div>
+
+<div class="content">
+  <div class="opcbox-main clearfix">
+
+    <h1 class="page-title">One Page Checkout</h1>
+
+    <div class="opcbox-body">
+      <div class="checkout-steps clearfix">
+
+        <div class="step-container" ng-class="{active: active_step == 'step1'}">
+          <h2 class="step-title clearfix" ng-class="{active: active_step == 'step1'}">
+            <span class="step-number">1</span>Inloggen</a>
+          </h2>
+
+          <div class="step-body" ng-class="{active: active_step == 'step1'}" data-access-level='accessLevels.anon'>
+            <div class="clearfix">
+              <div class="login-form">
+                <form ng-submit="login()" name="loginForm">
+
+                  <div class="checkout-login-form">
+                    <h2 class="opc-subheader">Terugkerende klant</h2>
+
+                    <div class="control-group">
+                      <label>E-mail</label>
+                      <input ng-model='email'
+                            size="30"
+                            value=""
+                            class="opc-input-text"
+                            type="email"
+                            required autofocus>
+                    </div>
+                    <div class="control-group password">
+                      <label class="forgot-password-label">Wachtwoord</label><a href="" class="forgot-password">Wachtwoord vergeten?</a>
+                      <input ng-model="password"
+                              size="30"
+                              value=""
+                              class="opc-input-text"
+                              maxlength="32"
+                              type="password"
+                              required>
+                    </div>
+                    <label class="valign"><input type="checkbox">Onthoud mij</label>
+                    <!--
+                      <div class="captcha control-group">
+                        <label>Captcha</label>
+                        <input autocomplete="off" class="opc-input-text" value="" type="text">
+                        <div class="captcha-code"><img src="images/captcha.jpg" alt="Captcha" height="25" width="100"></div>
+                      </div>
+                    -->
+                  </div>
+                </form>
+
+                <!-- Typ de tekens die u in de afbeelding hierboven ziet. -->
+                <div class="checkout-buttons clearfix">
+                  <div class="clearfix">
+                    <div style="float:right;">
+                      <input class="next main-button"
+                            value="Aanmelden"
+                            type="submit"
+                            data-next="step2"
+                            data-ng-disabled="loginForm.$invalid">
+                    </div>
+
+                    <div class="remember-me-chekbox">
+                      <a href='/register'>Nieuwe Klant?</a>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="checkout-register">
+                <form ng-submit="guestRegistration()" name="guestForm">
+                  <div class="register-content">
+                    <h2 class="opc-subheader">Afrekenen als gast</h2>
+                    <ul class="register-methods">
+                      <li>
+                        <label for='guestEmail' data-lang-en="Checkout as a guest">
+                          Email
+                        </label>
+                        <br/>
+                        <input ng-model='guestEmail'
+                              id='guestEmail'
+                              size="30"
+                              class="opc-input-text"
+                              type="email"
+                              required autofocus>
+                        <span class="method-hint">Snel afrekenen zonder een account</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="checkout-buttons">
+                    <input value="Continue" class="main-button" type="submit">
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="clear"></div>
+          </div>
+        </div>
+
+        <div class="step-container" ng-class="{active: active_step == 'step2'}" id="step2">
+          <h2 class="step-title clearfix" ng-class="{active: active_step == 'step2'}">
+            <span class="step-number">2</span><a class="title">Factuur-en verzendadres een factureringsopties</a>
+          </h2>
+
+          <div class="step-body" ng-class="{active: active_step == 'step2'}" data-access-level='accessLevels.anon'>
+            <form ng-submit="save_addresses_and_pay()" name="payForm">
+              <div class="clearfix">
+                <div class="checkout-boxleft">
+                  <div class="checkout-boxleft-form">
+                    <h2 class="opc-subheader">Billing Address</h2>
+
+                    <div class="control-group">
+                      <label class="valign">
+                        <input type="checkbox" ng-model="onlyBilling" checked>
+                        Billing and shipping address are the same
+                      </label>
+                    </div>
+
+                    <div class="control-group">
+                      <label>First name</label>
+                      <input class="opc-input-text" type="text" size="32" ng-model="billingAddress.firstname" value="John">
+                    </div>
+
+                    <div class="control-group">
+                      <label>Last name</label>
+                      <input class="opc-input-text" type="text" size="32" ng-model="billingAddress.lastname" value="Doe">
+                    </div>
+
+                    <div class="control-group">
+                      <label>Phone</label>
+                      <input class="opc-input-text" type="text" size="32" ng-model="billingAddress.phone">
+                    </div>
+
+                    <div class="control-group">
+                      <label>Adress 1</label>
+                      <input class="opc-input-text" type="text" size="32" ng-model="billingAddress.address1">
+                    </div>
+
+                    <div class="control-group">
+                      <label>City</label>
+                      <input class="opc-input-text" type="text" size="32" ng-model="billingAddress.city" value="Moscow">
+                    </div>
+
+                    <div class="control-group">
+                      <label>State/Province</label>
+                      <select class="opc-input-text" ng-model='billingAddress.state'>
+                        <option value="a">Lorem ipsum</option>
+                        <option value="b">Salabim</option>
+                        <option value="c">Domsimdom</option>
+                        <option value="d">Printing text</option>
+                      </select>
+                    </div>
+
+                    <div class="control-group">
+                      <label>Zip code</label>
+                      <input class="opc-input-text" type="text" size="32" ng-model="billingAddress.zipcode" value="177511">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="checkout-boxright" ng-class="{shadow: onlyBilling}">
+
+                  <h2 class="opc-subheader">Shipping Address</h2>
+
+                  <div class="control-group">
+                    <label>First name</label>
+                    <input class="opc-input-text" type="text" size="32" ng-model="shippingAddress.firstname"/>
+                  </div>
+
+                  <div class="control-group">
+                    <label>Last name</label>
+                    <input class="opc-input-text" type="text" size="32" ng-model="shippingAddress.lastname"/>
+                  </div>
+
+                  <div class="control-group">
+                    <label>Phone</label>
+                    <input class="opc-input-text" type="text" size="32" ng-model="shippingAddress.phone">
+                  </div>
+
+                  <div class="control-group">
+                    <label>Adress 1</label>
+                    <input class="opc-input-text" type="text" size="32" ng-model="shippingAddress.address1" />
+                  </div>
+
+                  <div class="control-group">
+                    <label>City</label>
+                    <input class="opc-input-text" type="text" size="32" ng-model="shippingAddress.city" />
+                  </div>
+
+                  <div class="control-group">
+                    <label>State/Province</label>
+                    <select class="opc-input-text" ng-model="shippingAddress.state">
+                      <option value="">Lorem ipsum</option>
+                      <option value="">Salabim</option>
+                      <option value="">Domsimdom</option>
+                      <option value="">Printing text</option>
+                    </select>
+                  </div>
+
+                  <div class="control-group">
+                    <label>Zip code</label>
+                    <input class="opc-input-text" type="text" size="32" ng-model="shippingAddress.zipcode" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h2 class="opc-subheader">Payment method</h2>
+
+                <table class="payment-methods">
+                  <tr>
+                  <td>
+                  <input type="radio" ng-model='paymethod' value='cash'> Cash on delivery</td>
+                  </tr>
+                  <tr>
+                  <td><input type="radio" checked="checked" ng-model='paymethod' value='online'>RabboBank OmniCassa</td>
+                  </tr>
+                </table>
+
+                <div class="checkout-buttons clearfix">
+                  <div class="clearfix">
+                    <p>We provide free shipping.</p>
+                    <div class="alert alert-danger" ng-show="payForm.$invalid && payForm.$dirty">
+                      <strong>Please correct the following errors:</strong>
+                      <p>{{payForm.$error}}</p>
+                    </div>
+                    <input type='submit' class="main-button" style="float:right;" value="Place order"/>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="order-summary" data-access-level='accessLevels.anon'>
+    <h3 class="sidebox-title">Samenvatting Bestelling</h3>
+
+    <div class="sidebox-body">
+      <div class="checkout-summary">
+        <table>
+          <tbody class="tbody">
+            <tr>
+            <td>{{ order.line_items.length }} item(s)</td>
+            <td class="right">
+            <span>&euro;{{ order.total_amount }}</span>
+            </td>
+            </tr>
+            <tr>
+            <td colspan="2">
+              <div class="code-input discount-coupon">
+                <!-- <form action="" method="post"> -->
+                  <div class="control-group input-append">
+                  <label for="coupon_field">Coupon code</label>
+                  <input class="opc-input-text" size="40" value="" placeholder="Vul coupon code hier in..." type="text">
+                  </div>
+                <!-- </form> -->
+              </div>
+            </td>
+            </tr>
+          </tbody>
+          <tbody class="total">
+            <tr>
+              <th colspan="2">
+              Shipping cost
+              <span class="total-sum">Free</span>
+              </th>
+            </tr>
+            <tr>
+              <th colspan="2">
+                Totaal
+                <span class="total-sum">&euro;{{ order.total_amount }}</span>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="opc-sidebox order-products">
+    <h3 class="sidebox-title">Producten in uw bestelling</h3>
+    <div class="sidebox-body">
+      <ul class="order-product-list" ng-repeat="line_item in order.line_items">
+        <li data-id="{{ line_item.id }}" data-price="{{ line_item.price }}">
+          <a href="" class="product-name">{{ line_item.name }}</a>
+          <a href="" class="delete"> X</a>
+          <span class="product-price">{{ line_item.quantity }}&nbsp;x&nbsp;&euro;{{ line_item.price * line_item.quantity }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

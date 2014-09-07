@@ -1,0 +1,20 @@
+<form ng-submit="login()" name='loginForm'>
+  <div class='form-group'>
+    <label name='email'></label>
+    <input type='email' ng-model="email" placeholder="Email" required autofocus/>
+  </div>
+  <div class='form-group'>
+    <label name='password'></label>
+    <input type="password" ng-model="password" placeholder="Password" required/>
+  </div>
+  <div class='form-group'>
+    <label name='rememberme'></label>
+    <input type="checkbox" data-ng-model='rememberme' name="rememberme">
+    Remember me
+  </div>
+  <div class="form-group">
+    <button type="submit" data-ng-disabled="loginForm.$invalid">
+      Log in
+    </button>
+  </div>
+</form>
