@@ -10,12 +10,12 @@
     <div class="opcbox-body">
       <div class="checkout-steps clearfix">
 
-        <div class="step-container" ng-class="{active: active_step == 'step1'}">
-          <h2 class="step-title clearfix" ng-class="{active: active_step == 'step1'}">
+        <div class="step-container" ng-class="{active: activeStep == 'step1'}">
+          <h2 class="step-title clearfix" ng-class="{active: activeStep == 'step1'}">
             <span class="step-number">1</span>Inloggen</a>
           </h2>
 
-          <div class="step-body" ng-class="{active: active_step == 'step1'}" data-access-level='accessLevels.anon'>
+          <div class="step-body" ng-hide="activeStep != 'step1'" disabled-data-access-level='accessLevels.anon'>
             <div class="clearfix">
               <div class="login-form">
                 <form ng-submit="login()" name="loginForm">
@@ -104,12 +104,12 @@
           </div>
         </div>
 
-        <div class="step-container" ng-class="{active: active_step == 'step2'}" id="step2">
-          <h2 class="step-title clearfix" ng-class="{active: active_step == 'step2'}">
+        <div class="step-container" ng-class="{active: activeStep == 'step2'}" id="step2">
+          <h2 class="step-title clearfix" ng-class="{active: activeStep == 'step2'}">
             <span class="step-number">2</span><a class="title">Factuur-en verzendadres een factureringsopties</a>
           </h2>
 
-          <div class="step-body" ng-class="{active: active_step == 'step2'}" data-access-level='accessLevels.anon'>
+          <div class="step-body" ng-hide="activeStep == 'step2'" disabled-data-access-level='accessLevels.user'>
             <form ng-submit="save_addresses_and_pay()" name="payForm">
               <div class="clearfix">
                 <div class="checkout-boxleft">
@@ -243,7 +243,7 @@
     </div>
   </div>
 
-  <div class="order-summary" data-access-level='accessLevels.anon'>
+  <div class="order-summary" disabled-data-access-level='accessLevels.user'>
     <h3 class="sidebox-title">Samenvatting Bestelling</h3>
 
     <div class="sidebox-body">

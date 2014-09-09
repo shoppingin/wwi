@@ -3,15 +3,17 @@ angular.module('Spree').controller 'CheckoutController', [
   '$scope'
   '$location'
   '$window'
+  '$http'
   'Auth'
   'Purchase'
-  'Checkout'
-  ($rootScope, $scope, $location, $window, Auth, Purchase, Checkout) ->
+  'Checkout',
+  '$cookies'
+  ($rootScope, $scope, $location, $window, $http, Auth, Purchase, Checkout, $cookies) ->
     $scope.line_items = window.read_order_from_cookies()['line_items']
     $scope.user = Auth.user
     $scope.userRoles = Auth.userRoles
     $scope.accessLevels = Auth.accessLevels
-    $scope.activeStep = if Auth.isLoggedIn() then 'step2' else 'step1'
+    $scope.activeStep = if Auth.isLoggedIn() or $scope.guestEmail then 'step2' else 'step1'
     $scope.guestEmail = null
     $scope.billingAddress =
       firstname: ''
@@ -40,8 +42,10 @@ angular.module('Spree').controller 'CheckoutController', [
 
     # Spree format
     $scope.guestRegistration = ->
-      Checkout.updateRegistration
-        email: $scope.guestEmail
+      $cookies.request_method = 'PUT'
+      successCallback = ->
+        $scope.activeStep = 'step2'
+      $http.put('/checkout/registration.json', {order: {email: $scope.guestEmail}}).success(successCallback)
       return
 
     $scope.login = ->
@@ -60,12 +64,12 @@ angular.module('Spree').controller 'CheckoutController', [
       return
 
     $scope.save_addresses_and_pay = ->
-      Purchase.save_addresses_and_pay
+      Purchase.next
+        number: $cookies.order
         order:
           bill_address: $scope.billingAddress,
           ship_address: if $scope.onlyBilling then null else $scope.shippingAddress
           payments: $scope.paymethod
-          line_items: $scope.line_items
 
       , ((res) ->
         console.log(res)

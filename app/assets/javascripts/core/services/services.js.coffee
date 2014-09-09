@@ -1,6 +1,6 @@
 angular.module('Spree').factory 'Purchase', ($http, $cookieStore) ->
-  save_addresses_and_pay: (options, success, error)->
-    $http.post('/api/orders.json', options).success((res) ->
+  next: (options, success, error)->
+    $http.put('/api/checkouts/'+options['number']+'/next.json', {order: options['order']}).success((res) ->
       success(res)
     ).error error
     return
