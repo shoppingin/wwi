@@ -17,16 +17,16 @@
 //= require jquery.nouislider
 //= require jquery.cookie
 
-//= require angular
-//= require angular-resource
-//= require angular-cookies.min
-//= require angular-ui-router
+// require angular
+// require angular-resource
+// require angular-cookies.min
+// require angular-ui-router
 
-//= require routingConfig
-//= require app
-//= require_tree ./core/services
-//= require_tree ./core/controllers
-//= require_tree ./core/directives
+// require routingConfig
+// require app
+// require_tree ./core/services
+// require_tree ./core/controllers
+// require_tree ./core/directives
 //= require minicart
 //= require jquery.jcarousel-core.min
 //= require jquery.jcarousel-control.min
