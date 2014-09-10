@@ -1,112 +1,3 @@
-<div class="breadcrumb">
-<a href="/">Home</a>
-&nbsp;&raquo;&nbsp;
-<a href="/">Herenmode</a>
-&nbsp;&raquo;&nbsp;
-Jassen
-</div>
-
-<div class="rightbox">
-  <div class="title-block "><h1>Jassen</h1></div>
-  <div class="products">
-    <div class="finetuning">
-
-      <div class="pages">
-        <ul>
-          <li ng-class="{active: page == 1, paging: page != 1}">
-              <a href="/products?page=1">1</a>
-          </li>
-          <li ng-class="{active: page == 2, paging: page != 2}">
-              <a href="/products?page=2">2</a>
-          </li>
-          <li ng-class="{active: page == 3, paging: page != 3}">
-              <a href="/products?page=3">3</a>
-          </li>
-          <li>
-              <a class="next" title="Volgende »" href="/products?page=2">›</a>
-          </li>
-        </ul>
-      </div>
-
-      Toon per pagina&nbsp;&nbsp;
-      <select class="showperpage styled">
-        <option value="6">16</option>
-        <option value="32">32</option>
-        <option value="64">64</option>
-        <option value="128">128</option>
-        <option value="Alle">Alle</option>
-      </select>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      Sorteren op&nbsp;&nbsp;
-      <select class="sorting styled">
-      <option value="Titel">Titel</option>
-      <option value="Prijs">Prijs</option>
-      <option value="Nieuw">Nieuw</option>
-      </select>
-    </div>
-  <div>
-</div>
-
-<ul class="articles" ng-repeat="product in products | filter:search">
-  <li>
-    <a href="/products/{{ product.id }}"><img ng-src="{{product.master.images[0].product_url}}"/></a>
-
-    <div class="product_text">
-      <p>
-        <a href='/products/{{ product.id }}'>{{ product.name }}</a>
-      </p>
-      <p class="brand">
-        <a href="/"> {{ product.brand }} </a>
-      </p>
-      <span class="price strike">{{ product.strike_price }} EUR</span>
-      <span class="discount">{{ product.price }} EUR</span>
-    </div>
-  </li>
-</ul>
-
-<div class="finetuningbottom">
-<div class="pages">
-    <ul>
-        <li class="active">
-        <a href="#/products?page=1">1</a>
-        </li>
-        <li class="paging">
-        <a href="#/products?page=2">2</a>
-        </li>
-        <li class="paging">
-        <a href="#/products?page=3">3</a>
-        </li>
-        <li>
-        <a class="next" title="Volgende »" href="#/products?page=2">›</a>
-        </li>
-    </ul>
-</div>
-
-
-Toon per pagina&nbsp;&nbsp;
-<select class="showperpage styled">
-<option value="6">16</option>
-<option value="32">32</option>
-<option value="64">64</option>
-<option value="128">128</option>
-<option value="Alle">Alle</option>
-</select>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Sorteren op&nbsp;&nbsp;
-<select class="sorting styled">
-<option value="Titel">Titel</option>
-<option value="Prijs">Prijs</option>
-<option value="Nieuw">Nieuw</option>
-</select>
-
-
-</div>
-
-</div>
-
-</div>
-
-
 <div class="sidebar">
   <div class="location">
     <h4>Choose your city</h4>
@@ -116,28 +7,30 @@ Sorteren op&nbsp;&nbsp;
       <option>Rotterdam</option>
     </select>
     <img src="/assets/frontend/logo_hilversum.jpg" alt="Hilversum" />
-    </div>
-    <h4>Categories</h4>
-    <ul class="categories">
+  </div>
+
+  <h4>Categories</h4>
+  <ul class="categories">
     <li><a href="/">Damesmode</a></li>
     <li><a class="non-active" href="/">Herenmode</a>
-    <ul>
-    <li><a href="/">Accessoires</a></li>
-    <li><a href="/">Broeken</a></li>
-    <li><a class="active" href="/">Jassen</a></li>
-    <li><a href="/">Jeans</a></li>
-    <li><a href="/">Kostuums</a></li>
-    <li><a href="/">Ondergoed</a></li>
-    <li><a href="/">Overhemden</a></li>
-    <li><a href="/">Schoenen</a></li>
-    </ul>
-     </li>
+      <ul>
+        <li><a href="/">Accessoires</a></li>
+        <li><a href="/">Broeken</a></li>
+        <li><a class="active" href="/">Jassen</a></li>
+        <li><a href="/">Jeans</a></li>
+        <li><a href="/">Kostuums</a></li>
+        <li><a href="/">Ondergoed</a></li>
+        <li><a href="/">Overhemden</a></li>
+        <li><a href="/">Schoenen</a></li>
+      </ul>
+    </li>
     <li><a href="/">Accessoires</a></li>
     <li><a href="/">Sale</a></li>
-    </ul>
-    <br />
-    <h4>Merken</h4>
-    <ul>
+  </ul>
+  <br />
+
+  <h4>Merken</h4>
+  <ul>
     <li>
     <input id="chk_7 For All Mankind" class="css-checkbox" type="checkbox" value="7 For All Mankind">
     <label class="css-label" for="chk_7 For All Mankind">7 For All Mankind (8)</label>
@@ -182,7 +75,7 @@ Sorteren op&nbsp;&nbsp;
     <input id="chk_Bruuns Bazaar" class="css-checkbox" type="checkbox" value="Bruuns Bazaar">
     <label class="css-label" for="chk_Bruuns Bazaar">Bruuns Bazaar (1)</label>
     </li>
-    </ul>
+  </ul>
 
     <br />
     <h4>Kleuren</h4>
@@ -251,18 +144,20 @@ Sorteren op&nbsp;&nbsp;
     <input id="color_20" class="css-checkbox" type="checkbox" value="20">
     <label class="css-label" for="color_20">Zand (2)</label>
     </li>
-    </ul>
-    <br />
-    <h4>Prijs</h4>
-    <div class="priceblock">
+  </ul>
+  <br />
+  <h4>Prijs</h4>
+
+  <div class="priceblock">
     <div class="noUiSlider"></div>
-    <input id="min-euro" type="text">
-    <input id="max-euro" type="text">
+      <input id="min-euro" type="text">
+      <input id="max-euro" type="text">
     </div>
     <div class="clearfix"></div>
     <br />
     <div class="filter-reset">
-    <img src="/assets/frontend/reset.png" alt="Reset filter" />
-    <a rel="nofollow" href="#">Reset filter</a>
+      <img src="/assets/frontend/reset.png" alt="Reset filter" />
+      <a rel="nofollow" href="#">Reset filter</a>
+    </div>
   </div>
 </div>

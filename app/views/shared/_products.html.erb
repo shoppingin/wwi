@@ -1,0 +1,107 @@
+<div class="breadcrumb">
+  <a href="/">Home</a> &nbsp;&raquo;&nbsp; <a href="/">Herenmode</a>
+  &nbsp;&raquo;&nbsp;Jassen
+</div>
+
+<div class="rightbox">
+  <div class="title-block "><h1>Jassen</h1></div>
+  <div class="products">
+    <div class="finetuning">
+
+      <div class="pages">
+        <ul>
+          <li ng-class="{active: page == 1, paging: page != 1}">
+              <a href="/products?page=1">1</a>
+          </li>
+          <li ng-class="{active: page == 2, paging: page != 2}">
+              <a href="/products?page=2">2</a>
+          </li>
+          <li ng-class="{active: page == 3, paging: page != 3}">
+              <a href="/products?page=3">3</a>
+          </li>
+          <li>
+              <a class="next" title="Volgende »" href="/products?page=2">›</a>
+          </li>
+        </ul>
+      </div>
+
+      Toon per pagina&nbsp;&nbsp;
+      <select class="showperpage styled">
+        <option value="6">16</option>
+        <option value="32">32</option>
+        <option value="64">64</option>
+        <option value="128">128</option>
+        <option value="Alle">Alle</option>
+      </select>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Sorteren op&nbsp;&nbsp;
+      <select class="sorting styled">
+      <option value="Titel">Titel</option>
+      <option value="Prijs">Prijs</option>
+      <option value="Nieuw">Nieuw</option>
+      </select>
+    </div>
+
+    <div>
+    <ul class="articles">
+      <% products.each do |product| %>
+        <% url = product_url(product, :taxon_id => @taxon.try(:id)) %>
+        <li id="product_<%= product.id %>" class="columns three <%= cycle("alpha", "secondary", "", "omega secondary", :name => "classes") %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
+          <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
+            <div class="product-image">
+              <%= link_to small_image(product, :itemprop => "image"), url, :itemprop => 'url' %>
+            </div>
+            <div class="product_text">
+              <p>
+                <%= link_to truncate(product.name, :length => 50), url,
+                  :class => 'info', :itemprop => "name", :title => product.name %>
+              </p>
+              <!-- <p class="brand">
+                <a href="/"> {{ product.brand }} </a>
+              </p>               -->
+              <!-- <span class="price strike">{{ product.strike_price }} EUR</span> -->
+              <span class="discount" itemprop="price"><%= display_price(product) %></span>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    </div>
+
+    <div class="finetuningbottom">
+      <div class="pages">
+          <ul>
+              <li class="active">
+              <a href="#/products?page=1">1</a>
+              </li>
+              <li class="paging">
+              <a href="#/products?page=2">2</a>
+              </li>
+              <li class="paging">
+              <a href="#/products?page=3">3</a>
+              </li>
+              <li>
+              <a class="next" title="Volgende »" href="#/products?page=2">›</a>
+              </li>
+          </ul>
+      </div>
+
+
+      Toon per pagina&nbsp;&nbsp;
+      <select class="showperpage styled">
+      <option value="6">16</option>
+      <option value="32">32</option>
+      <option value="64">64</option>
+      <option value="128">128</option>
+      <option value="Alle">Alle</option>
+      </select>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Sorteren op&nbsp;&nbsp;
+      <select class="sorting styled">
+      <option value="Titel">Titel</option>
+      <option value="Prijs">Prijs</option>
+      <option value="Nieuw">Nieuw</option>
+      </select>
+    </div>
+  </div>
+</div>
