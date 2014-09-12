@@ -31,6 +31,7 @@
 //= require jquery.jcarousel-core.min
 //= require jquery.jcarousel-control.min
 //= require jqzoom.min
+//= require spree/frontend/all
 
 // SETTINGS
 window.offline_mode = false;

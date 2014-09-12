@@ -63,3 +63,62 @@
     </tr>
   </tbody>
 </table>
+
+
+<div class="order-summary" disabled-data-access-level='accessLevels.user'>
+  <h3 class="sidebox-title">Samenvatting Bestelling</h3>
+
+  <div class="sidebox-body">
+    <div class="checkout-summary">
+      <table>
+        <tbody class="tbody">
+          <tr>
+          <td>{{ order.line_items.length }} item(s)</td>
+          <td class="right">
+          <span>&euro;{{ order.total_amount }}</span>
+          </td>
+          </tr>
+          <tr>
+          <td colspan="2">
+            <div class="code-input discount-coupon">
+              <!-- <form action="" method="post"> -->
+                <div class="control-group input-append">
+                <label for="coupon_field">Coupon code</label>
+                <input class="opc-input-text" size="40" value="" placeholder="Vul coupon code hier in..." type="text">
+                </div>
+              <!-- </form> -->
+            </div>
+          </td>
+          </tr>
+        </tbody>
+        <tbody class="total">
+          <tr>
+            <th colspan="2">
+            Shipping cost
+            <span class="total-sum">Free</span>
+            </th>
+          </tr>
+          <tr>
+            <th colspan="2">
+              Totaal
+              <span class="total-sum">&euro;{{ order.total_amount }}</span>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="opc-sidebox order-products">
+  <h3 class="sidebox-title">Producten in uw bestelling</h3>
+  <div class="sidebox-body">
+    <ul class="order-product-list" ng-repeat="line_item in order.line_items">
+      <li data-id="{{ line_item.id }}" data-price="{{ line_item.price }}">
+        <a href="" class="product-name">{{ line_item.name }}</a>
+        <a href="" class="delete"> X</a>
+        <span class="product-price">{{ line_item.quantity }}&nbsp;x&nbsp;&euro;{{ line_item.price * line_item.quantity }}</span>
+      </li>
+    </ul>
+  </div>
+</div>
