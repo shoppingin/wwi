@@ -28,7 +28,7 @@
 
       <div class="product-details">
         <h1 class="product-title" itemprop="name"><%= accurate_title %></h1>
-        <% taxon = @product.taxons.select{|t| t.parent_id == 2}.first %>>
+        <% taxon = @product.taxons.select{|t| t.parent_id == 2}.first %>
         <h2><%= link_to taxon.name, taxon.permalink %></h2>
 
         <span class="price strike"><%= number_to_currency(@product.strike_price, precision: 2) %> </span>&nbsp;&nbsp;

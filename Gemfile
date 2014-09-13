@@ -59,3 +59,4 @@ gem 'omni_kassa'
 gem 'quiet_assets', group: :development
 
 gem 'spree_static_content', github: 'spree/spree_static_content', branch: '2-3-stable'
+gem 'pry', group: [:development, :test]

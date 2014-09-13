@@ -79,7 +79,7 @@ function read_order_from_cookies(){
   return order
 }
 
-function fill_basket_from_cookies(){
+window.fill_basket_from_cookies = function fill_basket_from_cookies(){
   var $basket_container = $('#minicart_popup');
 
   var product_ids = $.cookie('product_ids') ? $.cookie('product_ids').split(',') : [],
@@ -133,7 +133,6 @@ function remove_item_from_basket(e){
 /* functions for basket */
 
 function add_item_to_basket(e){
-  debugger;
   e.preventDefault();
   var self = $(this);
   var p = $('.product-info');
@@ -157,27 +156,7 @@ function add_item_to_basket(e){
       add_item_to_basket_callback(product);
     }
     else {
-      $.ajax({
-        url: '/api/orders',
-        type: 'POST',
-        data: {
-          'order': {
-            'line_items': {
-              "0": {
-                'quantity': product.quantity,
-                'variant_id': product.variant_id
-              }
-            }
-          }
-        },
-        dataType: 'json',
-        success: function(data, status, xhr){
-          add_item_to_basket_callback(product);
-        },
-        error: function(xhr, status, errorThrown){
-          flash_notice.html('Error');
-        },
-      })
+      create_new_order_or_add_new_line_item(product);
     }
   }
 };
@@ -191,4 +170,72 @@ function add_item_to_basket_callback(product){
 
   add_product_to_basket($basket_container, product);
   $basket_container.fadeIn('fast');
+}
+
+function create_new_order_or_add_new_line_item(product){
+  var basket_an_empty = $.cookie('order_id') === null || $.cookie('order_id') === undefined;
+  if(basket_an_empty){
+    create_new_order(product);
+  }
+  else {
+    add_new_line_item(product);
+  }
+}
+
+function create_new_order(product){
+  $.ajax({
+    url: '/api/orders',
+    type: 'POST',
+    data: {
+      'order': {
+        'line_items': {
+          "0": {
+            'quantity': product.quantity,
+            'variant_id': product.variant_id
+          }
+        }
+      }
+    },
+    dataType: 'json',
+    success: function(data, status, xhr){
+      save_order(data);
+      add_item_to_basket_callback(product);
+    },
+    error: function(xhr, status, errorThrown){
+      flash_notice.html('Error');
+    },
+  })
+};
+
+function add_new_line_item(product){
+  // POST /api/orders/R1234567/line_items?line_item[variant_id]=1&line_item[quantity]=1
+  var order_id = $.cookie('order_id'),
+      order_token = $.cookie('order_token');
+
+  $.ajax({
+    url: '/api/orders/'+order_id+'/line_items.json',
+    type: 'POST',
+    beforeSend: function (request)
+    {
+        request.setRequestHeader("X-Spree-Order-Token", order_token);
+    },
+    data: {
+      'line_item': {
+        'quantity': product.quantity,
+        'variant_id': product.variant_id
+      }
+    },
+    dataType: 'json',
+    success: function(data, status, xhr){
+      add_item_to_basket_callback(product);
+    },
+    error: function(xhr, status, errorThrown){
+      flash_notice.html('Error');
+    },
+  })
+}
+
+function save_order(order){
+  $.cookie('order_id', order.number);
+  $.cookie('order_token', order.token);
 }
