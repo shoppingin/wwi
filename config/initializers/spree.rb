@@ -1,4 +1,4 @@
-Spree::Api::Config.requires_authentication = false
+Spree::Api::Config.requires_authentication = true
 
 # Configure Spree Preferences
 #

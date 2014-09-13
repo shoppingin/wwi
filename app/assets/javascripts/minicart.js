@@ -186,6 +186,10 @@ function create_new_order(product){
   $.ajax({
     url: '/api/orders',
     type: 'POST',
+    beforeSend: function (request)
+    {
+        //request.setRequestHeader("X-Spree-Token", Spree.api_key);
+    },
     data: {
       'order': {
         'line_items': {
@@ -217,7 +221,8 @@ function add_new_line_item(product){
     type: 'POST',
     beforeSend: function (request)
     {
-        request.setRequestHeader("X-Spree-Order-Token", order_token);
+        request.setRequestHeader("X-Spree-Token", Spree.api_key);
+        //request.setRequestHeader("X-Spree-Order-Token", order_token);        
     },
     data: {
       'line_item': {
