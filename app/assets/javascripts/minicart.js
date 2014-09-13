@@ -14,7 +14,7 @@ function store_product_id_to_cookie(id){
 
 function basket_item_template(product){
   return "<li data-id='" + product.id + "' data-price='"+product.price+"'><img src='" + product.image_url + "' height='50'/>"+
-  "<a href='/products/" + product.id +"'>" + product.name +"</a>"+
+  "<a href='/products/" + product.url +"'>" + product.name +"</a>"+
   "<span class='price'><span class='currency'>&euro;</span>"+
   product.price +"<a href='#' class='delete'><img src='/assets/frontend/minicart_popup_delete.png' alt='Verwijderen'/></a></span>"+
   "</li>"
@@ -133,6 +133,7 @@ function remove_item_from_basket(e){
 /* functions for basket */
 
 function add_item_to_basket(e){
+  debugger;
   e.preventDefault();
   var self = $(this);
   var p = $('.product-info');
@@ -171,7 +172,7 @@ function add_item_to_basket(e){
                 'quantity': product.quantity,
                 'variant_id': product.variant_id
               }
-            }  
+            }
           }
         },
         dataType: 'json',

@@ -17,16 +17,6 @@
 //= require jquery.nouislider
 //= require jquery.cookie
 
-// require angular
-// require angular-resource
-// require angular-cookies.min
-// require angular-ui-router
-
-// require routingConfig
-// require app
-// require_tree ./core/services
-// require_tree ./core/controllers
-// require_tree ./core/directives
 //= require minicart
 //= require jquery.jcarousel-core.min
 //= require jquery.jcarousel-control.min
@@ -41,30 +31,30 @@ $(function(){
   // $('.jcarousel').jcarousel({
   //     vertical: true
   // });
-  $('.product-large-image').jqzoom();
+  //$('.product-large-image').jqzoom();
 
 // Setup controls for the navigation carousel
-  $('.prev-navigation')
-      .on('jcarouselcontrol:inactive', function() {
-          $(this).addClass('inactive');
-      })
-      .on('jcarouselcontrol:active', function() {
-          $(this).removeClass('inactive');
-      })
-      .jcarouselControl({
-          target: '-=1'
-      });
-
-  $('.next-navigation')
-      .on('jcarouselcontrol:inactive', function() {
-          $(this).addClass('inactive');
-      })
-      .on('jcarouselcontrol:active', function() {
-          $(this).removeClass('inactive');
-      })
-      .jcarouselControl({
-          target: '+=1'
-      });
+  // $('.prev-navigation')
+  //     .on('jcarouselcontrol:inactive', function() {
+  //         $(this).addClass('inactive');
+  //     })
+  //     .on('jcarouselcontrol:active', function() {
+  //         $(this).removeClass('inactive');
+  //     })
+  //     .jcarouselControl({
+  //         target: '-=1'
+  //     });
+  //
+  // $('.next-navigation')
+  //     .on('jcarouselcontrol:inactive', function() {
+  //         $(this).addClass('inactive');
+  //     })
+  //     .on('jcarouselcontrol:active', function() {
+  //         $(this).removeClass('inactive');
+  //     })
+  //     .jcarouselControl({
+  //         target: '+=1'
+  //     });
 
   $('.mainmenu ul li').mouseover(function() {
     var $this = $(this);
