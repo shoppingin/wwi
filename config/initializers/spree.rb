@@ -16,3 +16,5 @@ end
 
 Spree.user_class = "Spree::User"
 Rails.application.config.spree.payment_methods << Spree::PaymentMethod::Omnikassa
+
+Spree::Image.attachment_definitions[:attachment][:styles] = { mini: '69x98>', small: '190x290>', product: '311x467">', large: '600x600>' }

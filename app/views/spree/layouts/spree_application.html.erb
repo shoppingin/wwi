@@ -45,106 +45,109 @@
     </div>
 
     <ul class="topmenu" data-ng-controller="NavCtrl">
-      <li data-access-level='accessLevels.anon'>
-        <a href="/login">Klant Login</a>
-      </li>
-      <li data-access-level='accessLevels.anon'>
-        <a href="/register">Register</a>
-      </li>
-      <li data-access-level='accessLevels.user'>
-        <%= image_tag "frontend/user.png", class: "cart", alt: "user" %>
-         <a href="/myboard">Test User</a>
-      </li>
-      <li data-access-level='accessLevels.user'>
-        <a href='' data-ng-click="logout()">Log out</a>
-      </li>
+      <% if spree_current_user %>
+        <li>
+          <%= image_tag "frontend/user.png", class: "cart", alt: "user" %>
+          <%= link_to Spree.t(:my_account), spree.account_path %>
+        </li>
+        <li>
+          <%= link_to Spree.t(:logout), spree.logout_path %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "Klant Login", spree.login_path %>
+        </li>
+        <li>
+          <%= link_to "Register", spree.signup_path %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>
 
 <div class="container">
-<div class="mainmenu">
-<ul>
-<li class="home"><a href="/"><%= image_tag "frontend/home.png", alt: "Home" %></a></li>
-<li><a href="/">Over ons</a></li>
-<li><a href="/products">Productcategorie</a></li>
-<li><a href="/products">Shop</a>
-<div id="foldoutmenu-2911" class="foldoutmenu">
-<div id="cats">
+  <div class="mainmenu">
+  <ul>
+    <li class="home"><%= link_to image_tag("frontend/home.png", alt: "Home"), spree.root_path %></li>
+    <li><%= link_to "Over ons", spree.root_path %></li>
+    <li><a href="/products">Productcategorie</a></li>
+    <li><a href="/products">Shop</a>
+    <div id="foldoutmenu-2911" class="foldoutmenu">
+    <div id="cats">
 
-<ul class="subcats">
-<li>
-<h3><a href="">Dames</a></h3>
-<ul>
-<li><h4><a href="#/products">New Arrivals</a></h4></li>
-<li><h4><a href="#/products">Sale</a></h4></li>
-<li><h4><a href="#/products">Schoenen</a></h4></li>
-<li><h4><a href="#/products">Jassen</a></h4></li>
-<li><h4><a href="#/products">Jurken</a></h4></li>
-<li><h4><a href="#/products">Tassen</a></h4></li>
-<li><h4><a href="#/products">Truien & Vesten</a></h4></li>
-<li><h4><a href="#/products">Tops</a></h4></li>
-<li><h4><a href="#/products">Jeans</a></h4></li>
-<li><h4><a href="#/products">Rokken</a></h4></li>
-<li><h4><a href="#/products">Broeken</a></h4></li>
-<li><h4><a href="#/products">Lingerie</a></h4></li>
-</ul>
-</li>
-</ul>
+    <ul class="subcats">
+      <li>
+        <h3><a href="">Dames</a></h3>
+        <ul>
+          <li><h4><a href="#/products">New Arrivals</a></h4></li>
+          <li><h4><a href="#/products">Sale</a></h4></li>
+          <li><h4><a href="#/products">Schoenen</a></h4></li>
+          <li><h4><a href="#/products">Jassen</a></h4></li>
+          <li><h4><a href="#/products">Jurken</a></h4></li>
+          <li><h4><a href="#/products">Tassen</a></h4></li>
+          <li><h4><a href="#/products">Truien & Vesten</a></h4></li>
+          <li><h4><a href="#/products">Tops</a></h4></li>
+          <li><h4><a href="#/products">Jeans</a></h4></li>
+          <li><h4><a href="#/products">Rokken</a></h4></li>
+          <li><h4><a href="#/products">Broeken</a></h4></li>
+          <li><h4><a href="#/products">Lingerie</a></h4></li>
+        </ul>
+      </li>
+    </ul>
 
-<ul class="subcats">
-<li>
-<h3><a href="#/products">Heren</a></h3>
-<ul>
-<li><h4><a href="#/products">Sale</a></h4></li>
-<li><h4><a href="#/products">Schoenen</a></h4></li>
-<li><h4><a href="#/products">Jassen</a></h4></li>
-<li><h4><a href="#/products">Jurken</a></h4></li>
-<li><h4><a href="#/products">Tassen</a></h4></li>
-<li><h4><a href="#/products">Truien & Vesten</a></h4></li>
-<li><h4><a href="#/products">Tops</a></h4></li>
-<li><h4><a href="#/products">Jeans</a></h4></li>
-<li><h4><a href="#/products">Rokken</a></h4></li>
-<li><h4><a href="#/products">Broeken</a></h4></li>
-</ul>
-</li>
-</ul>
+    <ul class="subcats">
+      <li>
+        <h3><a href="#/products">Heren</a></h3>
+        <ul>
+        <li><h4><a href="#/products">Sale</a></h4></li>
+        <li><h4><a href="#/products">Schoenen</a></h4></li>
+        <li><h4><a href="#/products">Jassen</a></h4></li>
+        <li><h4><a href="#/products">Jurken</a></h4></li>
+        <li><h4><a href="#/products">Tassen</a></h4></li>
+        <li><h4><a href="#/products">Truien & Vesten</a></h4></li>
+        <li><h4><a href="#/products">Tops</a></h4></li>
+        <li><h4><a href="#/products">Jeans</a></h4></li>
+        <li><h4><a href="#/products">Rokken</a></h4></li>
+        <li><h4><a href="#/products">Broeken</a></h4></li>
+        </ul>
+      </li>
+    </ul>
 
-<ul class="subcats">
-<li>
-<h3><a href="#/products">Kinderen</a></h3>
-<ul>
-<li><h4><a href="#/products">Sale</a></h4></li>
-<li><h4><a href="#/products">Schoenen</a></h4></li>
-<li><h4><a href="#/products">Jassen</a></h4></li>
-<li><h4><a href="#/products">Jurken</a></h4></li>
-<li><h4><a href="#/products">Tassen</a></h4></li>
-<li><h4><a href="#/products">Truien & Vesten</a></h4></li>
-<li><h4><a href="#/products">Tops</a></h4></li>
-<li><h4><a href="#/products">Jeans</a></h4></li>
-<li><h4><a href="#/products">Rokken</a></h4></li>
-<li><h4><a href="#/products">Broeken</a></h4></li>
-</ul>
-</li>
-</ul>
+    <ul class="subcats">
+      <li>
+      <h3><a href="#/products">Kinderen</a></h3>
+      <ul>
+        <li><h4><a href="#/products">Sale</a></h4></li>
+        <li><h4><a href="#/products">Schoenen</a></h4></li>
+        <li><h4><a href="#/products">Jassen</a></h4></li>
+        <li><h4><a href="#/products">Jurken</a></h4></li>
+        <li><h4><a href="#/products">Tassen</a></h4></li>
+        <li><h4><a href="#/products">Truien & Vesten</a></h4></li>
+        <li><h4><a href="#/products">Tops</a></h4></li>
+        <li><h4><a href="#/products">Jeans</a></h4></li>
+        <li><h4><a href="#/products">Rokken</a></h4></li>
+        <li><h4><a href="#/products">Broeken</a></h4></li>
+      </ul>
+      </li>
+    </ul>
 
-<ul class="subcats">
-<li>
-<h3><a href="#/products">Accessoires</a></h3>
-<ul>
-<li><h4><a href="#/products">Sale</a></h4></li>
-<li><h4><a href="#/products">Schoenen</a></h4></li>
-<li><h4><a href="#/products">Jassen</a></h4></li>
-<li><h4><a href="#/products">Jurken</a></h4></li>
-<li><h4><a href="#/products">Tassen</a></h4></li>
-<li><h4><a href="#/products">Truien & Vesten</a></h4></li>
-<li><h4><a href="#/products">Tops</a></h4></li>
-<li><h4><a href="#/products">Jeans</a></h4></li>
-<li><h4><a href="#/products">Rokken</a></h4></li>
-<li><h4><a href="#/products">Broeken</a></h4></li>
-</ul>
-</li>
-</ul>
+    <ul class="subcats">
+      <li>
+      <h3><a href="#/products">Accessoires</a></h3>
+        <ul>
+          <li><h4><a href="#/products">Sale</a></h4></li>
+          <li><h4><a href="#/products">Schoenen</a></h4></li>
+          <li><h4><a href="#/products">Jassen</a></h4></li>
+          <li><h4><a href="#/products">Jurken</a></h4></li>
+          <li><h4><a href="#/products">Tassen</a></h4></li>
+          <li><h4><a href="#/products">Truien & Vesten</a></h4></li>
+          <li><h4><a href="#/products">Tops</a></h4></li>
+          <li><h4><a href="#/products">Jeans</a></h4></li>
+          <li><h4><a href="#/products">Rokken</a></h4></li>
+          <li><h4><a href="#/products">Broeken</a></h4></li>
+        </ul>
+      </li>
+    </ul>
 
 </div>
 <div class="shadow"></div>
@@ -170,15 +173,11 @@
   </form>
 </div>
 
+<div>
   <%= flash_messages %>
-
+</div>
 <div class="usp">
 Gratis Verzending vanaf &euro; 50!&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Vóór 17 uur besteld morgen in huis&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Gratis retourneren&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Kies je afleverdatum
-</div>
-
-<div data-ng-show="error">
-  <button type='button' data-ng-click="error = null;"></button>
-  <span data-ng-bind="error"></span>
 </div>
 
 <div class="clearfix"></div>
