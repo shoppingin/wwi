@@ -18,7 +18,7 @@
 //= require jquery.nouislider
 //= require jquery.cookie
 //= require minicart
-
+Spree.api_key = '5cb05a7baf88a4ef045cd053719d0f4691ebd44d6e502f30';
 /* CUSTOM */
 $(function(){
   if(location.search && location.search.match(/_q=0/) !== null){

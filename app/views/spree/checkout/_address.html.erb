@@ -9,43 +9,61 @@
 </div>
 
 <div class="step-container active">
-<h2 class="step-title clearfix active">
-  <span class="step-number">2</span><a class="title">Factuur-en verzendadres een factureringsopties</a>
-</h2>
+  <h2 class="step-title clearfix active">
+    <span class="step-number">2</span><a class="title">Factuur-en verzendadres een factureringsopties</a>
+  </h2>
 
-<div class="step-body">
-  <div class="clearfix">
-    <div class="checkout-boxleft">
-      <%= form.fields_for :bill_address do |bill_form| %>
-        <div class="checkout-boxleft-form">
-          <h2 class="opc-subheader"><%= Spree.t(:billing_address) %></h2>
-          <%= render :partial => 'spree/address/form', :locals => { :form => bill_form, :address_type => 'billing', :address => @order.bill_address } %>
-        </div>
-      <% end %>
-    </div>
-    <div class="checkout-boxright" id="shipping">
-      <%= form.fields_for :ship_address do |ship_form| %>
-        <h2 class="opc-subheader"><%= Spree.t(:shipping_address) %></h2>
-        <%= render :partial => 'spree/address/form', :locals => { :form => ship_form, :address_type => 'shipping', :address => @order.ship_address } %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="checkout-buttons clearfix">
+  <div class="step-body">
     <div class="clearfix">
-      <div class="control-group">
-        <%= check_box_tag 'order[use_billing]', '1', @order.shipping_eq_billing_address? %>
-        <%= label_tag :order_use_billing, Spree.t(:use_billing_address), :id => 'use_billing', class: 'valign' %>
+      <div class="checkout-boxleft">
+        <%= form.fields_for :bill_address do |bill_form| %>
+          <div class="checkout-boxleft-form">
+            <h2 class="opc-subheader"><%= Spree.t(:billing_address) %></h2>
+            <%= render :partial => 'spree/address/form', :locals => { :form => bill_form, :address_type => 'billing', :address => @order.bill_address } %>
+          </div>
+        <% end %>
       </div>
-      <%= submit_tag Spree.t(:save_and_continue), :class => 'main-button', :style => "float:right;" %>
-      <% if try_spree_current_user %>
-        <span data-hook="save_user_address">
-          &nbsp; &nbsp;
-          <%= check_box_tag 'save_user_address', '1', try_spree_current_user.respond_to?(:persist_order_address) %>
-          <%= label_tag :save_user_address, Spree.t(:save_my_address) %>
-        </span>
-      <% end %>
+      <div class="checkout-boxright" id="shipping">
+        <%= form.fields_for :ship_address do |ship_form| %>
+          <h2 class="opc-subheader"><%= Spree.t(:shipping_address) %></h2>
+          <%= render :partial => 'spree/address/form', :locals => { :form => ship_form, :address_type => 'shipping', :address => @order.ship_address } %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="checkout-buttons clearfix">
+      <div class="clearfix">
+        <div class="control-group">
+          <%= check_box_tag 'order[use_billing]', '1', @order.shipping_eq_billing_address? %>
+          <%= label_tag :order_use_billing, Spree.t(:use_billing_address), :id => 'use_billing', class: 'valign' %>
+        </div>
+        <%= submit_tag Spree.t(:save_and_continue), :class => 'main-button', :style => "float:right;" %>
+        <% if try_spree_current_user %>
+          <span data-hook="save_user_address">
+            &nbsp; &nbsp;
+            <%= check_box_tag 'save_user_address', '1', try_spree_current_user.respond_to?(:persist_order_address) %>
+            <%= label_tag :save_user_address, Spree.t(:save_my_address) %>
+          </span>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+
+<div class="step-container">
+  <h2 class="step-title clearfix">
+    <span class="step-number">3</span><a class="title">Verzendopties</a>
+  </h2>
+
+  <div class="step-body">
+  </div>
 </div>
+
+<div class="step-container">
+  <h2 class="step-title clearfix">
+    <span class="step-number">4</span><a class="title">Factureringsopties</a>
+  </h2>
+
+  <div class="step-body">
+  </div>
+</div

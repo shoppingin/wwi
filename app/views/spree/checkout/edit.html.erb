@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <% if @order.state != 'confirm' %>
+  <% if ['confirm', 'delivery'].exclude?(@order.state) %>
     <%= render :partial => 'summary', :locals => { :order => @order } %>
   <% end %>
 </div>
