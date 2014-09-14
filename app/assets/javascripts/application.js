@@ -15,11 +15,9 @@
 //= require jquery.customSelect.min
 //= require jquery.nouislider
 //= require jquery.cookie
-
 //= require minicart
-//= require jquery.jcarousel-core.min
-//= require jquery.jcarousel-control.min
-//= require jqzoom.min
+//= require_tree .
+
 
 /* CUSTOM */
 $(function(){
