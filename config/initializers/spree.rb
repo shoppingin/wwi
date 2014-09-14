@@ -1,4 +1,9 @@
-Spree::Api::Config.requires_authentication = true
+Spree::OrdersController.class_eval do
+  respond_override :populate => { :html => { :success => lambda {
+    redirect_to products_path(:_q=>'0') } } }
+end
+
+Spree::Api::Config.requires_authentication = false
 
 # Configure Spree Preferences
 #

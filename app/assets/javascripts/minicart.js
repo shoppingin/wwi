@@ -133,7 +133,7 @@ function remove_item_from_basket(e){
 /* functions for basket */
 
 function add_item_to_basket(e){
-  e.preventDefault();
+  //e.preventDefault();
   var self = $(this);
   var p = $('.product-info');
 
@@ -150,16 +150,19 @@ function add_item_to_basket(e){
       quantity: parseInt($('input[name="quantity"]').val(), 10)
     };
 
+    add_product_to_cookie(product);
+    update_total(product.price);
+    store_product_id_to_cookie(product.id);
 
-
-    if(window.offline_mode){
-      add_item_to_basket_callback(product);
-    }
-    else {
-      create_new_order_or_add_new_line_item(product);
-    }
+    add_product_to_basket($basket_container, product);
   }
+
+  return true;
 };
+
+function show_basket(){
+  $('#minicart_popup').fadeIn('fast');
+}
 
 function add_item_to_basket_callback(product){
   var $basket_container = $('#minicart_popup');
@@ -221,8 +224,8 @@ function add_new_line_item(product){
     type: 'POST',
     beforeSend: function (request)
     {
-        request.setRequestHeader("X-Spree-Token", Spree.api_key);
-        //request.setRequestHeader("X-Spree-Order-Token", order_token);        
+        //request.setRequestHeader("X-Spree-Token", Spree.api_key);
+        request.setRequestHeader("X-Spree-Order-Token", order_token);
     },
     data: {
       'line_item': {
@@ -243,4 +246,5 @@ function add_new_line_item(product){
 function save_order(order){
   $.cookie('order_id', order.number);
   $.cookie('order_token', order.token);
+  //$.cookie('guest_token', order.token);
 }

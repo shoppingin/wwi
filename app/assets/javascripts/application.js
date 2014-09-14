@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require turbolinks
 //= require jquery
 //= require jquery_ujs
 //= require jquery.customSelect.min
@@ -28,6 +27,11 @@ window.offline_mode = false;
 
 /* CUSTOM */
 $(function(){
+  if(location.search && location.search.match(/_q=0/).length > 0){
+    show_basket();
+  }
+
+
   // $('.jcarousel').jcarousel({
   //     vertical: true
   // });
@@ -83,30 +87,30 @@ $(function(){
     });
   });
 
-  $(document.body).on('click', '[name="shoppingBag"]', add_item_to_basket);
+  $(document.body).on('click', '#add-to-cart-button', add_item_to_basket);
   $(document.body).on('click', '#minicart-outer ul li a.delete, .order-products ul > li a.delete', remove_item_from_basket);
 
-  $('.quantity .minus').bind('click', function(e){
-    e.preventDefault();
-
-    var qty = $('input[name="quantity"]');
-    var old = parseInt(qty.val());
-
-    if(old > 1){
-      qty.val(old - 1);
-    }
-
-    return false;
-  });
-  $('.quantity .plus').bind('click', function(e){
-    e.preventDefault();
-
-    var qty = $('input[name="quantity"]');
-    var old = parseInt(qty.val());
-
-    qty.val(old + 1);
-
-    return false;
-  });
+  // $('.quantity .minus').bind('click', function(e){
+  //   e.preventDefault();
+  //
+  //   var qty = $('input[name="quantity"]');
+  //   var old = parseInt(qty.val());
+  //
+  //   if(old > 1){
+  //     qty.val(old - 1);
+  //   }
+  //
+  //   return false;
+  // });
+  // $('.quantity .plus').bind('click', function(e){
+  //   e.preventDefault();
+  //
+  //   var qty = $('input[name="quantity"]');
+  //   var old = parseInt(qty.val());
+  //
+  //   qty.val(old + 1);
+  //
+  //   return false;
+  // });
 
 });
