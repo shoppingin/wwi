@@ -49,14 +49,7 @@ gem 'spree_i18n',         github: 'spree/spree_i18n', branch: '2-3-stable'
 gem 'spree_omnikassa',    github: 'Willianvdv/spree_omnikassa'
 
 ### PROJECT SETUP ###
-
-gem 'ng-rails-csrf'
-gem 'angularjs-rails'
-gem 'angularjs-rails-resource', '~> 1.0.0'
-gem "jasmine"
-#gem 'angular-rails-templates'
-gem 'omni_kassa'
 gem 'quiet_assets', group: :development
 
-gem 'spree_static_content', github: 'spree/spree_static_content', branch: '2-3-stable'
+#gem 'spree_static_content', github: 'spree/spree_static_content', branch: '2-3-stable'
 gem 'pry', group: [:development, :test]

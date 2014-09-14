@@ -12,12 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require spree
+//= require spree/frontend/all
 //= require jquery.customSelect.min
 //= require jquery.nouislider
 //= require jquery.cookie
 //= require minicart
-//= require_tree .
-
 
 /* CUSTOM */
 $(function(){
@@ -42,7 +42,7 @@ $(function(){
     }
 
     return false;
-  })
+  });
 
 
   // $('.jcarousel').jcarousel({

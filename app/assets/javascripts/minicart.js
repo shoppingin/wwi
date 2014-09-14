@@ -1,7 +1,3 @@
-var flash_notice = $('.flash_notice');
-
-$.cookie.defaults = {path: '/', secure: false, expires: 365};
-
 function add_product_to_basket(basket, product){
   basket.find('ul').append(basket_item_template(product));
 };
@@ -209,7 +205,7 @@ function create_new_order(product){
       add_item_to_basket_callback(product);
     },
     error: function(xhr, status, errorThrown){
-      flash_notice.html('Error');
+      window.flash_notice.html('Error');
     },
   })
 };
@@ -238,7 +234,7 @@ function add_new_line_item(product){
       add_item_to_basket_callback(product);
     },
     error: function(xhr, status, errorThrown){
-      flash_notice.html('Error');
+      window.flash_notice.html('Error');
     },
   })
 }
