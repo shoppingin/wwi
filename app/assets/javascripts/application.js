@@ -20,7 +20,6 @@
 //= require jquery.jcarousel-core.min
 //= require jquery.jcarousel-control.min
 //= require jqzoom.min
-//= require spree/frontend/all
 
 /* CUSTOM */
 $(function(){

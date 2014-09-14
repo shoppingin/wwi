@@ -8,6 +8,6 @@
 //= require jquery_ujs
 
 //= require spree/backend
+//= require spree/backend/sumie
 
 //= require_tree .
-//= require spree/backend/sumie
