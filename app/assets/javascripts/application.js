@@ -22,14 +22,30 @@
 //= require jqzoom.min
 //= require spree/frontend/all
 
-// SETTINGS
-window.offline_mode = false;
-
 /* CUSTOM */
 $(function(){
-  if(location.search && location.search.match(/_q=0/).length > 0){
+  if(location.search && location.search.match(/_q=0/) !== null){
     show_basket();
   }
+  $(document.body).on('click', '[name="checkout_type"]', function(e){
+    $('[name="checkout_type"]').prop('checked', false);
+    $(this).prop('checked', true);
+  });
+
+  $(document.body).on('click', '#choose_checkout_type', function(e){
+    e.preventDefault();
+
+    var el = $('[name="checkout_type"]:checked'),
+        checkout_type = el.val();
+    if(checkout_type === 'new'){
+      location.href = el.data('url');
+    }
+    if(checkout_type === 'guest'){
+      $('#register_as_guest_button').click();
+    }
+
+    return false;
+  })
 
 
   // $('.jcarousel').jcarousel({

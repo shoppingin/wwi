@@ -2,7 +2,7 @@
   <a href="/">Home</a>&nbsp;&raquo;&nbsp;One Page Checkout
 </div>
 
-<div class="content">
+<div id='regisration' class="content">
   <div class="opcbox-main clearfix">
 
     <h1 class="page-title">One Page Checkout</h1>
@@ -11,7 +11,7 @@
       <div class="checkout-steps clearfix">
 
         <div class="step-container active">
-          <h2 class="step-title clearfix active">
+          <h2 class="step-title active clearfix">
             <span class="step-number">1</span>Inloggen</a>
           </h2>
 
@@ -19,27 +19,62 @@
             <div class="clearfix">
               <div class="login-form">
                 <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
-                <%= render template: 'spree/user_sessions/new' %>
-
-                <% if Spree::Config[:allow_guest_checkout] %>
-                  <div id="guest_checkout" class="checkout-register" data-hook class="columns omega eight">
-                    <h6><%= Spree.t(:guest_user_account) %></h6>
-                    <% if flash[:registration_error] %>
-                      <div class='flash error'><%= flash[:registration_error] %></div>
-                    <% end %>
-                    <%= form_for @order, :url => update_checkout_registration_path, :method => :put, :html => { :id => 'checkout_form_registration' } do |f| %>
-                      <ul class="register-methods">
-                        <li>
-                          <%= f.label :email, Spree.t(:email) %><br />
-                          <%= f.email_field :email, :class => 'title' %>
-                        </li>
-                      </ul>
-                      <div class="checkout-buttons">
-                        <%= f.submit Spree.t(:continue), :class => 'main-button' %>
-                      </div>
-                    <% end %>
+                <%= form_for Spree::User.new, :as => :spree_user, :url => spree.create_new_session_path do |f| %>
+                <% @body_id = 'login' %>
+                <div id="existing-customer" class='checkout-login-form'>
+                  <h2 class="opc-subheader">Terugkerende klant</h2>
+                  <%= render :partial => 'spree/shared/login', locals: {f: f} %>
+                </div>
+                <div class='checkout-buttons clearfix'>
+                  <div class="clearfix">
+                    <div style="float:right;">
+                      <%= f.submit "Aanmelden", :class => 'main-button', :tabindex => 4 %>
+                    </div>
+                    <div class="remember-me-chekbox">
+                      <%= f.check_box :remember_me, :tabindex => 3 %>
+                      <%= f.label :remember_me, "Onthoud mij", class: 'valign' %>
+                    </div>
                   </div>
+
+                </div>
                 <% end %>
+              </div>
+              <div class='checkout-register'>
+                <div class='register-content'>
+                  <h2 class="opc-subheader">Nieuwe Klant</h2>
+
+                  <ul class='register-methods'>
+                    <li class='one'>
+                      <input class="radio valign"
+                              name="checkout_type"
+                              value="new"
+                              data-url="<%= spree.signup_path %>"
+                              checked="checked"
+                              type="radio"
+                              id="checkout_type_new">
+                      <label for="checkout_type_new"><span class="method-title">Registreer</span><span class="method-hint">Maak een account en gebruik het voor de kassa</span></label>
+                    </li>
+                    <li>
+                      <%= form_for @order, :url => update_checkout_registration_path, :method => :put, :html => { :id => 'checkout_form_registration' } do |f| %>
+                        <input class="radio valign" name="checkout_type" value="guest" type="radio" id="checkout_type_guest">
+                        <label for="checkout_type_guest">
+                          <span class="method-title">Afrekenen als gast</span>
+                          <span class="method-hint">Snel afrekenen zonder een account</span>
+                        </label>
+                        <% if flash[:registration_error] %>
+                          <div class='flash error'><%= flash[:registration_error] %></div>
+                        <% end %>
+                        <div class='control-group'>
+                          <%= f.email_field :email, :class => 'opc-input-text', style: "width: 260px;", placeholder: "Email" %><br/>
+                        </div>
+                        <%= f.submit 'spyderman', id: 'register_as_guest_button', style: 'visibility: hidden' %>
+                      <% end %>
+                    </li>
+                  </ul>
+                  <div class="checkout-buttons">
+                    <input value="Registreer" class="main-button" type="submit" id="choose_checkout_type">
+                  </div>
+                </div>
               </div>
             </div>
 

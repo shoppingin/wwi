@@ -1,0 +1,9 @@
+<div class='control-group'>
+  <%= f.label :email, Spree.t(:email) %>
+  <%= f.email_field :email, :class => 'opc-input-text', :tabindex => 1, autofocus: true %>
+</div>
+<div class='control-group password'>
+  <%= f.label :password, 'Wachtwoord' %>
+  <%= link_to 'Wachtwoord vergeten?', spree.recover_password_path, :class => 'forgot-password' %>
+  <%= f.password_field :password, :class => 'opc-input-text', :tabindex => 2 %>
+</div>

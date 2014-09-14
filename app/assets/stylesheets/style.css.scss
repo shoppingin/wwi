@@ -53,10 +53,10 @@ line-height: 0;
 height: 0;
 }
 .clearfix {
-display: inline-block;
+  display: inline-block;
 }
-html[xmlns] .clearfix {
-display: block;
+.clearfix {
+  display: block;
 }
 * html .clearfix {
 height: 1%;
@@ -1336,8 +1336,7 @@ background:url(image_path('frontend/customSelect-arrow.png')) no-repeat center r
     border: 1px solid #eeeee;
 }
 
-.step-body .active {
-
+.step-body {
   padding: 20px 0 0 0;
 }
 
