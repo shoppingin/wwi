@@ -99,6 +99,14 @@ GIT
       rails-i18n (~> 4.0.1)
       spree_core (~> 2.3.0)
 
+GIT
+  remote: git://github.com/spree/spree_static_content.git
+  revision: 2161ecdbeb381b86f7027305b632c8ecbe39b759
+  branch: 2-3-stable
+  specs:
+    spree_static_content (2.3.0)
+      spree_core (~> 2.3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -336,6 +344,7 @@ DEPENDENCIES
   spree_auth_devise!
   spree_i18n!
   spree_omnikassa!
+  spree_static_content!
   spree_strike_price!
   spring
   sqlite3
