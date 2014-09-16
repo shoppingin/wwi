@@ -20,3 +20,23 @@ Spree.user_class = "Spree::User"
 Rails.application.config.spree.payment_methods << Spree::PaymentMethod::Omnikassa
 
 Spree::Image.attachment_definitions[:attachment][:styles] = { mini: '69x98>', small: '190x290>', product: '311x467">', large: '600x600>' }
+
+use_s3 = ENV['S3'] || false
+
+if use_s3
+  Spree::Image.attachment_definitions[:attachment][:url] = "s3-eu-west-1.amazonaws.com"
+  Spree::Image.attachment_definitions[:attachment][:storage] = :s3
+  Spree::Image.attachment_definitions[:attachment][:bucket] = ENV['S3_BUCKET_NAME']
+  Spree::Image.attachment_definitions[:attachment][:s3_credentials]= {
+   :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+   :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+  }
+
+  Paperclip::Attachment.default_options[:s3_host_name] = "s3-eu-west-1.amazonaws.com"
+  Paperclip::Attachment.default_options[:storage] = :s3
+  Paperclip::Attachment.default_options[:bucket] = ENV['S3_BUCKET_NAME']
+  Paperclip::Attachment.default_options[:s3_credentials] = {
+    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+  }
+end
