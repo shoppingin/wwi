@@ -1,4 +1,4 @@
-fail("No taxonomies called 'Brand'") if Spree::Taxon.where(name: 'Brand').empty?
+fail("No taxonomies called 'Brand'") if Spree::Taxonomy.where(name: 'Brand').empty?
 
 Spree::OrdersController.class_eval do
   respond_override :populate => { :html => { :success => lambda {

@@ -1,0 +1,8 @@
+<% @brands.each do |group| %>
+  <h1><%= group[0] %></h1>
+  <p>
+    <% group[1].each do |brand| %>
+      <p><%= brand.name %></p>
+    <% end %>
+  </p>
+<% end %>
