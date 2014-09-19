@@ -1,3 +1,5 @@
+fail("No taxonomies called 'Brand'") if Spree::Taxon.where(name: 'Brand').empty?
+
 Spree::OrdersController.class_eval do
   respond_override :populate => { :html => { :success => lambda {
     redirect_to products_path(:_q=>'0') } } }
