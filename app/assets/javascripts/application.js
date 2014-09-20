@@ -44,7 +44,13 @@ $(function(){
     return false;
   });
 
+  $(document.body).on('click', 'a.fake_submit', function(e){
+    $(this).parents('form').submit()
+  })
 
+  $(document.body).on('change', 'select.showperpage', function(e){
+    location.href = $(this).data('url') + '?per_page=' + $(this).val()
+  })
   // $('.jcarousel').jcarousel({
   //     vertical: true
   // });

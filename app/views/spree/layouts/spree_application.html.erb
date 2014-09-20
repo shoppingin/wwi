@@ -69,7 +69,7 @@
   <div class="mainmenu">
   <ul>
     <li class="home"><%= link_to image_tag("frontend/home.png", alt: "Home"), spree.root_path %></li>
-    <li><%= link_to "Over ons", spree.root_path %></li>
+    <li><a href='/about'>Over ons</li>
     <li><a href="/products">Productcategorie</a></li>
     <li><a href="/products">Shop</a>
     <div id="foldoutmenu-2911" class="foldoutmenu">
@@ -158,19 +158,16 @@
 </ul>
 </div>
 <div class="search">
-  <form name="productsearchform" method="get">
-    <input type="hidden" value="Y" name="simple_search">
-    <input type="hidden" value="search" name="mode">
-    <input type="hidden" value="Y" name="posted_data[by_title]">
-    <input type="hidden" value="Y" name="posted_data[by_shortdescr]">
-    <input type="hidden" value="Y" name="posted_data[by_fulldescr]">
-    <input type="hidden" value="Y" name="posted_data[by_sku]">
-    <input type="hidden" value="all" name="posted_data[including]">
-    <input type="text" placeholder="Zoeken..." name="q" size="24" ng-model='q'>
-    <a href="/#/search/{{q}}">
+  <!-- <form name="productsearchform" method="get"> -->
+  <%= form_tag spree.products_path, method: :get do %>
+    <!-- <input type="text" placeholder="Zoeken..." name="q" size="24" ng-model='q'> -->
+    <%= search_field_tag :keywords, params[:keywords], placeholder: 'Zoeken...' %>
+    <a href="#" class="fake_submit">
       <%= image_tag "frontend/search.png", alt: "Zoeken"  %>
     </a>
-  </form>
+  <% end %>
+  <!-- </form> -->
+
 </div>
 
 <div class='flash_notice'>

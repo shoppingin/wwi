@@ -8,22 +8,40 @@
   </div>
 <% end %>
 
-<% if params[:keywords] %>
+<div class="breadcrumb">
+  <a href="/">Home</a> &nbsp;&raquo;&nbsp; <a href="/">Herenmode</a>
+  &nbsp;&raquo;&nbsp;Jassen
+</div>
 
-  <div data-hook="search_results">
-    <% if @products.empty? %>
-      <h6 class="search-results-title"><%= Spree.t(:no_products_found) %></h6>
-    <% else %>
-      <%= render :partial => 'spree/shared/products', :locals => { :products => @products, :taxon => @taxon } %>
-    <% end %>
-  </div>
+<%= breadcrumbs(@taxon) %>
 
-<% else %>
+<% dynamic_block = Spree::Page.where(slug: '/advertise').first %>
 
-  <div data-hook="homepage_products">
-    <%= render :partial => 'shared/products', :locals => { :products => @products, :taxon => @taxon } %>
-  </div>
-<% end %>
+<div class="rightbox">
+  <% if dynamic_block && dynamic_block.visible %>
+    <%= dynamic_block.body %>
+  <% end %>
+
+  <% if params[:keywords] %>
+
+    <div data-hook="search_results">
+      <% if @products.empty? %>
+        <h6 class="search-results-title"><%= Spree.t(:no_products_found) %></h6>
+      <% else %>
+        <%= render :partial => 'shared/products', :locals => { :products => @products, :taxon => @taxon } %>
+      <% end %>
+    </div>
+
+  <% else %>
+
+    <div data-hook="homepage_products">
+      <%= render :partial => 'shared/products', :locals => { :products => @products, :taxon => @taxon } %>
+    </div>
+  <% end %>
+</div>
 
 <!-- added -->
 <%= render 'shared/sidebar' %>
+
+
+<%#= render 'spree/shared/filters' %>
