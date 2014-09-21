@@ -47,7 +47,7 @@ gem 'spring',        group: :development
 gem 'spree',              github: 'spree/spree',             branch: '2-3-stable'
 gem 'spree_auth_devise',  github: 'spree/spree_auth_devise', branch: '2-3-stable'
 
-gem 'sumie',              github: 'shoppingin/sumie', branch: 'spree'
+gem 'sumie',              github: 'shoppingin/sumie', branch: 'master'
 gem 'spree_strike_price', github: 'shoppingin/spree_strike_price'
 gem 'spree_i18n',         github: 'spree/spree_i18n', branch: '2-3-stable'
 gem 'spree_omnikassa',    github: 'Willianvdv/spree_omnikassa'

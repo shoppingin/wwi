@@ -14,10 +14,10 @@ GIT
 
 GIT
   remote: git://github.com/shoppingin/sumie.git
-  revision: 7bd3026f6b41a46c1583a1bd377294e8f538681d
-  branch: spree
+  revision: a84e6a02007e671b023b8973f5edc8f0d3602044
+  branch: master
   specs:
-    sumie (0.0.1)
+    sumie (0.0.2)
       spree_core (~> 2.3.1)
 
 GIT

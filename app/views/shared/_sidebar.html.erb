@@ -2,11 +2,10 @@
     <div class="location">
       <h4>Choose your city</h4>
       <select class="styled">
-        <option>Hilversum</option>
-        <option>Utrecht</option>
-        <option>Rotterdam</option>
+        <option value="">All</option>
+        <%= options_for_select(Spree::Supplier.all.collect(&:name).uniq) %>
       </select>
-      <img src="/assets/frontend/logo_hilversum.jpg" alt="Hilversum" />
+      <!-- <img src="/assets/frontend/logo_hilversum.jpg" alt="Hilversum" /> -->
     </div>
 
     <h4>Categories</h4>
