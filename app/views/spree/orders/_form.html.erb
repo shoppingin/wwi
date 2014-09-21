@@ -12,6 +12,18 @@
   <tbody id="line_items" data-hook>
     <%= render partial: 'line_item', collection: order_form.object.line_items, locals: {order_form: order_form} %>
   </tbody>
+
+  <tr>
+    <td colspan="6" align='right'>
+      <div class='coupon_form'>
+        <%= order_form.text_field :coupon_code, :size => 10, :class => "opc-input-text", :placeholder => Spree.t(:coupon_code) %>
+        <%= button_tag :class => 'primary', :id => 'update-button' do %>
+          <%= Spree.t(:update) %>
+        <% end %>
+      </div>
+    </td>
+  </tr>
+
   <% if @order.adjustments.exists? || @order.line_item_adjustments.exists? || @order.shipment_adjustments.exists? %>
     <tr class="cart-subtotal">
       <td colspan="4" align='right'><h5><%= Spree.t(:cart_subtotal, :count => @order.line_items.sum(:quantity)) %></h5></th>
@@ -21,8 +33,11 @@
     <%= render "spree/orders/adjustments" %>
   <% end %>
   <tr class="cart-total">
-    <td colspan="4" align='right'><h5><%= Spree.t(:total) %></h5></th>
-    <td colspan><h5><%= order_form.object.display_total %></h5></td>
+    <td colspan="3"></td>
+    <td  align='left'>
+      <h2><%= Spree.t(:total) %></h2>
+    </td>
+    <td><span><%= order_form.object.display_total %></span></td>
     <td></td>
   </tr>
 </table>
