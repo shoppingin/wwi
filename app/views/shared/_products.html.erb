@@ -3,7 +3,7 @@
   paginated_products ||= products
 %>
 
-<div class="title-block "><h1>Jassen</h1></div>
+<div class="title-block "><h1><%= '' %></h1></div>
 <div class="products">
   <div class="finetuning">
 
@@ -24,7 +24,6 @@
     </select>
   </div>
 
-  <div>
   <ul class="articles">
     <% products.each do |product| %>
       <% url = product_url(product, :taxon_id => @taxon.try(:id)) %>
@@ -48,7 +47,6 @@
       </li>
     <% end %>
   </ul>
-  </div>
 
   <div class="finetuningbottom">
     <% if paginated_products.respond_to?(:num_pages) %>
