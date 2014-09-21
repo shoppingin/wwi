@@ -1,10 +1,12 @@
 <div id='minicart-outer'>
-  <%= link_to image_tag('frontend/cart.png', class: 'cart', alt: 'cart'), '#' %>
-  <a class="bag-items minicart" rel="nofollow" href="/">
-    <span class='items'>0</span> ITEMS, TOTAAL &euro;<span class='price'>0,00</span>
+  <%= link_to image_tag('frontend/cart.png', class: 'cart', alt: 'cart'), spree.cart_path %>
+  <a class="bag-items minicart" rel="nofollow" href="/cart">
+    <span class='items'><%= simple_current_order.nil? ? 0 : simple_current_order.item_count %></span> ITEMS, TOTAAL <span class='price'><%= simple_current_order.nil? ? '&euro;0,00'.html_safe : simple_current_order.display_total.to_html %></span>
+    <!-- <span class='items'>0</span> ITEMS, TOTAAL <span class='price'>0,00</span> -->
   </a>
 
-  <div id='minicart_popup'>
+  <!-- POPOVER:START, STATE:DISABLED -->
+  <!-- <div id='minicart_popup'>
     <div class="schuif"></div>
     <ul>
     </ul>
@@ -12,7 +14,8 @@
       Totaalprijs: <strong><span class="currency">&euro;</span><span class='price'></span></strong>
     </div>
     <div class="minicart_popup_bottom">
-      <a href="/checkout"><%=t 'minicart.checkout' %><%= image_tag 'frontend/cart_white.png', alt: 'Checkout' %></a>
+      <a href="/checkout"><%=t 'minicart.checkout' %><%#= image_tag 'frontend/cart_white.png', alt: 'Checkout' %></a>
     </div>
-  </div>
+  </div> -->
+  <!-- POPOVER:BLOCK:END -->
 </div>

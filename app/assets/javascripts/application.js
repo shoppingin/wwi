@@ -17,13 +17,9 @@
 //= require jquery.customSelect.min
 //= require jquery.nouislider
 //= require jquery.cookie
-//= require minicart
 
 /* CUSTOM */
 $(function(){
-  if(location.search && location.search.match(/_q=0/) !== null){
-    show_basket();
-  }
   $(document.body).on('click', '[name="checkout_type"]', function(e){
     $('[name="checkout_type"]').prop('checked', false);
     $(this).prop('checked', true);
@@ -96,18 +92,6 @@ $(function(){
     $(this).parents('li').toggleClass('open');
 
   });
-
-  fill_basket_from_cookies();
-  $('#minicart-outer').mouseover(function() {
-    var $popup = $('#minicart_popup');
-    $popup.fadeIn('fast');
-    $(this).mouseleave(function() {
-      $popup.fadeOut('fast');
-    });
-  });
-
-  $(document.body).on('click', '#add-to-cart-button', add_item_to_basket);
-  $(document.body).on('click', '#minicart-outer ul li a.delete, .order-products ul > li a.delete', remove_item_from_basket);
 
   // $('.quantity .minus').bind('click', function(e){
   //   e.preventDefault();

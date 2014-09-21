@@ -244,3 +244,19 @@ function save_order(order){
   $.cookie('order_token', order.token);
   //$.cookie('guest_token', order.token);
 }
+
+$(function(){
+  if(location.search && location.search.match(/_q=0/) !== null){
+    show_basket();
+  }
+  $(document.body).on('click', '#add-to-cart-button', add_item_to_basket);
+  $(document.body).on('click', '#minicart-outer ul li a.delete, .order-products ul > li a.delete', remove_item_from_basket);
+  fill_basket_from_cookies();
+  $('#minicart-outer').mouseover(function() {
+    var $popup = $('#minicart_popup');
+    $popup.fadeIn('fast');
+    $(this).mouseleave(function() {
+      $popup.fadeOut('fast');
+    });
+  });
+})
