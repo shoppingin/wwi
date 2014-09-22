@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :set_locale
+
   after_filter :set_csrf_cookie_for_ng
 
   def set_csrf_cookie_for_ng
@@ -10,6 +12,9 @@ class ApplicationController < ActionController::Base
   end
 
 protected
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
 
   def verified_request?
     super || form_authenticity_token == request.headers['X-XSRF-TOKEN']

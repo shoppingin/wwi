@@ -9,3 +9,8 @@
 
 Spree::Core::Engine.load_seed if defined?(Spree::Core)
 Spree::Auth::Engine.load_seed if defined?(Spree::Auth)
+
+Spree::Role.create(name: 'vendor')
+
+# create a root taxon brand
+Spree::Taxonomy.create(name: 'Brand')

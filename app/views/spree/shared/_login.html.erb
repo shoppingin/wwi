@@ -1,3 +1,4 @@
+<%= form_for Spree::User.new, :as => :spree_user, :url => spree.create_new_session_path do |f| %>
 <div class='control-group'>
   <%= f.label :email, Spree.t(:email) %>
   <%= f.email_field :email, :class => 'opc-input-text', :tabindex => 1, autofocus: true %>
@@ -7,3 +8,6 @@
   <%= link_to 'Wachtwoord vergeten?', spree.recover_password_path, :class => 'forgot-password' %>
   <%= f.password_field :password, :class => 'opc-input-text', :tabindex => 2 %>
 </div>
+<div><%= f.submit Spree.t(:login), :class => 'main-button', :tabindex => 4 %></div>
+
+<% end %>

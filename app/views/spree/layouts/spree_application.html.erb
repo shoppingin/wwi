@@ -31,12 +31,12 @@
         <%=
           select_tag :locale,
             options_for_select(
-              [
-                ['Nederland', 'nl'],
-                ['Deutsch', 'de'],
-                ['English', 'en'],
-              ],
-              selected: I18n.locale
+              {
+                'Nederland' => 'nl',
+                'Deutsch' => 'de',
+                'English' => 'en'
+              },
+              params[:locale] || I18n.locale
             ),
             class: 'styled',
             onchange: "this.form.submit()"
@@ -55,6 +55,7 @@
         </li>
       <% else %>
         <li>
+          <%= image_tag "frontend/user.png", class: "cart", alt: "user" %>
           <%= link_to "Klant Login", spree.login_path %>
         </li>
         <li>
@@ -170,9 +171,7 @@
 
 </div>
 
-<div class='flash_notice'>
-  <%= flash_messages %>
-</div>
+<div class='flash_notice' style='display: none'><%= flash_messages %></div>
 <div class="usp">
 Gratis Verzending vanaf &euro; 50!&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Vóór 17 uur besteld morgen in huis&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Gratis retourneren&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Kies je afleverdatum
 </div>

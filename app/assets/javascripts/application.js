@@ -17,9 +17,14 @@
 //= require jquery.customSelect.min
 //= require jquery.nouislider
 //= require jquery.cookie
+//= require notify.min
 
 /* CUSTOM */
 $(function(){
+  var flash_msg = $('.flash_notice div');
+  if(flash_msg.length > 0){
+    $('.top-nav').notify(flash_msg.html(), flash_msg.prop('class').split(' ')[1]);
+  }
   $(document.body).on('click', '[name="checkout_type"]', function(e){
     $('[name="checkout_type"]').prop('checked', false);
     $(this).prop('checked', true);

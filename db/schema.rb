@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140912061747) do
+ActiveRecord::Schema.define(version: 20140922135109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -836,6 +836,10 @@ ActiveRecord::Schema.define(version: 20140912061747) do
     t.string   "facebook"
     t.text     "description"
     t.integer  "user_id"
+    t.integer  "country_id"
+    t.string   "city"
+    t.string   "address1"
+    t.string   "zipcode"
   end
 
   create_table "spree_suppliers_taxons", id: false, force: true do |t|
