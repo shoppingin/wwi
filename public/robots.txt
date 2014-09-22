@@ -15,3 +15,4 @@ Disallow: /user_sessions
 Disallow: /user_registrations
 Disallow: /users
 Disallow: /account
+Sitemap: http://localhost:3000/sitemap.xml.gz

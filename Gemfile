@@ -51,6 +51,8 @@ gem 'sumie',              github: 'shoppingin/sumie', branch: 'master'
 gem 'spree_strike_price', github: 'shoppingin/spree_strike_price'
 gem 'spree_i18n',         github: 'spree/spree_i18n', branch: '2-3-stable'
 gem 'spree_omnikassa',    github: 'Willianvdv/spree_omnikassa'
+gem 'spree_sitemap', github: 'jdutil/spree_sitemap', branch: '2-3-stable'
+gem 'whenever', :require => false
 
 ### PROJECT SETUP ###
 gem 'quiet_assets', group: :development
