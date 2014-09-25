@@ -20,7 +20,7 @@
   </p>
   <p class="control-group" id=<%="#{address_id}address2" %>>
     <%= form.label :address2, Spree.t(:street_address_2) %><br />
-    <%= form.text_field :address2 %>
+    <%= form.text_field :address2, :class => 'opc-input-text' %>
   </p>
   <p class="control-group" id=<%="#{address_id}city" %>>
     <%= form.label :city, Spree.t(:city) %><span class="required">*</span><br />
@@ -29,23 +29,23 @@
   <p class="control-group" id=<%="#{address_id}country" %>>
     <%= form.label :country_id, Spree.t(:country) %><span class="required">*</span><br />
     <span id=<%="#{address_id}country-selection" %>>
-      <%= form.collection_select :country_id, available_countries, :id, :name, {}, {:class => 'opc-input-text required'} %>
+      <%= form.collection_select :country_id, available_countries, :id, :name, {}, {:class => 'required'} %>
     </span>
   </p>
 
   <% if Spree::Config[:address_requires_state] %>
     <p class="control-group" id=<%="#{address_id}state" %>>
       <% have_states = !address.country.states.empty? %>
-      <%= form.label :state, Spree.t(:state) %><span class='opc-input-text required' id=<%="#{address_id}state-required"%>>*</span><br/>
+      <%= form.label :state, Spree.t(:state) %><span class='required' id=<%="#{address_id}state-required"%>>*</span><br/>
 
       <% state_elements = [
          form.collection_select(:state_id, address.country.states,
                             :id, :name,
                             {:include_blank => true},
-                            {:class => have_states ? 'opc-input-text required' : 'hidden',
+                            {:class => have_states ? 'required' : 'hidden',
                             :disabled => !have_states}) +
          form.text_field(:state_name,
-                            :class => !have_states ? 'opc-input-text required' : 'hidden',
+                            :class => !have_states ? 'required' : 'hidden',
                             :disabled => have_states)
          ].join.gsub('"', "'").gsub("\n", "")
       %>
@@ -59,11 +59,11 @@
   <% end %>
 
   <p class="control-group" id=<%="#{address_id}zipcode" %>>
-    <%= form.label :zipcode, Spree.t(:zip) %><% if address.require_zipcode? %><span class="opc-input-text required">*</span><br /><% end %>
+    <%= form.label :zipcode, Spree.t(:zip) %><% if address.require_zipcode? %><span class="required">*</span><br /><% end %>
     <%= form.text_field :zipcode, :class => "opc-input-text #{'required' if address.require_zipcode?}" %>
   </p>
   <p class="control-group" id=<%="#{address_id}phone" %>>
-    <%= form.label :phone, Spree.t(:phone) %><% if address.require_phone? %><span class="opc-input-text required">*</span><br /><% end %>
+    <%= form.label :phone, Spree.t(:phone) %><% if address.require_phone? %><span class="required">*</span><br /><% end %>
     <%= form.phone_field :phone, :class => "opc-input-text #{'required' if address.require_phone?}" %>
   </p>
   <% if Spree::Config[:alternative_shipping_phone] %>

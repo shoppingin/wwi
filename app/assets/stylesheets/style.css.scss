@@ -1349,13 +1349,13 @@ background:url(image_path('frontend/customSelect-arrow.png')) no-repeat center r
     font-weight: bold;
 }
 .step-title span.step-number {
-  background:#999999;
-    color: #FFFFFF;
-    height: 23px;
-    margin-right: 10px;
-    padding: 3px 7px;
-    text-align: center;
-    width: 17px;
+  background: rgb(208, 208, 208);
+  color: #FFFFFF;
+  height: 23px;
+  margin-right: 10px;
+  padding: 3px 7px;
+  text-align: center;
+  width: 17px;
 }
 .step-title .active span.step-number {
   background:#222222;
@@ -1547,8 +1547,8 @@ ul.register-methods {
   font-weight: bold;
 }
 .opcbox-main {
-    margin: 0;
-  width:650px;
+  margin: 0;
+  //width:650px;
   float:left;
 }
 .page-title  {
@@ -2012,4 +2012,29 @@ line-height:18px;
 
 .auth .control-group {
   margin: 25px 0 0 0;
+}
+
+.step-container ul.steps > li{
+  float: left;
+  color: rgb(208, 208, 208);
+}
+
+.step-container ul.steps > li.active {
+  color: gray
+}
+
+.step-container > ul.steps li.active span.step-number {
+  background: #FF6600
+}
+
+.step-container ul.steps {
+  clear: both;
+}
+
+form span.required {
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1px;
+  padding: 2px;
 }
