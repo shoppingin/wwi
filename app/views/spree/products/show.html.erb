@@ -1,3 +1,5 @@
+<div id='helper'></div>
+
 <% cache [I18n.locale, current_currency, @product] do %>
 
 <div class="content">
@@ -50,7 +52,7 @@
 
       <div class="viewmore product-actions-wrapper">
         <span class="response-message"></span>
-        <%= form_for :order, :url => orders_populate_path do |f| %>
+        <%= form_for :order, :url => orders_populate_path, html: {id: 'new_order'} do |f| %>
           <div class="button-block">
             <div class="quantity">
               <input class="minus" type="button" value="-">
@@ -105,4 +107,5 @@
   </div>
 </div>
 
+<div id='cover'></div>
 <% end %>
