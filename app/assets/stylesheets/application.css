@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require jquery.nouislider
+ *= require 960
  *= require_tree .
  */

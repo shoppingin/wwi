@@ -2,8 +2,9 @@
   paginated_products = @searcher.retrieve_products if params.key?(:keywords)
   paginated_products ||= products
 %>
-
-<div class="title-block "><h1><%= '' %></h1></div>
+<% if defined?(taxon) && !taxon.nil? %>
+<div class="title-block "><h1><%= taxon.name %></h1></div>
+<% end %>
 <div class="products">
   <div class="finetuning">
 

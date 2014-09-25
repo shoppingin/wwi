@@ -8,7 +8,7 @@
   <label for="city">Kies uw stad</label>
   <select class="styled">
     <option value="">All</option>
-    <%= options_for_select(Spree::Supplier.all.collect(&:name).uniq) %>
+    <%= options_for_select(Spree::Supplier.all.collect(&:city).uniq) %>
   </select>
   <div class="clearfix"></div>
   <label for="category">Categorie</label>

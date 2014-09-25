@@ -1971,3 +1971,45 @@ line-height:18px;
   padding: 10px 0;
   border-bottom: 1px solid rgb(212, 212, 212);
 }
+
+.center {
+  margin: 0 auto;
+  display:block;
+}
+
+.grid_7 {
+  width: 380px;
+}
+
+.centeral_block {
+  width: 360px; margin: 0 auto;
+}
+
+
+// LOGIN, REGISTER PAGES
+.content-header {
+  padding: 0 0 10px 0;
+  width: 100px;
+  margin: 0 auto
+}
+
+.content-header h2 {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.actions {
+  margin: 20px 0 0 0
+}
+
+.alternative {
+  float: right;
+  padding: 15px 0 0 0
+}
+.main-actions {
+  flaot: left
+}
+
+.auth .control-group {
+  margin: 25px 0 0 0;
+}

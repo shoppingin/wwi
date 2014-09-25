@@ -14,3 +14,5 @@ Spree::Role.create(name: 'vendor')
 
 # create a root taxon brand
 Spree::Taxonomy.create(name: 'Brand')
+
+#

@@ -6,6 +6,16 @@
 #     redirect_to products_path(:_q=>'0') } } }
 # end
 
+Spree::ProductsController.class_eval do
+  before_filter :find_categories, only: [:index]
+
+  private
+
+  def find_categories
+    @categories = Spree::Product.group("spree_products.id").joins(:taxons)
+  end
+end
+
 Spree::Api::Config.requires_authentication = false
 
 # Configure Spree Preferences

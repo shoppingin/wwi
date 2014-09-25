@@ -9,21 +9,26 @@
   <% if @order.line_items.empty? %>
 
     <div data-hook="empty_cart">
-      <p><%= Spree.t(:your_cart_is_empty) %></p>
-      <p><%= link_to Spree.t(:continue_shopping), products_path, :class => 'button continue' %></p>
+      <p align="center"><%= Spree.t(:your_cart_is_empty) %></p>
+      <br/>
+      <br/>
+      <br/>
+      <p align="center">
+        <%= link_to "&#9668;#{Spree.t(:continue_shopping)}".html_safe, products_path, :class => 'continue button gray' %>
+      </p>
     </div>
 
   <% else %>
-
+    <%= form_for @order, :url => update_cart_path, :html => {:id => 'update-cart'} do |order_form| %>
     <div data-hook="outside_cart_form">
-      <%= form_for @order, :url => update_cart_path, :html => {:id => 'update-cart'} do |order_form| %>
+
         <div data-hook="inside_cart_form">
 
           <div data-hook="cart_items">
             <%= render :partial => 'form', :locals => { :order_form => order_form } %>
           </div>
         </div>
-      <% end %>
+
     </div>
 
     <div class='cart_actions'>
@@ -37,6 +42,6 @@
       </div>
       <div class='clearfix'></div>
     </div>
-
+    <% end %>
   <% end %>
 </div>
