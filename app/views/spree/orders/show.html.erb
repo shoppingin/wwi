@@ -1,4 +1,4 @@
-<fieldset id="order_summary" data-hook>
+<div class="content">
   <legend><%= Spree.t(:order_number, :number => @order.number) %></legend>
   <h1><%= accurate_title %></h1>
   <% if order_just_completed?(@order) %>
@@ -11,7 +11,7 @@
     <br class="clear" />
 
     <p data-hook="links">
-      <%= link_to Spree.t(:back_to_store), spree.root_path, :class => "button" %>
+      <%= link_to "&#9668;#{Spree.t(:continue_shopping)}".html_safe, products_path, :class => 'continue button gray' %>
       <% unless order_just_completed?(@order) %>
         <% if try_spree_current_user && respond_to?(:spree_account_path) %>
           <%= link_to Spree.t(:my_account), spree_account_path, :class => "button" %>
@@ -19,4 +19,4 @@
       <% end %>
     </p>
   </div>
-</fieldset>
+</div>
