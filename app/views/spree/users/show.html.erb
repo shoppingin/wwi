@@ -1,18 +1,21 @@
-<div class="content">
-  <h1><%= accurate_title %></h1>
+<div class="breadcrumb">
+  <a href="/">Home</a>&nbsp;&raquo;&nbsp;<%= accurate_title %>
+</div>
 
-  <div data-hook="account_summary" class="account-summary">
+<div class="content">
+  <div class="block" style="width: 350px; float: left">
+    <h1 class="page-title"><%= accurate_title %></h1>
     <dl id="user-info">
       <dt><%= Spree.t(:email) %></dt>
       <dd><%= @user.email %> (<%= link_to Spree.t(:edit), spree.edit_account_path %>)</dd>
     </dl>
   </div>
 
-  <div data-hook="account_my_orders" class="account-my-orders">
+  <div class="block" style="margin-left: 370px;">
 
-    <h3><%= Spree.t(:my_orders) %></h3>
+    <h3 class="page-title"><%= Spree.t(:my_orders) %></h3>
     <% if @orders.present? %>
-      <table class="order-summary">
+      <table class="orders">
         <thead>
         <tr>
           <th class="order-number"><%= I18n.t(:number, :scope => 'activerecord.attributes.spree/order') %></th>

@@ -1793,9 +1793,15 @@ table.orders {
   color: black;
 }
 
-.orders .line-item td{
+.orders td{
    vertical-align: middle;
    text-align: left
+}
+
+.orders tbody:before {
+  content: '';
+  display: block;
+  height: 20px;
 }
 
 .cart_container {
@@ -1838,7 +1844,6 @@ table.orders {
   width: 64px;
 }
 .coupon_form {
-  margin-top: 25px;
   border-bottom: 1px solid rgb(212, 212, 212);
   //border-top: 1px solid rgb(212, 212, 212);
   padding: 0px 0 15px 0;
