@@ -80,46 +80,18 @@
 
       <div class="product-details-container">
         <ul class="product-details-list slide-up-tabs">
-          <li class="product-detail">
-            <span class="title"><a href="#">Tabblad 1</a></span>
-            <ul style="display: none;" class="tabblad">
-            <li>
-              <div class="tabinhoud">
-              <ul>
-                <li>Lorem ipsum is dummy text for printing industry</li>
-                <li> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-              </li>
-              </ul>
-              </div>
-            </li>
-            </ul>
-          </li>
           <li class="product-detail open">
-            <span class="title"><a href="#">Tabblad 2</a></span>
+            <span class="title"><a href="#">Properties</a></span>
             <ul style="display: block;" class="tabblad">
-            <li>
-              <div class="tabinhoud">
-                <%= render :partial => 'properties' %>
-              </div>
-            </li>
-            </ul>
-          </li>
-          <li class="product-detail">
-            <span class="title"><a href="#">Tabblad 3</a></span>
-            <ul style="display: none;" class="tabblad">
-            <li>
-              <div class="tabinhoud">
-              <ul><li>Lorem ipsum is dummy text for printing industry</li>
-              <li> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+              <li>
+                <div class="tabinhoud">
+                  <%= render :partial => 'properties' %>
+                </div>
               </li>
-              </ul>
-              </div>
-            </li>
             </ul>
           </li>
         </ul>
 
-        <br /><br />
         <span>Deel op:</span>
 
         <%= render "shared/social_links" %>
@@ -129,7 +101,7 @@
           <a class="klantcontact" href="/">Neem contact op</a>
         </p>
       </div>
-    </div>
+
   </div>
 </div>
 
