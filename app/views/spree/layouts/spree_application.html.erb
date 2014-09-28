@@ -124,23 +124,38 @@
 
   <%= yield :bottom %>
 <script>
+
 function writeDollar ( ammount ) {
   ammount = ( 1.35 * parseFloat(ammount) );
   $("#dollar").text( '$' + ammount.toFixed(2) );
 }
 
-$(function(){
+var current_currency = {
+  'symbol': '$',
+  'iso_code': 'USD'
+}
 
+function money_format(amount){
+  return current_currency['symbol'] + amount + " " + current_currency['iso_code'];
+}
+
+$(function(){
+  //search: price_range_any: [""]
   // Run noUiSlider
   $('.noUiSlider').noUiSlider({
-     range: [0,100]
-    ,start: [20,80]
-    ,behaviour: 'extend-tap'
-    ,handles: 2
-    ,serialization: {
+    range: [0,150],
+    start: [15,80],
+    behaviour: 'extend-tap',
+    handles: 2,
+    step: 5,
+    set: function(){
+      debugger;
+      $('[name="search[price_range_any][]"]').val( money_format($("#min-euro").val()) +" - "+ money_format($("#max-euro").val()) );
+      $('#pricefilter').trigger('submit')
+    },
+    serialization: {
       to: [$("#min-euro"),
       $("#max-euro")]
-
     }
   });
 });

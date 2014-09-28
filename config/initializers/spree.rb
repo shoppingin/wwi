@@ -1,3 +1,7 @@
+require File.join(Rails.root, 'lib', 'spree', 'product_filters')
+require "pry"
+binding.pry
+
 # FIXME:
 #fail("No taxonomies called 'Brand'") if Spree::Taxonomy.where(name: 'Brand').empty?
 
@@ -53,3 +57,16 @@ if use_s3
     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
   }
 end
+
+# encoding: utf-8
+Money::Currency.register({
+    :priority        => 1,
+    :iso_code        => "EUR",
+    :iso_numeric     => "978",
+    :name            => "Euro",
+    :symbol          => "€ ",
+    :subunit         => "Cent",
+    :subunit_to_unit => 100,
+    :separator       => ".",
+    :delimiter       => ","
+})
