@@ -12,7 +12,11 @@ Spree::Auth::Engine.load_seed if defined?(Spree::Auth)
 
 Spree::Role.create(name: 'vendor')
 
-# create a root taxon brand
-Spree::Taxonomy.create(name: 'Brand')
+taxonomies = [
+  { :name => "Categories" },
+  { :name => "Brand" }
+]
 
-#
+taxonomies.each do |taxonomy_attrs|
+  Spree::Taxonomy.create!(taxonomy_attrs)
+end
