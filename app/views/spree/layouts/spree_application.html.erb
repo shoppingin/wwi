@@ -144,18 +144,23 @@ function money_format(amount){
 }
 
 $(function(){
-  //search: price_range_any: [""]
   // Run noUiSlider
+  <% if params[:search].present? && params[:search][:price_range_any].present? %>
+    var ui_slider_start = <%= [params[:search][:price_range_any]['0'].to_i,  params[:search][:price_range_any]['1'].to_i] %>;
+  <% else%>
+    var ui_slider_start = [15, 80];
+  <% end %>
+
   $('.noUiSlider').noUiSlider({
     range: [0,150],
-    start: [15,80],
+    start: ui_slider_start,
     behaviour: 'extend-tap',
     handles: 2,
     step: 5,
     set: function(){
 
-      $('[name="search[price_range_any][0]"]').val(money_format($("#min-euro").val()) +" or over");
-      $('[name="search[price_range_any][1]"]').val("Under " + money_format($("#max-euro").val()));
+      $('[name="search[price_range_any][0]"]').val($("#min-euro").val());
+      $('[name="search[price_range_any][1]"]').val($("#max-euro").val());
 
       $('#pricefilter').trigger('submit')
     },
