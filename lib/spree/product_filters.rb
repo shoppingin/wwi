@@ -53,10 +53,13 @@ module Spree
       # below scope would be something like ["$10 - $15", "$15 - $18", "$18 - $20"]
       #
       Spree::Product.add_search_scope :price_range_any do |*opts|
-        conds = opts.map {|o| Spree::Core::ProductFilters.price_filter[:conds][o]}.reject { |c| c.nil? }
+        fail("Can contain only two elems") unless opts.length == 2
+
+        opts = Hash[*opts.flatten]
+        conds = Spree::Core::ProductFilters.price_filter(opts['0'], opts['1'])[:conds]
         scope = conds.shift
         conds.each do |new_scope|
-          scope = scope.or(new_scope)
+          scope = scope.and(new_scope)
         end
         Spree::Product.joins(master: :default_price).where(scope)
       end
@@ -65,18 +68,16 @@ module Spree
         Spree::Money.new(amount)
       end
 
-      def ProductFilters.price_filter
+      def ProductFilters.price_filter(left_price, right_price)
         v = Spree::Price.arel_table
         conds = []
-        (10..100).step(5).to_a.each{|e|
-          conds << [Spree.t(:under_price,   price: format_price(e)), v[:amount].lteq(e)]
-          conds << [Spree.t(:or_over_price, price: format_price(e)), v[:amount].gteq(e)]
-        }
+        conds << v[:amount].gteq(left_price)
+        conds << v[:amount].lteq(right_price)
 
         {
           name:   Spree.t(:price_range),
           scope:  :price_range_any,
-          conds:  Hash[*conds.flatten],
+          conds:  conds,
           labels: conds.map { |k,v| [k, k] }
         }
       end
