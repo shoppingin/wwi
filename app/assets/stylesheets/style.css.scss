@@ -868,7 +868,7 @@ color: #B40000;
 font-weight: bold;
 }
 
-.content {
+.content, .normalpage {
 background: #FFFFFF;
 float: left;
 width: 100%;
@@ -1554,7 +1554,7 @@ ul.register-methods {
   //width:650px;
   float:left;
 }
-.page-title  {
+.page-title, .normalpage h1  {
     color: #000000;
     font-family: Arial;
     font-size: 20px;
