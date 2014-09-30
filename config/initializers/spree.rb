@@ -1,6 +1,4 @@
 require File.join(Rails.root, 'lib', 'spree', 'product_filters')
-require "pry"
-binding.pry
 
 # FIXME:
 #fail("No taxonomies called 'Brand'") if Spree::Taxonomy.where(name: 'Brand').empty?

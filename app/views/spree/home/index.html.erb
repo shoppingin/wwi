@@ -1,69 +1,32 @@
-<div class="slideshow">
-  <%= image_tag "frontend/sfeerfoto.jpg", alt: "sfeer" %>
-</div>
-
-<div class="filterblock">
-
-<form method="get">
-  <label for="city">Kies uw stad</label>
-  <select class="styled">
-    <option value="">All</option>
-    <%= options_for_select(Spree::Supplier.all.collect(&:city).uniq) %>
-  </select>
-  <div class="clearfix"></div>
-  <label for="category">Categorie</label>
-  <select class="styled">
-    <option>Schoenen</option>
-    <option>Tassen</option>
-    <option>Broeken</option>
-  </select>
-  <div class="clearfix"></div>
-  <label for="gender">Geslacht</label>
-  <select class="styled">
-    <option>Dames</option>
-    <option>Heren</option>
-    <option>Kinderen</option>
-  </select>
-  <div class="clearfix"></div>
-  <label for="vendor">Merk</label>
-  <select class="styled">
-    <option>Timberland</option>
-    <option>Tony Mora</option>
-    <option>Viavai</option>
-  </select>
-  <div class="clearfix"></div>
-  <label for="price">Prijs</label>
-  <div class="priceblock">
-  <div class="noUiSlider"></div>
-  <input id="min-euro" type="text">
-  <input id="max-euro" type="text">
+<% if page = Spree::Page.visible.find_by_slug("/home") %>
+  <div class='content'>
+    <%= page.body.html_safe %>
   </div>
+<% else %>
+  <div class="slideshow">
+    <%= image_tag "frontend/sfeerfoto.jpg", alt: "sfeer" %>
+  </div>
+
+  <div class="filterblock">
+    <%= render 'shared/product_filter' %>
+  </div>
+
   <div class="clearfix"></div>
-  <label for="shop">Shop</label>
-  <select class="styled">
-    <option>Elias Shoes</option>
-    <option>Minix Store</option>
-  </select>
-  <input class="submit" type="submit" value="Bekijk nu!" />
-</form>
-
-</div>
-
-<div class="clearfix"></div>
-<div class="promoblock">
-<ul>
-  <li><a href="/"><%= image_tag("frontend/promoblock1.jpg", alt: "promoblock1") %> </a><h2>Dames</h2></li>
-  <li><a href="/"><%= image_tag("frontend/promoblock2.jpg", alt: "promoblock2") %> </a><h2>Heren</h2></li>
-  <li><a href="/"><%= image_tag("frontend/promoblock3.jpg", alt: "promoblock3") %> </a><h2>Kinderen</h2></li>
-  <li><a href="/"><%= image_tag("frontend/promoblock4.jpg", alt: "promoblock4") %> </a><h2>Accessoires</h2></li>
-  <li><a href="/"><%= image_tag("frontend/promoblock5.jpg", alt: "promoblock5") %> </a></li>
-</ul>
-</div>
-<div class="clearfix">&nbsp;</div>
-<div class="promoblock">
+  <div class="promoblock">
   <ul>
-  <li><a href="/"><%= image_tag("frontend/promoblock6.jpg", width: "340", alt: "promoblock6") %> </a></li>
-  <li><a href="/"><%= image_tag("frontend/promoblock7.jpg", width: "340", alt: "promoblock7") %> </a></li>
-  <li><a href="/"><%= image_tag("frontend/promoblock8.jpg", width: "340", alt: "promoblock8") %> </a></li>
+    <li><a href="/"><%= image_tag("frontend/promoblock1.jpg", alt: "promoblock1") %> </a><h2>Dames</h2></li>
+    <li><a href="/"><%= image_tag("frontend/promoblock2.jpg", alt: "promoblock2") %> </a><h2>Heren</h2></li>
+    <li><a href="/"><%= image_tag("frontend/promoblock3.jpg", alt: "promoblock3") %> </a><h2>Kinderen</h2></li>
+    <li><a href="/"><%= image_tag("frontend/promoblock4.jpg", alt: "promoblock4") %> </a><h2>Accessoires</h2></li>
+    <li><a href="/"><%= image_tag("frontend/promoblock5.jpg", alt: "promoblock5") %> </a></li>
   </ul>
-</div>
+  </div>
+  <div class="clearfix">&nbsp;</div>
+  <div class="promoblock">
+    <ul>
+    <li><a href="/"><%= image_tag("frontend/promoblock6.jpg", width: "340", alt: "promoblock6") %> </a></li>
+    <li><a href="/"><%= image_tag("frontend/promoblock7.jpg", width: "340", alt: "promoblock7") %> </a></li>
+    <li><a href="/"><%= image_tag("frontend/promoblock8.jpg", width: "340", alt: "promoblock8") %> </a></li>
+    </ul>
+  </div>
+<% end %>

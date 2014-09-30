@@ -99,7 +99,11 @@
 <div class="clearfix"></div>
 <div class="footer">
   <div class="footer-menu">
-    <%= render 'shared/wwi_footer' %>
+    <% if page = Spree::Page.visible.find_by_slug("/footer") %>
+      <%= page.body.html_safe %>
+    <% else %>
+      <%= render 'shared/wwi_footer' %>
+    <% end %>
   </div>
 </div>
 
@@ -149,8 +153,10 @@ $(function(){
     handles: 2,
     step: 5,
     set: function(){
-      debugger;
-      $('[name="search[price_range_any][]"]').val( money_format($("#min-euro").val()) +" - "+ money_format($("#max-euro").val()) );
+
+      $('[name="search[price_range_any][0]"]').val(money_format($("#min-euro").val()) +" or over");
+      $('[name="search[price_range_any][1]"]').val("Under " + money_format($("#max-euro").val()));
+
       $('#pricefilter').trigger('submit')
     },
     serialization: {

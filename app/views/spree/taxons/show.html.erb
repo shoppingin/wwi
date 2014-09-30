@@ -20,15 +20,16 @@
     <!-- <img src="/assets/frontend/logo_hilversum.jpg" alt="Hilversum" /> -->
   </div>
   <%= render partial: 'spree/shared/taxonomies' %>
-  <%= render partial: 'spree/shared/filters' if @taxon.children.empty? %>
 
   <h4>Prijs</h4>
 
-  <%= form_tag '', :method => :get do %>    
+  <%= form_tag '', :method => :get, :id => "pricefilter" do %>
     <div class="priceblock">
+      <input type='hidden' name='search[price_range_any][0]'/>
+      <input type='hidden' name='search[price_range_any][1]'/>
       <div class="noUiSlider"></div>
-      <input id="min-euro" type="text">
-      <input id="max-euro" type="text">
+      <input id="min-euro" type="text"/>
+      <input id="max-euro" type="text"/>
 
       <div class="clearfix"></div>
 
@@ -38,4 +39,5 @@
       </div>
     </div>
   <% end %>
+
 </div>

@@ -67,26 +67,12 @@ module Spree
 
       def ProductFilters.price_filter
         v = Spree::Price.arel_table
-        conds = [ [ Spree.t(:under_price, price: format_price(10))     , v[:amount].lteq(10)],
-                  [ "#{format_price(10)} - #{format_price(15)}"        , v[:amount].in(10..15)],
-                  [ "#{format_price(15)} - #{format_price(20)}"        , v[:amount].in(15..20)],
-                  [ "#{format_price(20)} - #{format_price(25)}"        , v[:amount].in(20..25)],
-                  [ "#{format_price(25)} - #{format_price(30)}"        , v[:amount].in(25..30)],
-                  [ "#{format_price(30)} - #{format_price(35)}"        , v[:amount].in(30..35)],
-                  [ "#{format_price(35)} - #{format_price(40)}"        , v[:amount].in(35..40)],
-                  [ "#{format_price(40)} - #{format_price(45)}"        , v[:amount].in(40..45)],
-                  [ "#{format_price(45)} - #{format_price(50)}"        , v[:amount].in(45..50)],
-                  [ "#{format_price(50)} - #{format_price(55)}"        , v[:amount].in(50..55)],
-                  [ "#{format_price(55)} - #{format_price(60)}"        , v[:amount].in(55..60)],
-                  [ "#{format_price(60)} - #{format_price(65)}"        , v[:amount].in(60..65)],
-                  [ "#{format_price(65)} - #{format_price(70)}"        , v[:amount].in(65..70)],
-                  [ "#{format_price(70)} - #{format_price(75)}"        , v[:amount].in(70..75)],
-                  [ "#{format_price(75)} - #{format_price(80)}"        , v[:amount].in(75..80)],
-                  [ "#{format_price(80)} - #{format_price(85)}"        , v[:amount].in(80..85)],
-                  [ "#{format_price(85)} - #{format_price(90)}"        , v[:amount].in(85..90)],
-                  [ "#{format_price(90)} - #{format_price(95)}"        , v[:amount].in(90..95)],
-                  [ "#{format_price(95)} - #{format_price(100)}"        , v[:amount].in(95..100)],
-                  [ Spree.t(:or_over_price, price: format_price(100)) , v[:amount].gteq(100)]]
+        conds = []
+        (10..100).step(5).to_a.each{|e|
+          conds << [Spree.t(:under_price,   price: format_price(e)), v[:amount].lteq(e)]
+          conds << [Spree.t(:or_over_price, price: format_price(e)), v[:amount].gteq(e)]
+        }
+
         {
           name:   Spree.t(:price_range),
           scope:  :price_range_any,

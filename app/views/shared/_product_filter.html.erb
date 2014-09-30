@@ -1,0 +1,42 @@
+<form method="get">
+  <label for="city">Kies uw stad</label>
+  <select class="styled">
+    <option value="">All</option>
+    <%= options_for_select(Spree::Supplier.all.collect(&:city).uniq) %>
+  </select>
+  <div class="clearfix"></div>
+  <label for="category">Categorie</label>
+  <select class="styled">
+    <option>Schoenen</option>
+    <option>Tassen</option>
+    <option>Broeken</option>
+  </select>
+  <div class="clearfix"></div>
+  <label for="gender">Geslacht</label>
+  <select class="styled">
+    <option>Dames</option>
+    <option>Heren</option>
+    <option>Kinderen</option>
+  </select>
+  <div class="clearfix"></div>
+  <label for="vendor">Merk</label>
+  <select class="styled">
+    <option>Timberland</option>
+    <option>Tony Mora</option>
+    <option>Viavai</option>
+  </select>
+  <div class="clearfix"></div>
+  <label for="price">Prijs</label>
+  <div class="priceblock">
+  <div class="noUiSlider"></div>
+  <input id="min-euro" type="text">
+  <input id="max-euro" type="text">
+  </div>
+  <div class="clearfix"></div>
+  <label for="shop">Shop</label>
+  <select class="styled">
+    <option>Elias Shoes</option>
+    <option>Minix Store</option>
+  </select>
+  <input class="submit" type="submit" value="Bekijk nu!" />
+</form>

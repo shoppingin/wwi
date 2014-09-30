@@ -47,7 +47,8 @@
 
   <%= form_tag '', :method => :get, :id => "pricefilter" do %>
     <div class="priceblock">
-      <input type='hidden' name='search[price_range_any][]' data-format="<%= Spree::Money.new(1) %>"/>
+      <input type='hidden' name='search[price_range_any][0]'/>
+      <input type='hidden' name='search[price_range_any][1]'/>
       <div class="noUiSlider"></div>
       <input id="min-euro" type="text"/>
       <input id="max-euro" type="text"/>
