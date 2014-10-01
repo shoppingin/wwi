@@ -117,6 +117,9 @@
     <% end %>
     <div class="checkout-buttons clearfix">
       <div class="clearfix">
+        <div>
+          <%= link_to "&#9668;#{Spree.t(:back)}".html_safe, '/checkout/address', :class => "continue button gray" %>
+        </div>
         <div class="control-group" data-hook="buttons">
           <%= submit_tag Spree.t(:save_and_continue), :class => 'continue main-button', style: "float: right" %>
         </div>
