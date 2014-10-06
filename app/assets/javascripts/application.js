@@ -22,8 +22,31 @@
 /* CUSTOM */
 $(function(){
   var flash_msg = $('.flash_notice div');
+
+  $.notify.addStyle('wwi', {
+      html: "<div><span data-notify-text/></div>",
+      classes: {
+        base: {
+          "white-space": "nowrap",
+          "background-color": "white",
+          "padding": "25px 50px",
+          "-webkit-box-shadow": "0 24px 47px 0 rgba(0, 0, 0, 0.1)",
+          "box-shadow": "0 24px 47px 0 rgba(0, 0, 0, 0.1)",
+          "-webkit-box-sizing": "border-box",
+          "-moz-box-sizing": "border-box",
+          "box-sizing": "border-box"
+        }
+      }
+  })
   if(flash_msg.length > 0){
-    $('.top-nav').notify(flash_msg.html(), flash_msg.prop('class').split(' ')[1]);
+    var _class = flash_msg.prop('class').split(' ')[1];
+    $('.top-nav').notify(flash_msg.html(), {
+      className: _class,
+      style: 'wwi',
+      arrowShow: false,
+      gap: 0,
+      elementPosition: 'bottom center',
+    })
   }
   $(document.body).on('click', '[name="checkout_type"]', function(e){
     $('[name="checkout_type"]').prop('checked', false);

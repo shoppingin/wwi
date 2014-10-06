@@ -44,7 +44,7 @@ gem 'spring',        group: :development
 
 ### SPREE GEMS ###
 
-#TODO: should be using shoppingin/spree gem
+#TODO: should be using shoppingin/spree gem or http://guides.spreecommerce.com/developer/logic.html
 gem 'spree',              github: 'spree/spree',             branch: '2-3-stable'
 gem 'spree_auth_devise',  github: 'spree/spree_auth_devise', branch: '2-3-stable'
 

@@ -49,11 +49,11 @@
               <%= link_to truncate(product.name, :length => 50), url,
                 :class => 'info', :itemprop => "name", :title => product.name %>
             </p>
-            <!-- <p class="brand">
-              <a href="/"> {{ product.brand }} </a>
-            </p>               -->
-            <!-- <span class="price strike">{{ product.strike_price }} EUR</span> -->
-            <span class="discount" itemprop="price"><%= display_price(product) %></span>
+            <p class="brand">
+              <%= link_to product.taxons.last.name, seo_url(product.taxons.last) %>
+            </p>
+            <span class="price strike"><%= product.strike_price %> EUR</span>
+            <span class="discount" itemprop="price"><%= display_price(product) %></span>            
           </div>
         <% end %>
       </li>

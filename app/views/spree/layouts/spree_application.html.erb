@@ -33,8 +33,8 @@
             options_for_select(
               {
                 'Nederland' => 'nl',
-                'Deutsch' => 'de',
-                'English' => 'en'
+                #'Deutsch' => 'de',
+                #'English' => 'en'
               },
               params[:locale] || I18n.locale
             ),
@@ -135,8 +135,8 @@ function writeDollar ( ammount ) {
 }
 
 var current_currency = {
-  'symbol': '$',
-  'iso_code': 'USD'
+  'symbol': '€',
+  'iso_code': 'EUR'
 }
 
 function money_format(amount){
