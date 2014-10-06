@@ -21,4 +21,7 @@ taxonomies.each do |taxonomy_attrs|
   Spree::Taxonomy.create!(taxonomy_attrs)
 end
 
-# home page
+# Page
+Spree::Page.create!(title: 'about', slug: "/about", body: "fill me", layout: "spree_application", visible: true)
+Spree::Page.create!(title: 'home page', slug: "/home", body: "fill me", layout: "spree_application", visible: true)
+Spree::Page.create!(title: 'footer', slug: "/footer", body: "fill me", layout: "spree_application", visible: true)

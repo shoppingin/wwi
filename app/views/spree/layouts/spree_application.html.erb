@@ -32,9 +32,7 @@
           select_tag :locale,
             options_for_select(
               {
-                'Nederland' => 'nl',
-                #'Deutsch' => 'de',
-                #'English' => 'en'
+                'Nederland' => 'nl'
               },
               params[:locale] || I18n.locale
             ),
