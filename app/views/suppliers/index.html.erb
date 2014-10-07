@@ -1,3 +1,13 @@
-<div class="content">
-    <h1 class="page-title">Shops</h1>
+
+<div class="breadcrumb">
+  <a href="/">Home</a>&nbsp;&raquo;&nbsp;Shops
+</div>
+<div class='content'>
+  <% if @suppliers.any? %>
+    <ul class="articles">
+      <% @suppliers.each do |supplier| %>
+        <%= render :partial => 'suppliers/supplier', :locals => { :supplier => supplier } %>
+      <% end %>
+    </ul>
+  <% end %>
 </div>

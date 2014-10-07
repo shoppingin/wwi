@@ -16,4 +16,5 @@
 tmp
 public/sitemap*
 public/spree/**/*
+public/system
 tags

@@ -100,7 +100,8 @@
             <ul style="display: block;" class="tabblad">
               <li>
                 <div class="tabinhoud" id="product-properties">
-                  <%= link_to @product.try(:supplier).try(:name), "/supplier/#{@product.try(:supplier).try(:link)}" %>
+                  <%- supplier = @product.try(:supplier) %>
+                  <%= link_to "#{supplier.try(:name)} producten", spree.products_path(search: {supplier_id: supplier.try(:id)}) %>
                 </div>
               </li>
             </ul>

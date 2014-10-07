@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: git://github.com/shoppingin/sumie.git
-  revision: fa99bd529c98507316f32add0b1acdfd6922859c
+  revision: 35aa6f39e06e8a2daf4eddb26ac5d02b8c715c44
   branch: master
   specs:
     sumie (0.0.3)
@@ -233,7 +233,7 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.6.0)
-    minitest (5.4.1)
+    minitest (5.4.2)
     monetize (0.4.1)
       money (~> 6.2.1)
     money (6.2.1)

@@ -1,0 +1,5 @@
+<div style="float: left; margin-right: 30px">
+  <%- path = spree.products_path(search: {supplier_id: supplier.id}) %>
+  <%= link_to image_tag(supplier.logo.url(:medium), style: "width: 150px"), path  %>
+  <h4><%= link_to supplier.name, path %></h4>
+</div>

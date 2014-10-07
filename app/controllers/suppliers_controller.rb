@@ -1,6 +1,6 @@
 class SuppliersController < Spree::StoreController
 
   def index
-    @shops = Spree::Supplier.all
+    @suppliers = Spree::Supplier.all#.active
   end
 end

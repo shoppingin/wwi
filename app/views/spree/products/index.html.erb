@@ -2,7 +2,14 @@
   <% if "spree/products" == params[:controller] && @taxon %>
     <%= breadcrumbs(@taxon) %>
   <% else %>
-    <a href="/">Home</a>&nbsp;&raquo;&nbsp;PRODUCTCATEGORIE
+    <a href="/">Home</a>&nbsp;&raquo;&nbsp;
+    <% if @products.any? && params.key?(:search) && params[:search][:supplier_id] %>
+    <a href='/shops'>Winkels</a>
+    &nbsp;&raquo;&nbsp;
+    <%= @products.first.supplier.name %>
+    <% else %>
+    PRODUCTCATEGORIE
+    <% end %>
   <% end %>
 </div>
 
@@ -33,12 +40,27 @@
 
 <div class="sidebar">
   <div class="location">
-    <h4>Choose your city</h4>
-    <select class="styled">
-      <option value="">All</option>
-      <%= options_for_select(Spree::Supplier.all.collect(&:city).uniq) %>
-    </select>
-    <!-- <img src="/assets/frontend/logo_hilversum.jpg" alt="Hilversum" /> -->
+    <% if @products.any? && params.key?(:search) && params[:search][:supplier_id] %>
+    <h4>Winkels</h4>
+    <ul class="categories">
+      <% Spree::Supplier.all.each do |supplier| %>
+        <li>
+          <%= link_to supplier.name, spree.products_path(search: {supplier_id: supplier.id}), class: params[:search][:supplier_id] == supplier.id.to_s ? 'active' : '' %>
+        </li>
+      <% end %>
+    </ul>
+    <% else %>
+      <h4>Choose your city</h4>
+      <%= form_tag spree.products_path, :method => :get, id: "cityfilter" do %>
+        <select class="styled" name="search[city]">
+          <option value="" selected="selected">All</option>
+          <!-- fake_submit -->
+          <%= options_for_select(Spree::Supplier.all.collect(&:city).uniq, params[:search] && params[:search][:city]) %>
+        </select>
+      <% end %>
+      <!-- <img src="/assets/frontend/logo_hilversum.jpg" alt="Hilversum" /> -->
+
+    <% end %>
   </div>
 
   <%= render :partial => 'spree/shared/taxonomies' %>

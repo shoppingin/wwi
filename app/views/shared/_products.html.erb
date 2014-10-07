@@ -5,6 +5,34 @@
 <% if defined?(taxon) && !taxon.nil? %>
 <div class="title-block "><h1><%= taxon.name %></h1></div>
 <% end %>
+
+<% if products.any? && params.key?(:search) && params[:search][:supplier_id] %>
+  <%- supplier = products.first.supplier %>
+  <div class="title-block">
+    <h1><%= supplier.title %></h1>
+  </div>
+  <div class="store-info">
+    <div class="contact-store">
+      <%= supplier.title %> <%= supplier.city %><br>
+      <%= supplier.address1 %><br>
+      <%= supplier.zipcode %> <%= supplier.city %><br><br>
+      <b>Openingstijden</b><br>
+      Ma. t/m Vrij. 09.00 - 17.30 uur<br>
+      Za. 12.00 - 17.30 uur<br>
+      Zo. Gesloten<br><br>
+      T: <a href="tel:<%= supplier.phone %>"><%= supplier.phone %></a><br>
+      E: <a href="mailto:<%= supplier.email %>"><%= supplier.email %></a>
+    </div>
+    <div style="margin-right: 180px ">
+      <%= image_tag(supplier.logo.url(:medium)) %>
+      <%= supplier.description %>
+    </div>
+  </div>
+  <div class="title-block-2">
+    <h2><%= supplier.title %> Producten</h2>
+  </div>
+<% end %>
+
 <div class="products">
   <div class="finetuning">
 
@@ -53,7 +81,7 @@
               <%= link_to product.taxons.last.name, seo_url(product.taxons.last) %>
             </p>
             <span class="price strike"><%= product.strike_price %> EUR</span>
-            <span class="discount" itemprop="price"><%= display_price(product) %></span>            
+            <span class="discount" itemprop="price"><%= display_price(product) %></span>
           </div>
         <% end %>
       </li>
