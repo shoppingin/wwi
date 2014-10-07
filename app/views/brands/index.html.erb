@@ -1,10 +1,14 @@
 <div class="content">
-<% @brands.each do |group| %>
-  <h1><%= group[0] %></h1>
-  <p>
-    <% group[1].each do |brand| %>
-      <p><%= brand.name %></p>
-    <% end %>
-  </p>
-<% end %>
+  <div style="padding: 35px; margin: 0 auto;">
+  <% @brands.each do |group| %>
+    <div style="float: left; width: 30%;margin-bottom: 20px; text-align: center">
+      <h1 style="font-size: 28px; font-weight: normal; margin-bottom: 10px"><%= group[0] %></h1>
+      <p>
+        <% group[1].each do |brand| %>
+          <%= link_to brand.name, spree.products_path(search: {selective_brand_any: brand.name}), style: "text-decoration: none; color: gray" %>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+  </div>
 </div>
