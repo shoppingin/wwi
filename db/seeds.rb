@@ -25,3 +25,10 @@ end
 Spree::Page.create!(title: 'about', slug: "/about", body: "fill me", layout: "spree_application", visible: true)
 Spree::Page.create!(title: 'home page', slug: "/home", body: "fill me", layout: "spree_application", visible: true)
 Spree::Page.create!(title: 'footer', slug: "/footer", body: "fill me", layout: "spree_application", visible: true)
+
+# if samples load?
+# - create strike price from samples
+
+
+# Configuration:
+# 
