@@ -5,7 +5,7 @@ ruby '2.1.1'
 gem 'rails_12factor', group: :production # only for heroku
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.5'
+gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -18,7 +18,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails', '3.1.0'
+gem 'jquery-rails', '3.1.2'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -45,7 +45,7 @@ gem 'spring',        group: :development
 ### SPREE GEMS ###
 
 #TODO: should be using shoppingin/spree gem or http://guides.spreecommerce.com/developer/logic.html
-gem 'spree',              github: 'spree/spree',             branch: '2-3-stable'
+gem 'spree',              github: 'shoppingin/spree',        branch: '2-3-stable'
 gem 'spree_auth_devise',  github: 'spree/spree_auth_devise', branch: '2-3-stable'
 
 gem 'sumie',              github: 'shoppingin/sumie', branch: 'master'
