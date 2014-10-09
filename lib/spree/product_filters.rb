@@ -87,7 +87,7 @@ module Spree
       end
 
       Spree::Product.add_search_scope :city do |city_name|
-        Spree::Product.joins(:supplier).where(["spree_suppliers.city = ?", city_name]).
+        Spree::Product.joins(:supplier).where(["spree_suppliers.city = ?", city_name])
       end
 
       # Example: filtering by possible brands

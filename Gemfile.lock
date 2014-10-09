@@ -15,6 +15,13 @@ GIT
       spree_core (~> 2.3.0.beta)
 
 GIT
+  remote: git://github.com/shoppingin/spree-google-base.git
+  revision: 8fb7dd4f51fcb2ef4291dc69a249c542c0b1b625
+  specs:
+    spree_google_base (2.0.0)
+      spree (~> 2.0)
+
+GIT
   remote: git://github.com/shoppingin/spree_strike_price.git
   revision: 595f10653f46c917ae1b6ff52b4eec668ae023fc
   specs:
@@ -365,6 +372,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   spree!
   spree_auth_devise!
+  spree_google_base!
   spree_i18n!
   spree_omnikassa!
   spree_sitemap!

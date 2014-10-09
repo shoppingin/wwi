@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007172320) do
+ActiveRecord::Schema.define(version: 20141009091159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -884,6 +884,14 @@ ActiveRecord::Schema.define(version: 20141007172320) do
   add_index "spree_tax_rates", ["show_rate_in_label"], name: "index_spree_tax_rates_on_show_rate_in_label", using: :btree
   add_index "spree_tax_rates", ["tax_category_id"], name: "index_spree_tax_rates_on_tax_category_id", using: :btree
   add_index "spree_tax_rates", ["zone_id"], name: "index_spree_tax_rates_on_zone_id", using: :btree
+
+  create_table "spree_taxon_maps", force: true do |t|
+    t.integer  "taxon_id"
+    t.string   "product_type"
+    t.integer  "priority"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "spree_taxon_translations", force: true do |t|
     t.integer  "spree_taxon_id"
