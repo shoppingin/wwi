@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: git://github.com/shoppingin/spree-google-base.git
-  revision: 8fb7dd4f51fcb2ef4291dc69a249c542c0b1b625
+  revision: 615a6acf693398ca3cc500171616f90402db9727
   specs:
     spree_google_base (2.0.0)
       spree (~> 2.0)
