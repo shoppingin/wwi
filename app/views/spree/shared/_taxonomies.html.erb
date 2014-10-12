@@ -3,7 +3,11 @@
   <% @taxonomies.each do |taxonomy| %>
     <% cache [I18n.locale, taxonomy, max_level] do %>
       <h4 class='taxonomy-root'><%= taxonomy_name(taxonomy.name) %></h4>
-      <%= taxons_tree(taxonomy.root, @taxon, max_level) %>
+      <% if taxonomy.name == "Brand" %>
+        <%= taxons_tree_with_selector(taxonomy.root, @taxon) %>
+      <% else %>
+        <%= taxons_tree(taxonomy.root, @taxon, max_level) %>
+      <% end %>
       <br/>
     <% end %>
   <% end %>

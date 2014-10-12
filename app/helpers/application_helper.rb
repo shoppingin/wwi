@@ -6,8 +6,8 @@ module ApplicationHelper
     content_tag :ul, class: 'taxons-list' do
       root_taxon.children.map do |taxon|
         content_tag :li do
-         check_box_tag(taxon.name, :value => 1, :id => "taxon_#{taxon.id}", :class => 'css-checkbox') +
-         label_tag("taxon_#{taxon.id}")
+         check_box_tag(taxon.name, 1, false, :class => 'css-checkbox', :id => "taxon_#{taxon.id}") +
+         label_tag("taxon_#{taxon.id}", "#{taxon.name} (#{taxon.products.count})", :class => "css-label")
         end
       end.join("\n").html_safe
     end
