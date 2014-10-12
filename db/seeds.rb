@@ -12,23 +12,7 @@ Spree::Auth::Engine.load_seed if defined?(Spree::Auth)
 
 Spree::Role.create(name: 'vendor')
 
-taxonomies = [
-  { :name => "Categories" },
-  { :name => "Brand" }
-]
-
-taxonomies.each do |taxonomy_attrs|
-  Spree::Taxonomy.create!(taxonomy_attrs)
-end
-
 # Page
 Spree::Page.create!(title: 'about', slug: "/about", body: "fill me", layout: "spree_application", visible: true)
 Spree::Page.create!(title: 'home page', slug: "/home", body: "fill me", layout: "spree_application", visible: true)
 Spree::Page.create!(title: 'footer', slug: "/footer", body: "fill me", layout: "spree_application", visible: true)
-
-# if samples load?
-# - create strike price from samples
-
-
-# Configuration:
-# 
