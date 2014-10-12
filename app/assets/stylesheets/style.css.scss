@@ -510,41 +510,24 @@ padding:5px;
 border:1px solid #ddd;
 margin:10px 0 10px 0;
 }
-.sidebar ul.categories li a{
-text-decoration:none;
-color:#999;
-}
-.sidebar ul.categories li a.active{
-text-decoration:none;
-color:#000;
-font-weight:bold;
-}
-.sidebar ul.categories li ul{
-border-left:1px dashed #ddd;
-padding:0 0 0 15px;
-margin:5px 0;
-}
-.sidebar ul.categories li ul li a{
-text-decoration:none;
-color:#666;
-}
+
 .sidebar ul.taxons-list li a{
-text-decoration:none;
-color:#999;
-}
-.sidebar ul.taxons-list li.current a{
   text-decoration:none;
-  color:#000;
+  color: #999;
+}
+.sidebar ul.taxons-list li.current > a{
+  text-decoration:none;
+  color: #000;
   font-weight:bold;
 }
 .sidebar ul.taxons-list li ul{
-border-left:1px dashed #ddd;
-padding:0 0 0 15px;
-margin:5px 0;
+  border-left:1px dashed #ddd;
+  padding:0 0 0 15px;
+  margin:5px 0;
 }
 .sidebar ul.taxons-list li ul li a{
-text-decoration:none;
-color:#666;
+  text-decoration:none;
+  color:#666;
 }
 input[type=checkbox].css-checkbox {
 position: absolute;

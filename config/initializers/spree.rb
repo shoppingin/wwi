@@ -71,3 +71,5 @@ Money::Currency.register({
 
 Spree::GoogleBase::Config.set(:public_domain => ENV['GOOGLE_BASE_PUBLIC_DOMAIN'])
 Spree::GoogleBase::Config.set(:store_name => ENV['GOOGLE_BASE_STORAGE_NAME'])
+
+Spree::Config[:max_level_in_taxons_menu] = 2
