@@ -20,28 +20,28 @@
 
   <% else %>
     <%= form_for @order, :url => update_cart_path, :html => {:id => 'update-cart'} do |order_form| %>
-    <div data-hook="outside_cart_form">
+      <div data-hook="outside_cart_form">
 
-        <div data-hook="inside_cart_form">
+          <div data-hook="inside_cart_form">
 
-          <div data-hook="cart_items">
-            <%= render :partial => 'form', :locals => { :order_form => order_form } %>
+            <div data-hook="cart_items">
+              <%= render :partial => 'form', :locals => { :order_form => order_form } %>
+            </div>
           </div>
+
+      </div>
+
+      <div class='cart_actions'>
+        <div class='left'>
+          <%= link_to "&#9668;#{Spree.t(:continue_shopping)}".html_safe, products_path, :class => 'continue button gray' %>
         </div>
-
-    </div>
-
-    <div class='cart_actions'>
-      <div class='left'>
-        <%= link_to "&#9668;#{Spree.t(:continue_shopping)}".html_safe, products_path, :class => 'continue button gray' %>
+        <div class='right'>
+          <%= button_tag :class => 'main-button', :id => 'checkout-link', :name => 'checkout' do %>
+            <%= Spree.t(:checkout) %>
+          <% end %>
+        </div>
+        <div class='clearfix'></div>
       </div>
-      <div class='right'>
-        <%= button_tag :class => 'main-button', :id => 'checkout-link', :name => 'checkout' do %>
-          <%= Spree.t(:checkout) %>
-        <% end %>
-      </div>
-      <div class='clearfix'></div>
-    </div>
     <% end %>
   <% end %>
 </div>
