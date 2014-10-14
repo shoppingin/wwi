@@ -62,7 +62,9 @@
 
     <% end %>
   </div>
-
-  <%= render :partial => 'spree/shared/taxonomies' %>
-  <%= render :partial => 'shared/price_filter' %>
+  <%= form_tag spree.products_path, :method => :get do %>
+    <%= render :partial => 'spree/shared/taxonomies' %>
+    <%= render :partial => 'shared/price_filter' %>
+    <%= submit_tag "filter", style: "display: none" %>
+  <% end %>
 </div>

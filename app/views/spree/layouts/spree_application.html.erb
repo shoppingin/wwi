@@ -143,24 +143,29 @@ function money_format(amount){
 
 $(function(){
   // Run noUiSlider
+  var ui_slider_config = {
+    default_range: [0, 100]
+  }
+
   <% if params[:search].present? && params[:search][:price_range_any].present? %>
     var ui_slider_start = <%= [params[:search][:price_range_any]['0'].to_i,  params[:search][:price_range_any]['1'].to_i] %>;
   <% else%>
-    var ui_slider_start = [15, 80];
+    var ui_slider_start = ui_slider_config.default_range;
   <% end %>
 
   $('.noUiSlider').noUiSlider({
-    range: [0,150],
+    range: ui_slider_config.default_range,
     start: ui_slider_start,
     behaviour: 'extend-tap',
     handles: 2,
+    margin: 5,
     step: 5,
     set: function(){
 
       $('[name="search[price_range_any][0]"]').val($("#min-euro").val());
       $('[name="search[price_range_any][1]"]').val($("#max-euro").val());
 
-      $('#pricefilter').trigger('submit')
+      $(this).parents('form').submit()
     },
     serialization: {
       to: [$("#min-euro"),

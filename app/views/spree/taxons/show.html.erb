@@ -2,14 +2,6 @@
   <%= render partial: 'shared/products', locals: { products: @products, taxon: @taxon } %>
 </div>
 
-<% unless params[:keywords].present? %>
-  <div data-hook="taxon_children">
-    <% cache [I18n.locale, @taxon] do %>
-      <%= render partial: 'taxon', collection: @taxon.children %>
-    <% end %>
-  </div>
-<% end %>
-
 <div class="sidebar">
   <div class="location">
     <h4>Choose your city</h4>
@@ -19,25 +11,10 @@
     </select>
     <!-- <img src="/assets/frontend/logo_hilversum.jpg" alt="Hilversum" /> -->
   </div>
-  <%= render partial: 'spree/shared/taxonomies' %>
-
-  <h4>Prijs</h4>
-
-  <%= form_tag '', :method => :get, :id => "pricefilter" do %>
-    <div class="priceblock">
-      <input type='hidden' name='search[price_range_any][0]'/>
-      <input type='hidden' name='search[price_range_any][1]'/>
-      <div class="noUiSlider"></div>
-      <input id="min-euro" type="text"/>
-      <input id="max-euro" type="text"/>
-
-      <div class="clearfix"></div>
-
-      <div class="filter-reset">
-        <%= image_tag('frontend/reset.png') %>
-        <%= link_to 'Reset filter', '/products', rel: 'no-follow' %>
-      </div>
-    </div>
+  <%= form_tag '', :method => :get do %>
+    <%= render :partial => 'spree/shared/taxonomies' %>
+    <%= render :partial => 'shared/price_filter' %>
+    <%= submit_tag "filter", style: "display: none" %>
   <% end %>
 
 </div>

@@ -21,7 +21,7 @@
 
 /* CUSTOM */
 $(function(){
-  $("#taxonomies").on('click', '.css-checkbox', function(e){
+  $(document.body).on('click', '.css-checkbox', function(e){
     e.preventDefault()
 
     $(this).parents('form').submit()
