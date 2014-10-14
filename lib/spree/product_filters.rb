@@ -162,12 +162,14 @@ module Spree
         }
       end
 
+      # FIXME: Use Arel here
       Spree::Product.add_search_scope :brands do |*opts|
         query = []
         opts.each do |opt|
-          query << "spree_taxons.name LIKE '%#{opt[1]}%'"
+          query << "spree_taxons.permalink = 'brand/#{opt[1].downcase}'"
         end
-        Spree::Product.joins(:taxons).where(query.join(" OR "))
+
+        Spree::Product.active.joins(:taxons).where(query.join(" OR "))
       end
 
       # Provide filtering on the immediate children of a taxon
