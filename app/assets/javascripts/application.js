@@ -21,6 +21,14 @@
 
 /* CUSTOM */
 $(function(){
+  $("#taxonomies").on('click', '.css-checkbox', function(e){
+    e.preventDefault()
+
+    $(this).parents('form').submit()
+    return true;
+  })
+
+
   var flash_msg = $('.flash_notice div');
 
   $.notify.addStyle('wwi', {

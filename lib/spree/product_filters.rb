@@ -163,13 +163,10 @@ module Spree
       end
 
       Spree::Product.add_search_scope :brands do |*opts|
-
         query = []
         opts.each do |opt|
           query << "spree_taxons.name LIKE '%#{opt[1]}%'"
         end
-        binding.pry
-
         Spree::Product.joins(:taxons).where(query.join(" OR "))
       end
 
