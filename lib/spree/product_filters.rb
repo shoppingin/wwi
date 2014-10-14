@@ -144,7 +144,7 @@ module Spree
       #   The brand-finding code can be simplified if a few more named scopes were added to
       #   the product properties model.
       Spree::Product.add_search_scope :selective_brand_any do |*opts|
-        Spree::Product.brand_any(*opts)
+        Spree::Product.brands_any(*opts)
       end
 
       def ProductFilters.selective_brand_filter(taxon = nil)
@@ -160,6 +160,17 @@ module Spree
           scope:  :selective_brand_any,
           labels: brands.sort.map { |k| [k, k] }
         }
+      end
+
+      Spree::Product.add_search_scope :brands do |*opts|
+
+        query = []
+        opts.each do |opt|
+          query << "spree_taxons.name LIKE '%#{opt[1]}%'"
+        end
+        binding.pry
+
+        Spree::Product.joins(:taxons).where(query.join(" OR "))
       end
 
       # Provide filtering on the immediate children of a taxon
