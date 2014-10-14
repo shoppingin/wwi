@@ -22,10 +22,7 @@
 /* CUSTOM */
 $(function(){
   $(document.body).on('click', '.css-checkbox', function(e){
-    e.preventDefault()
-
     $(this).parents('form').submit()
-    return true;
   })
 
 
