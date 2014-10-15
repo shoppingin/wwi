@@ -1,0 +1,2961 @@
+@charset "UTF-8";/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+
+ */
+
+
+/* Functional styling;
+ * These styles are required for noUiSlider to function.
+ * You don't need to change these rules to apply your design.
+ */
+
+.noUi-target,
+.noUi-target * {
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-ms-touch-action: none;
+-ms-user-select: none;
+-moz-user-select: none;
+-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.noUi-base {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.noUi-origin {
+	position: absolute;
+	right: 0;
+	top: 0;
+	left: 0;
+	bottom: 0;
+}
+.noUi-handle {
+	position: relative;
+	z-index: 1;
+}
+.noUi-stacking .noUi-handle {
+/* This class is applied to the lower origin when
+   its values is > 50%. */
+	z-index: 10;
+}
+.noUi-stacking + .noUi-origin {
+/* Fix stacking order in IE7, which incorrectly
+   creates a new context for the origins. */
+	*z-index: -1;
+}
+.noUi-state-tap .noUi-origin {
+-webkit-transition: left 0.3s, top 0.3s;
+	transition: left 0.3s, top 0.3s;
+}
+.noUi-state-drag * {
+	cursor: inherit !important;
+}
+
+/* Slider size and handle placement;
+ */
+.noUi-horizontal {
+	height: 18px;
+}
+.noUi-horizontal .noUi-handle {
+	width: 34px;
+	height: 28px;
+	left: -17px;
+	top: -6px;
+}
+.noUi-horizontal.noUi-extended {
+	padding: 0 15px;
+}
+.noUi-horizontal.noUi-extended .noUi-origin  {
+	right: -15px;
+}
+.noUi-vertical {
+	width: 18px;
+}
+.noUi-vertical .noUi-handle {
+	width: 28px;
+	height: 34px;
+	left: -6px;
+	top: -17px;
+}
+.noUi-vertical.noUi-extended {
+	padding: 15px 0;
+}
+.noUi-vertical.noUi-extended .noUi-origin  {
+	bottom: -15px;
+}
+
+/* Styling;
+ */
+.noUi-background {
+	background: #FAFAFA;
+	box-shadow: inset 0 1px 1px #f0f0f0;
+}
+.noUi-connect {
+	background: #3FB8AF;
+	box-shadow: inset 0 0 3px rgba(51,51,51,0.45);
+-webkit-transition: background 450ms;
+	transition: background 450ms;
+}
+.noUi-origin {
+	border-radius: 2px;
+}
+.noUi-target {
+	border-radius: 4px;
+	border: 1px solid #D3D3D3;
+	box-shadow: inset 0 1px 1px #F0F0F0, 0 3px 6px -5px #BBB;
+}
+.noUi-target.noUi-connect {
+	box-shadow: inset 0 0 3px rgba(51,51,51,0.45), 0 3px 6px -5px #BBB;
+}
+
+/* Handles and cursors;
+ */
+.noUi-dragable {
+	cursor: w-resize;
+}
+.noUi-vertical .noUi-dragable {
+	cursor: n-resize;
+}
+.noUi-handle {
+	border: 1px solid #D9D9D9;
+	border-radius: 3px;
+	background: #FFF;
+	cursor: default;
+	box-shadow: inset 0 0 1px #FFF,
+				inset 0 1px 7px #EBEBEB,
+				0 3px 6px -3px #BBB;
+}
+.noUi-active {
+	box-shadow: inset 0 0 1px #FFF,
+				inset 0 1px 7px #DDD,
+				0 3px 6px -3px #BBB;
+}
+
+/* Handle stripes;
+ */
+.noUi-handle:before,
+.noUi-handle:after {
+	content: "";
+	display: block;
+	position: absolute;
+	height: 14px;
+	width: 1px;
+	background: #E8E7E6;
+	left: 14px;
+	top: 6px;
+}
+.noUi-handle:after {
+	left: 17px;
+}
+.noUi-vertical .noUi-handle:before,
+.noUi-vertical .noUi-handle:after {
+	width: 14px;
+	height: 1px;
+	left: 6px;
+	top: 14px;
+}
+.noUi-vertical .noUi-handle:after {
+	top: 17px;
+}
+
+/* Disabled state;
+ */
+[disabled].noUi-connect,
+[disabled] .noUi-connect {
+	background: #B8B8B8;
+}
+[disabled] .noUi-handle {
+	cursor: not-allowed;
+}
+
+/* Blocked state;
+ */
+.noUi-state-blocked.noUi-connect,
+.noUi-state-blocked .noUi-connect {
+	background: #4FDACF;
+}
+
+/* line 13, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 25, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 28, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+body {
+  line-height: 1;
+}
+
+/* line 31, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 34, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 38, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 42, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 46, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+select {
+  cursor: pointer;
+}
+
+/* line 49, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+/* line 57, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.clearfix {
+  display: inline-block;
+}
+
+/* line 60, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.clearfix {
+  display: block;
+}
+
+/* line 63, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+* html .clearfix {
+  height: 1%;
+}
+
+/* line 66, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+body {
+  background: #f8f8f8;
+  color: #666;
+  font-family: Arial,Verdana,sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  padding: 75px 0 0 0;
+}
+
+/* line 75, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.container {
+  width: 1062px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 0;
+  position: relative;
+}
+
+/* line 82, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.top-nav img {
+  margin: 5px 10px 0 0;
+}
+
+/* line 85, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.header {
+  color: #666;
+  font-size: 11px;
+  line-height: 15px;
+}
+
+/* line 90, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.header a {
+  color: #666;
+  text-decoration: none;
+}
+
+/* line 94, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.header a:hover {
+  text-decoration: underline;
+  color: #666;
+}
+
+/* line 98, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.header-right {
+  float: right;
+  width: auto;
+}
+
+/* line 102, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.header .language {
+  border-right: 1px dashed #DDDDDD;
+  float: right;
+  margin: 8px 15px 0 8px;
+  padding: 0 5px 0 0;
+  position: relative;
+  text-transform: uppercase;
+  width: 110px;
+}
+
+/* line 111, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.header .language .nl {
+  background: red;
+}
+
+/* line 114, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.header span.customSelect {
+  font-size: 11px;
+  background-color: #fff;
+  color: #666666;
+  padding: 10px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 124, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.header .customSelectInner {
+  width: 100% !important;
+}
+
+/* line 127, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.header .topmenu {
+  border-right: 1px dashed #DDDDDD;
+  float: right;
+  margin: 8px 0 0;
+  padding: 5px 4px 6px 4px;
+  position: relative;
+  text-transform: uppercase;
+}
+
+/* line 135, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.header .topmenu li {
+  font-size: 11px;
+  color: #666;
+  display: inline;
+}
+
+/* line 140, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.header .topmenu li a {
+  color: #666;
+  text-decoration: none;
+  margin: 0 15px 0 0;
+}
+
+/* line 145, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.header .topmenu li a:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+/* line 149, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.header .logo {
+  float: left;
+  position: relative;
+  top: 7px;
+}
+
+/* line 154, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.shoppingbag {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 159, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.shoppingbag a {
+  display: inline-block;
+  padding: 18px 0px;
+  float: left;
+  color: #999;
+}
+
+/* line 165, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.shoppingbag a.items {
+  color: #000;
+}
+
+/* line 168, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.shoppingbag a.bag-items {
+  display: inline-block;
+}
+
+/* line 171, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.shoppingbag a:hover.bag-items {
+  text-decoration: none;
+  color: #000;
+}
+
+/* line 175, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.shoppingbag img {
+  position: relative;
+  top: -6px;
+}
+
+/* line 179, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.shoppingbag img.cart {
+  float: left;
+}
+
+/* line 182, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.mainmenu ul {
+  float: left;
+  margin: 0;
+  padding: 10px 0;
+}
+
+/* line 187, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.mainmenu ul li {
+  float: left;
+  margin: 0;
+  padding: 3px 5px 6px 20px;
+}
+
+/* line 192, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.mainmenu ul li.home {
+  margin-top: -6px;
+  padding: 0;
+  position: relative;
+  top: 3px;
+}
+
+/* line 198, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.mainmenu ul li a {
+  color: #000;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+/* line 203, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.mainmenu ul li a:hover {
+  color: #999;
+}
+
+/* Minicart */
+/* line 209, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#minicart_popup {
+  background: white url("/assets/frontend/minicart_popup_bottom.png") repeat-x 0 bottom;
+  border: 1px solid #dddddd;
+  display: none;
+  position: absolute;
+  right: -1px;
+  top: 45px;
+  width: 230px;
+  padding: 0 0 35px 0;
+  z-index: 9999;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -ms-box-shadow: 2px 5px 7px 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 2px 5px 7px 0 rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 2px 5px 7px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 2px 5px 7px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 2px 5px 7px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* line 228, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#minicart_popup ul {
+  padding: 5px 12px;
+}
+
+/* line 229, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#minicart_popup ul li {
+  border-bottom: 1px dashed #CBCBCB;
+  float: left;
+  text-align: left;
+  width: 100%;
+  padding: 0 0 8px 0;
+  margin: 0 0 8px 0;
+  font-size: 12px;
+}
+
+/* line 238, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#minicart_popup ul li a {
+  color: #58595B;
+  line-height: 13px;
+  text-decoration: underline;
+  padding: 0;
+}
+
+/* line 244, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#minicart_popup ul li a:hover {
+  color: #000;
+}
+
+/* line 247, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#minicart_popup ul li span.price, #minicart_popup ul li #order_details td.price span, #order_details td.price #minicart_popup ul li span, #minicart_popup ul li #order_details td.total span, #order_details td.total #minicart_popup ul li span, #minicart_popup ul li #order_summary td.price span, #order_summary td.price #minicart_popup ul li span, #minicart_popup ul li #order_summary td.total span, #order_summary td.total #minicart_popup ul li span {
+  background: none repeat scroll 0 0 #ECECEC;
+  color: #58595B;
+  display: inline-block;
+  padding: 3px 5px;
+  margin: 8px 0 0 0;
+  width: 140px;
+}
+
+/* line 255, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#minicart_popup ul li span.price a, #minicart_popup ul li #order_details td.price span a, #order_details td.price #minicart_popup ul li span a, #minicart_popup ul li #order_details td.total span a, #order_details td.total #minicart_popup ul li span a, #minicart_popup ul li #order_summary td.price span a, #order_summary td.price #minicart_popup ul li span a, #minicart_popup ul li #order_summary td.total span a, #order_summary td.total #minicart_popup ul li span a {
+  float: right;
+  position: relative;
+  top: 2px;
+  width: 10px;
+  padding: 0;
+}
+
+/* line 262, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#minicart_popup ul li img {
+  float: left;
+  max-width: 55px;
+  max-height: 55px;
+  width: auto;
+  height: auto;
+  margin: 0 15px 0 0;
+  top: 0;
+}
+
+/* line 263, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.minicart_popup_total {
+  background: #ECECEC;
+  clear: both;
+  color: #58595B;
+  font-size: 14px;
+  height: 35px;
+  line-height: 35px;
+  margin: 0 0 -6px;
+  position: relative;
+  text-align: center;
+  top: -6px;
+  width: 100%;
+}
+
+/* line 276, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.minicart_popup_bottom {
+  position: absolute;
+  height: 35px;
+  width: 100%;
+  line-height: 35px;
+  bottom: 0;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* line 277, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.minicart_popup_bottom a {
+  color: #fff;
+  padding: 0 10px 0 20px;
+  width: 100%;
+  text-align: left;
+  font-size: 12px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 287, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.minicart_popup_bottom a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* line 291, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.minicart_popup_bottom img {
+  position: relative;
+  top: 3px;
+  float: right;
+}
+
+/* line 292, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.top-nav {
+  background: #FFFFFF;
+  content: "";
+  height: 50px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1002;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* foldout menu */
+/* line 310, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.foldoutmenu {
+  background: #F8F8F8;
+  display: none;
+  left: 0;
+  position: absolute;
+  top: 32px;
+  width: 100%;
+  z-index: 999;
+  padding: 15px 0;
+}
+
+/* line 320, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.shadow {
+  background: url("/assets/frontend/foldout-shadow.png") no-repeat 0 50%;
+  bottom: -11px;
+  height: 11px;
+  position: absolute;
+  width: 100%;
+}
+
+/* line 327, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.foldoutmenu ul.subcats {
+  float: left;
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+  width: 25%;
+}
+
+/* line 334, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.foldoutmenu ul.subcats > li > h2 a {
+  color: black;
+  text-decoration: none;
+}
+
+/* line 335, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.foldoutmenu ul.subcats > li {
+  padding: 5px;
+}
+
+/* line 339, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.foldoutmenu ul.subcats > ul.subcats {
+  margin-left: 0;
+}
+
+/* line 342, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.foldoutmenu #cats ul li h3 {
+  border: none;
+  margin: 0px;
+}
+
+/* line 346, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.foldoutmenu #cats ul li h3 a {
+  margin: 0px;
+  font-size: 11px;
+  color: #000000;
+  padding: 0px;
+  background: none;
+  text-decoration: none;
+  margin: 5px 0px;
+  display: block;
+}
+
+/* line 357, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.foldoutmenu ul li ul {
+  border-right: 1px dashed #dddddd;
+  margin-right: 10px;
+}
+
+/* line 361, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.foldoutmenu ul li ul li {
+  font-size: 11px;
+  height: auto;
+  line-height: 16px;
+  text-decoration: none;
+  color: #808285;
+  width: 47%;
+  padding-left: 0;
+  float: left;
+}
+
+/* line 371, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.foldoutmenu ul li ul li a {
+  height: auto;
+  line-height: 16px;
+  text-decoration: none;
+  color: #808285;
+  padding-left: 0;
+}
+
+/* line 379, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.foldoutmenu #cats ul li a:hover {
+  text-decoration: underline;
+}
+
+/* line 382, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.foldoutmenu #cats ul li h3 a:hover {
+  text-decoration: none;
+}
+
+/* foldout menu */
+/* line 388, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.search {
+  float: right;
+  margin: 0;
+}
+
+/* line 392, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.search input {
+  background: #eeeeee;
+  border: none;
+  display: inline-block;
+  float: left;
+  padding: 10px 10px 10px 13px;
+  width: 315px;
+  color: #999;
+  font-size: 11px;
+}
+
+/* line 402, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.search input:focus {
+  color: #666;
+}
+
+/* line 405, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.search img {
+  float: left;
+  height: 16px;
+  margin-left: -33px;
+  padding: 8px;
+  position: relative;
+  text-align: center;
+  top: 0;
+  width: 16px;
+}
+
+/* line 415, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.usp {
+  margin: 20px 0;
+  background: #eeeeee;
+  padding: 10px;
+  font-size: 11px;
+  text-align: center;
+  color: #000000;
+  text-transform: uppercase;
+  clear: both;
+  float: left;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 430, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.slideshow {
+  background: #fff;
+  border: 1px solid #dddddd;
+  float: left;
+  width: 700px;
+}
+
+/* line 436, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.breadcrumb {
+  clear: both;
+  color: #999999;
+  float: left;
+  font-size: 11px;
+  padding: 5px 0;
+  position: relative;
+  top: -8px;
+  width: 100%;
+}
+
+/* line 446, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.breadcrumb a {
+  color: #666;
+  text-decoration: none;
+}
+
+/* line 450, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sidebar {
+  background: #fff;
+  border: 1px solid #dddddd;
+  float: left;
+  width: 194px;
+  padding: 15px 18px;
+  font-size: 12px;
+  line-height: 20px;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 463, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sidebar .location {
+  background: #EEEEEE;
+  left: -18px;
+  padding: 12px 18px 18px 18px;
+  position: relative;
+  top: -15px;
+  width: 100%;
+}
+
+/* line 471, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sidebar .location h4 {
+  color: #666;
+}
+
+/* line 474, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sidebar .location span.customSelect {
+  background-color: #FFFFFF;
+  color: #666666;
+  font-size: 11px;
+  padding: 5px 10px;
+  margin: 0 0 15px 0;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 485, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sidebar .location span.customSelect .customSelectInner {
+  width: 100% !important;
+}
+
+/* line 488, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sidebar h4 {
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #000;
+  margin: 0 0 10px 0;
+}
+
+/* line 495, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sidebar .priceblock #min-euro {
+  width: 40px;
+  float: left;
+  color: #666666;
+  font-size: 11px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  margin: 10px 0 10px 0;
+}
+
+/* line 504, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sidebar .priceblock #max-euro {
+  width: 40px;
+  float: right;
+  color: #666666;
+  font-size: 11px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  margin: 10px 0 10px 0;
+}
+
+/* line 514, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sidebar ul.taxons-list li a {
+  text-decoration: none;
+  color: #999;
+}
+
+/* line 518, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sidebar ul.taxons-list li.current > a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+/* line 523, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sidebar ul.taxons-list li ul {
+  border-left: 1px dashed #ddd;
+  padding: 0 0 0 15px;
+  margin: 5px 0;
+}
+
+/* line 528, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sidebar ul.taxons-list li ul li a {
+  text-decoration: none;
+  color: #666;
+}
+
+/* line 532, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+input[type=checkbox].css-checkbox {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+/* line 542, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+input[type=checkbox].css-checkbox + label.css-label {
+  padding-left: 22px;
+  height: 14px;
+  display: inline-block;
+  line-height: 14px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  margin: 3px 0;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+/* line 554, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+input[type=checkbox].css-checkbox:checked + label.css-label {
+  background-position: 0 -14px;
+}
+
+/* line 557, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.css-label {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAcCAYAAABRVo5BAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QkZCMjhENkM5QzA3MTFFMzk5RTlDNTMwRjBFOEMxQUQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QkZCMjhENkQ5QzA3MTFFMzk5RTlDNTMwRjBFOEMxQUQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpCRkIyOEQ2QTlDMDcxMUUzOTlFOUM1MzBGMEU4QzFBRCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpCRkIyOEQ2QjlDMDcxMUUzOTlFOUM1MzBGMEU4QzFBRCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pm2NIAEAAABJSURBVHjaYly5cuU0BgaGTAbSwHQGoMb/pAKQHiYGMsGoxlGN5AEWUIJdtWoVyYmcbBvBuQNIkYRHc8eoxoHKHcC0R3LuAAgwAC87UpwN3GUIAAAAAElFTkSuQmCC");
+}
+
+/* line 558, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.filter-reset {
+  background: #000;
+  display: block;
+  padding: 2px 5px;
+  text-align: center;
+}
+
+/* line 564, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.filter-reset a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0 0 0 5px;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+/* line 571, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.filter-reset img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+/* line 575, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.filterblock {
+  background: #fff;
+  border: 1px solid #dddddd;
+  float: right;
+  width: 338px;
+  height: 382px;
+  padding: 20px;
+  font-size: 11px;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 588, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.filterblock label {
+  width: 100px;
+  padding: 12px 0 22px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #000;
+  float: left;
+}
+
+/* line 596, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.filterblock select {
+  width: 196px;
+  float: left;
+  margin: 0 0 10px 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 604, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.filterblock .priceblock {
+  width: 196px;
+  float: left;
+  margin: 0 0 10px 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 612, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.filterblock .priceblock #min-euro {
+  width: 40px;
+  float: left;
+  color: #666666;
+  font-size: 11px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  margin: 10px 0 10px 0;
+}
+
+/* line 621, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.filterblock .priceblock #max-euro {
+  width: 40px;
+  float: right;
+  color: #666666;
+  font-size: 11px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  margin: 10px 0 10px 0;
+}
+
+/* line 630, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.filterblock input[type="submit"] {
+  background: #000;
+  border: none;
+  width: 305px;
+  color: #FFFFFF;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 100%;
+  padding: 10px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 650, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.noUi-horizontal .noUi-handle {
+  height: 19px !important;
+  top: -3px !important;
+  width: 11px !important;
+  border-radius: 0 !important;
+}
+
+/* line 656, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.noUi-horizontal {
+  height: 14px !important;
+}
+
+/* line 659, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.noUi-background {
+  background: #eee !important;
+}
+
+/* line 662, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.noUi-target {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* line 667, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.noUi-handle:before, .noUi-handle:after {
+  content: !important;
+  width: 0 !important;
+}
+
+/* line 671, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.promoblock ul {
+  padding: 0;
+  margin: 40px 0;
+  clear: both;
+}
+
+/* line 676, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.promoblock ul li {
+  display: inline;
+  float: left;
+  padding: 0;
+  margin: 0 18px 0 0;
+  text-align: center;
+}
+
+/* line 683, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.promoblock ul li:last-child {
+  margin-right: 0;
+}
+
+/* line 686, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.promoblock ul li img {
+  border: 1px solid #dddddd;
+}
+
+/* line 689, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.promoblock ul li h2 {
+  color: #666;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin: 15px 0 0 0;
+}
+
+/* line 695, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.rightbox {
+  color: #666666;
+  margin: 0 0 0 0;
+  width: 852px;
+  float: right;
+  padding: 0;
+}
+
+/* line 702, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.title-block {
+  background: #000000;
+  color: #FFFFFF;
+  display: block;
+  float: left;
+  line-height: 16px;
+  margin: 0 0 18px;
+  padding: 8px 18px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 715, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.title-block-2 {
+  background: #EEEEEE;
+  color: #000;
+  display: block;
+  float: left;
+  line-height: 16px;
+  margin: 0 0 18px;
+  padding: 8px 18px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 728, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.title-block h1, .title-block-2 h2 {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* line 734, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.store-info {
+  line-height: 16px;
+  margin: 0 0 20px 0;
+  float: left;
+  background: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  color: #666666;
+  padding: 14px 18px;
+}
+
+/* line 743, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.store-info img {
+  float: left;
+  margin: 0 20px 0 0;
+}
+
+/* line 747, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.store-info .contact-store {
+  border-left: 1px dashed #DDDDDD;
+  float: right;
+  margin-left: 20px;
+  padding-left: 20px;
+  width: 170px;
+}
+
+/* line 754, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.store-info .contact-store img {
+  clear: both;
+  float: left;
+}
+
+/* line 758, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.store-info .contact-store b, .store-info .contact-store strong {
+  font-weight: bold;
+  color: #000;
+}
+
+/* line 762, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.store-info .contact-store a {
+  color: #FF6600;
+  text-decoration: none;
+}
+
+/* line 767, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products {
+  color: #666666;
+  margin: 0;
+  width: 814px;
+  background: #fff;
+  border: 1px solid #dddddd;
+  float: right;
+  padding: 14px 18px;
+}
+
+/* line 776, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products .finetuning {
+  clear: both;
+  display: table;
+  margin: 0 0 20px 0;
+  padding: 0 0 12px 0;
+  width: 100%;
+  border-bottom: 1px dashed #ddd;
+}
+
+/* line 784, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products .finetuningbottom {
+  clear: both;
+  display: table;
+  margin: 20px 0 0 0;
+  padding: 12px 0 0 0;
+  width: 100%;
+  border-top: 1px dashed #ddd;
+}
+
+/* line 792, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products span.customSelect {
+  padding: 8px 10px;
+}
+
+/* line 795, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products .pages ul {
+  float: right;
+  margin-top: 2px;
+}
+
+/* line 799, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products .pages ul li {
+  border: 1px solid #dddddd;
+  color: #404040;
+  float: left;
+  font-family: Verdana,Arial;
+  font-size: 11px;
+  height: 21px;
+  margin: 0 0 0 7px;
+  min-width: 17px;
+  padding: 0 2px;
+  text-align: center;
+}
+
+/* line 811, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products .pages ul li.active {
+  background: #000000;
+  border: 1px solid #000000;
+  color: #FFFFFF;
+}
+
+/* line 816, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products .pages ul li a {
+  color: #666;
+  display: block;
+  line-height: 21px;
+  text-decoration: none;
+}
+
+/* line 822, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products .pages ul li.active a {
+  color: #FFFFFF;
+}
+
+/* line 825, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products select.showperpage {
+  width: 50px;
+}
+
+/* line 828, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products select.sorting {
+  width: 100px;
+}
+
+/* line 831, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products ul.articles {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 835, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products ul.articles li {
+  float: left;
+  height: 378px;
+  line-height: 13px;
+  margin: 0 18px 0 0;
+  width: 190px;
+}
+
+/* line 842, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products ul.articles li:nth-child(4n+4) {
+  margin-right: 0;
+}
+
+/* line 845, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products ul.articles li img {
+  margin: 0 0 10px 0;
+}
+
+/* line 848, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products ul.articles li a {
+  color: #666;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+/* line 853, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products ul.articles li .brand a {
+  color: #999999;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  margin: 5px 0;
+}
+
+/* line 860, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products ul.articles li .price {
+  color: #000000;
+  font-weight: bold;
+}
+
+/* line 864, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products ul li .strike {
+  text-decoration: line-through;
+}
+
+/* line 867, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.products ul.articles li .discount {
+  color: #B40000;
+  font-weight: bold;
+}
+
+/* line 872, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.content, .normalpage {
+  background: #FFFFFF;
+  float: left;
+  width: 100%;
+  border: 1px solid #ddd;
+  padding: 18px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 882, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.terug-link {
+  background: #eee;
+  padding: 5px 10px;
+  color: #666;
+  text-decoration: none;
+  float: left;
+  display: block;
+  margin: 0 0 20px 0;
+}
+
+/* line 891, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-info {
+  width: 50%;
+  float: right;
+  position: relative;
+  visibility: visible;
+}
+
+/* line 897, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.thumbnails {
+  clear: left;
+  display: inline;
+  float: left;
+  height: 400px;
+  text-align: center;
+  width: 70px;
+}
+
+/* line 905, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.thumbnails-container img {
+  border: 0 none;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+/* line 910, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.large-image {
+  background-repeat: no-repeat;
+  float: right;
+  position: relative;
+  text-align: center;
+  width: 430px;
+}
+
+/* line 917, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-details {
+  padding: 5px 0 4px;
+}
+
+/* line 921, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-details h1 {
+  text-transform: uppercase;
+  font-size: 20px;
+  font-family: Arial;
+  background: 0;
+  color: #000;
+  letter-spacing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 932, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-details h2 a {
+  font-family: Arial;
+  text-transform: none;
+  font-size: 12px;
+  margin: 10px 0 20px 0;
+  display: block;
+  padding: 0;
+  color: #999;
+  text-decoration: none;
+}
+
+/* line 942, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-details .price {
+  font-size: 16px;
+  clear: both;
+  margin: 2px 2px 10px;
+  color: #000000;
+  font-weight: bold;
+}
+
+/* line 949, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-details .strike {
+  text-decoration: line-through;
+  font-weight: normal;
+}
+
+/* line 953, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-details .discount {
+  color: #B40000;
+}
+
+/* line 956, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-details .price span {
+  margin: 0 11px 0 0;
+}
+
+/* line 959, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.description {
+  line-height: 18px;
+  margin: 20px 0;
+}
+
+/* line 963, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.description span {
+  color: #222;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* line 968, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-details-container {
+  clear: both;
+}
+
+/* line 971, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-details-container .product-details-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* line 975, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-details-container .product-details-list .product-detail {
+  border-bottom: 1px solid #ddd;
+}
+
+/* line 978, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-details-container .product-details-list .product-detail:first-child {
+  border-top: 1px solid #ddd;
+}
+
+/* line 981, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-details-container .open .title a:after {
+  color: #999;
+  content: "▾";
+}
+
+/* line 985, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-details-container .title a:after {
+  content: "▸";
+  display: block;
+  font-size: 1.5em;
+  line-height: 1;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  color: #222;
+}
+
+/* line 995, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-details-container .title {
+  text-transform: uppercase;
+  height: auto;
+  width: auto;
+  display: block;
+  position: relative;
+}
+
+/* line 1003, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-details-container .title a {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  color: #222;
+  text-decoration: none;
+}
+
+/* line 1010, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-details-container .tabblad {
+  height: auto;
+  overflow: hidden;
+  list-style-type: none;
+}
+
+/* line 1015, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-details-container .tabblad > li {
+  padding-bottom: 10px;
+}
+
+/* line 1018, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.tabinhoud {
+  color: #333;
+  line-height: 16px;
+  padding: 10px 0;
+}
+
+/* line 1023, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.tabinhoud a {
+  font-weight: 700;
+  color: #000;
+}
+
+/* line 1027, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.tabinhoud ul {
+  list-style-type: disc;
+  padding: 0 0 0 15px;
+}
+
+/* line 1031, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.button-block {
+  background-color: #FFF;
+  float: left;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+/* line 1037, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.button-block .message {
+  color: #C00;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* line 1042, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.button-block .button {
+  float: left;
+}
+
+/* line 1045, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.button-block .button input {
+  padding-right: 10px;
+  width: 220px;
+  cursor: pointer;
+  letter-spacing: 0;
+}
+
+/* line 1051, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.button-block .product-wishlist .second-button {
+  background: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  color: #666;
+  margin-left: 10px;
+  width: 200px;
+}
+
+/* line 1058, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.main-button, .second-button {
+  -moz-appearance: none;
+  background-color: #FF6600;
+  border: 1px solid #FF6600;
+  border-radius: 0;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  overflow: visible;
+  padding: 8px 10px;
+  text-transform: uppercase;
+}
+
+/* line 1072, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-images {
+  width: 50%;
+  float: left;
+}
+
+/* line 1076, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sociallinks {
+  display: inline-block;
+  list-style: none;
+}
+
+/* line 1080, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sociallinks li {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* line 1084, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sociallinks [class*=share-] a {
+  background-image: url("/assets/frontend/social-icons.png");
+  width: 30px;
+  height: 30px;
+  text-indent: -9999em;
+  text-transform: capitalize;
+  display: block;
+}
+
+/* line 1092, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sociallinks #tell-a-friend-link {
+  background-image: url("/assets/frontend/social-icons.png");
+  background-position: 0 0;
+  float: none;
+}
+
+/* line 1097, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sociallinks #tell-a-friend-link:hover {
+  background-position: -30px 0;
+}
+
+/* line 1100, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sociallinks .share-facebook a {
+  background-position: -60px 0;
+}
+
+/* line 1103, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sociallinks .share-facebook a:hover {
+  background-position: -90px 0;
+}
+
+/* line 1106, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sociallinks .share-twitter a {
+  background-position: -300px 0;
+}
+
+/* line 1109, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sociallinks .share-twitter a:hover {
+  background-position: -330px 0;
+}
+
+/* line 1112, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sociallinks .share-google-plus1 a {
+  background-position: -120px 0;
+}
+
+/* line 1115, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sociallinks .share-google-plus1 a:hover {
+  background-position: -150px 0;
+}
+
+/* line 1118, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sociallinks .share-tumblr a {
+  background-position: -240px 0;
+}
+
+/* line 1121, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sociallinks .share-tumblr a:hover {
+  background-position: -270px 0;
+}
+
+/* line 1124, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sociallinks .share-pinterest a {
+  background-position: -180px 0;
+}
+
+/* line 1127, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sociallinks .share-pinterest a:hover {
+  background-position: -210px 0;
+}
+
+/* line 1130, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+a.klantcontact {
+  color: #FF6600;
+  text-decoration: none;
+}
+
+/**
+ * Quantity
+ * -----------------------------------------------------------------------------
+ */
+/* line 1138, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.quantity {
+  width: 70px;
+  position: relative;
+  height: 34px;
+  float: left;
+  margin: 0 10px 0 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* line 1151, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.quantity input::-webkit-outer-spin-button,
+.quantity input::-webkit-outer-spin-button,
+.quantity input::-webkit-inner-spin-button,
+.quantity input::-webkit-inner-spin-button {
+  display: none;
+}
+
+/* line 1154, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.quantity input.qty {
+  width: 70px;
+  height: 36px;
+  float: left;
+  padding: 0;
+  text-align: center;
+  border: none;
+  font-weight: normal;
+  font-size: 11px;
+}
+
+/* line 1166, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.quantity noindex:-o-prefocus,
+.quantity input[type=number] {
+  padding-right: 1.2em;
+}
+
+/* line 1171, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.quantity .plus,
+.quantity .minus {
+  display: block;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  text-align: center;
+  vertical-align: text-top;
+  width: 18px;
+  height: 36px;
+  overflow: visible;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 13px;
+  font-size: 12px;
+  color: #666;
+  border: none;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  -transition: all 0.3s linear;
+}
+
+/* line 1194, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.quantity .plus:hover,
+.quantity .minus:hover {
+  background: #222;
+  color: #FFF !important;
+}
+
+/* line 1198, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.quantity .plus {
+  top: 0;
+  right: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+  -moz-border-radius-bottomright: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* line 1208, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.quantity .minus {
+  top: 0;
+  left: 0;
+  -webkit-border-top-left-radius: 0;
+  -webkit-border-top-right-radius: 0;
+  -moz-border-radius-topleft: 0;
+  -moz-border-radius-topright: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* line 1221, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.footer {
+  color: #999;
+  margin: 15px 0;
+}
+
+/* line 1225, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.footer a {
+  color: #999;
+}
+
+/* line 1228, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.footer input {
+  color: #999;
+}
+
+/* line 1231, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+ul .footer > li a {
+  text-decoration: none;
+}
+
+/* line 1234, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+ul .footer > li a:hover {
+  text-decoration: underline;
+}
+
+/* line 1237, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.footer-block {
+  float: left;
+  width: 20%;
+  margin: 15px 0;
+  line-height: 20px;
+}
+
+/* line 1243, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.footer-block ul {
+  list-style: none;
+}
+
+/* line 1246, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.footer-block ul li a {
+  text-decoration: none;
+}
+
+/* line 1249, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.footer-block ul li a:hover {
+  text-decoration: none;
+  color: #666;
+}
+
+/* line 1253, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.footer-block h5 {
+  text-transform: uppercase;
+  margin: 0 0 0.5em 0;
+  font-weight: bold;
+  color: #666;
+}
+
+/* line 1259, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.secondfooter {
+  background: none;
+  clear: both;
+  height: 45px;
+  padding: 0 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+/* line 1267, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.secondfooter ul li {
+  color: #000000;
+  display: inline;
+  line-height: 45px;
+  padding: 0 3px 0px 0px;
+}
+
+/* line 1273, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.secondfooter ul li span {
+  color: #000;
+}
+
+/* line 1276, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.secondfooter ul li:first-child {
+  padding-left: 0;
+}
+
+/* line 1279, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.secondfooter ul li:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+/* line 1283, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.secondfooter ul li a {
+  color: #000;
+  text-decoration: none;
+}
+
+/* line 1287, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.secondfooter-links {
+  float: left;
+}
+
+/* line 1290, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.copyright {
+  float: right;
+}
+
+/* line 1293, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+span.customSelect {
+  font-size: 11px;
+  background-color: #eeeeee;
+  color: #666666;
+  padding: 10px;
+}
+
+/* line 1299, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+span.customSelect.changed {
+  background-color: #f0dea4;
+}
+
+/* line 1302, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.customSelectInner {
+  background: url("/assets/frontend/customSelect-arrow.png") no-repeat center right;
+}
+
+/* One page checkout styles */
+/* line 1307, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.checkout-steps .control-group {
+  margin-top: 0;
+  margin-bottom: 17px;
+}
+
+/* line 1311, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.opc-input-text {
+  background: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  color: #666666;
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 1322, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.forgot-password {
+  color: #FF6600;
+  float: right;
+  font-weight: normal;
+  padding: 0 0 6px;
+}
+
+/* line 1328, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.checkout-steps .opc-subheader {
+  font-weight: bold;
+  padding-bottom: 12px;
+}
+
+/* line 1332, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.step-container {
+  margin: 0 0 5px 0;
+}
+
+/* line 1335, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.step-title, .step-title-complete {
+  position: relative;
+  padding: 15px;
+}
+
+/* line 1339, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.step-title, .step-title-complete {
+  border: 1px solid #eeeee;
+}
+
+/* line 1343, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.step-body {
+  padding: 20px 0 0 0;
+}
+
+/* line 1347, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.step-title {
+  background-color: #f2f2f2;
+}
+
+/* line 1350, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.step-title .active {
+  background-color: #EEEEEE;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* line 1355, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.step-title span.step-number {
+  background: #d0d0d0;
+  color: #FFFFFF;
+  height: 23px;
+  margin-right: 10px;
+  padding: 3px 7px;
+  text-align: center;
+  width: 17px;
+}
+
+/* line 1364, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.step-title .active span.step-number {
+  background: #222222;
+  color: #FFFFFF;
+  height: 23px;
+  margin-right: 10px;
+  padding: 3px 7px;
+  text-align: center;
+  width: 17px;
+}
+
+/* line 1373, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.step-title span.title, .step-title a.title {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* line 1377, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.checkout-textarea {
+  width: 80%;
+}
+
+/* line 1380, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.login-form .checkout-login-form {
+  margin: 0 20px;
+}
+
+/* line 1383, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.login-form {
+  float: left;
+  padding-right: 3%;
+  width: 47%;
+}
+
+/* line 1388, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.checkout-register {
+  position: relative;
+  float: left;
+  margin: 0 0 0 3%;
+  width: 45%;
+}
+
+/* line 1394, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.checkout-boxleft {
+  float: left;
+  padding-right: 3%;
+  width: 47%;
+}
+
+/* line 1399, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.checkout-boxleft .checkout-boxleft-form {
+  margin: 0 20px;
+}
+
+/* line 1402, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.checkout-boxright {
+  position: relative;
+  float: left;
+  margin: 0 0 0 3%;
+  width: 45%;
+}
+
+/* line 1408, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.checkout-register .control-group {
+  padding: 0 20px;
+}
+
+/* line 1411, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.checkout-register .register-content {
+  padding-left: 20px;
+}
+
+/* line 1414, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+ul.register-methods {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* line 1418, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.register-methods li {
+  margin: 0px;
+  padding: 12px 0px 15px 10px;
+}
+
+/* line 1422, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.register-methods li.one {
+  margin: 0px;
+  padding: 15px 0px 25px 10px;
+}
+
+/* line 1426, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.register-methods li input {
+  float: left;
+  margin-top: 2px;
+  margin-left: -10px;
+}
+
+/* line 1431, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.method-title {
+  display: block;
+  padding-bottom: 4px;
+  color: #404040;
+}
+
+/* line 1436, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.method-hint {
+  display: inline-block;
+  padding-left: 5px;
+  color: #7f7f7f;
+  font-size: 95%;
+}
+
+/* line 1443, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.checkout-buttons {
+  background: #eeeeee;
+  margin-top: 20px;
+  margin-bottom: 23px;
+  padding: 17px 20px;
+  border-top: 1px solid #ddd;
+}
+
+/* line 1450, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.checkout-sidebox-title {
+  padding: 11px 10px 9px;
+  border-bottom: 1px solid #ebebeb;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 90%;
+}
+
+/* line 1457, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.checkout-summary table {
+  margin-top: 7px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* line 1462, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.checkout-summary table td {
+  padding: 3px 0 10px 0;
+}
+
+/* line 1465, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.checkout-summary table td.right {
+  text-align: right;
+}
+
+/* line 1468, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.checkout-summary table tbody.total th {
+  padding: 10px 0;
+  text-align: left;
+}
+
+/* line 1472, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.checkout-summary table tbody.total .total-sum {
+  display: inline-block;
+  float: right;
+}
+
+/* line 1476, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.shipping-adress li {
+  float: none;
+  clear: left;
+}
+
+/* line 1481, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.order-summary, .order-products {
+  float: right;
+  margin-top: 35px;
+  width: 350px;
+}
+
+/* line 1486, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.order-products .edit-products {
+  padding: 14px 12px;
+  border-radius: 0 0 5px 5px;
+  background-color: #f9f9f9;
+}
+
+/* line 1491, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.order-products .product-name {
+  color: #222222;
+  display: inline-block;
+  margin: 2px 0 5px;
+  max-width: 238px;
+  text-decoration: none;
+}
+
+/* line 1498, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.order-products .product-price {
+  display: block;
+}
+
+/* line 1501, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.order-products .product-options {
+  display: inline-block;
+  padding: 6px 0 0;
+}
+
+/* line 1505, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.order-products .delete {
+  background: #EEEEEE;
+  color: #666666;
+  float: right;
+  font-size: 10px;
+  padding: 5px;
+  text-decoration: none;
+}
+
+/* line 1513, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.order-products .sidebox-body {
+  padding: 0;
+}
+
+/* line 1516, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.order-product-list {
+  padding: 12px 0;
+}
+
+/* line 1519, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.order-products .order-product-list li {
+  padding: 14px 0;
+  border-bottom: 1px dashed #ddd;
+}
+
+/* line 1523, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.order-products .order-product-list li:last-child {
+  padding-bottom: 4px;
+  border: none;
+}
+
+/* line 1527, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.order-products .order-product-list li:first-child {
+  padding-top: 0;
+}
+
+/* line 1530, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.order-products .order-product-list li:hover .delete {
+  visibility: visible;
+}
+
+/* line 1533, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.order-products .order-product-list .product-options {
+  display: block;
+}
+
+/* line 1536, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.coupon-code-container {
+  margin: 10px 0;
+  padding: 6px 0;
+  border: 1px dotted #7c8e8e;
+  border-width: 1px 0;
+}
+
+/* line 1542, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.remember-me-chekbox {
+  padding: 6px 0;
+}
+
+/* line 1545, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.sidebox-title {
+  background: #666666;
+  clear: both;
+  padding: 15px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* line 1553, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.opcbox-main {
+  margin: 0;
+  float: left;
+}
+
+/* line 1558, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.page-title, .normalpage h1 {
+  color: #000000;
+  font-family: Arial;
+  font-size: 20px;
+  letter-spacing: inherit;
+  margin: 0 0 15px 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+/* line 1567, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.page-title span.float-right {
+  display: block;
+  padding-top: 12px;
+  font-weight: normal;
+  font-size: 50%;
+}
+
+/* line 1573, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.opc-subheaders-group {
+  margin: 0 15px 21px 15px;
+}
+
+/* line 1576, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.opc-subheader, .opc-subheader-first-item {
+  padding: 7px 0 4px 0;
+  font-size: 145%;
+}
+
+/* line 1580, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.captcha-input-text {
+  margin: 0;
+  width: 120px;
+}
+
+/* line 1584, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.captcha-input-text {
+  width: 140px;
+}
+
+/* line 1587, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.captcha-input-text {
+  width: 111px;
+}
+
+/* line 1590, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.captcha .icon-refresh {
+  font-size: 12px;
+  margin-left: 7px;
+  position: relative;
+  top: 2px;
+  cursor: pointer;
+}
+
+/* line 1597, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.captcha-code {
+  display: block;
+  margin: 10px 0;
+  min-width: 130px;
+}
+
+/* line 1602, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.payment-methods {
+  width: 100%;
+}
+
+/* line 1605, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.payment-methods th {
+  padding: 5px 0;
+  width: 30%;
+  font-weight: bold;
+  border-bottom: 1px dotted #666;
+  line-height: 18px;
+}
+
+/* line 1612, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.payment-methods th.last-row {
+  width: 40%;
+}
+
+/* line 1615, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.payment-methods td {
+  padding: 5px 0;
+  border-bottom: 1px dashed #DDDDDD;
+  line-height: 18px;
+}
+
+/* line 1620, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.shadow {
+  opacity: 0.35;
+}
+
+/* line 1624, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.jcarousel-skin-default .jcarousel-vertical,
+.jcarousel-skin-default .ver-ti-cal {
+  position: relative;
+  overflow: hidden;
+  width: 75px;
+  height: 265px;
+  border: 1px solid #000;
+}
+
+/* line 1633, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.jcarousel-skin-default .jcarousel-vertical ul,
+.jcarousel-skin-default .ver-ti-cal ul {
+  width: 100%;
+  height: 2000em;
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 1643, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.jcarousel-skin-default .jcarousel-vertical li,
+.jcarousel-skin-default .ver-ti-cal li {
+  height: 75px;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+/** Custom **/
+/* line 1651, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.jcarousel-skin-default li img {
+  border: 0;
+  display: block;
+}
+
+/* line 1657, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.zoomPad {
+  position: relative;
+  float: left;
+  z-index: 7;
+  cursor: move;
+}
+
+/* line 1664, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.zoomPreload {
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  color: #333;
+  font-size: 12px;
+  font-family: Tahoma;
+  text-decoration: none;
+  border: 1px solid #CCC;
+  background-color: white;
+  padding: 8px;
+  text-align: center;
+  background-image: url(/static/graphics/load.gif);
+  background-repeat: no-repeat;
+  background-position: 43px 30px;
+  z-index: 110;
+  width: 90px;
+  height: 43px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  * width: 100px;
+  * height: 49px;
+}
+
+/* line 1690, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.zoomPup {
+  overflow: hidden;
+  background-color: #FFF;
+  -moz-opacity: 0.6;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  z-index: 120;
+  position: absolute;
+  border: 1px solid #CCC;
+  z-index: 101;
+  cursor: move;
+}
+
+/* line 1703, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.zoomOverlay {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background: #FFF;
+  /*opacity:0.5;*/
+  z-index: 5000;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 101;
+}
+
+/* line 1716, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.zoomWindow {
+  position: absolute;
+  left: 110%;
+  top: 40px;
+  background: #FFF;
+  z-index: 6000;
+  height: auto;
+  z-index: 10000;
+  z-index: 110;
+}
+
+/* line 1726, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.zoomWrapper {
+  position: relative;
+  border: 1px solid #EEEEEE;
+  z-index: 110;
+}
+
+/* line 1731, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.zoomWrapperTitle {
+  background: #999;
+  color: #FFF;
+  height: 18px;
+  line-height: 18px;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  font-size: 10px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 120;
+  -moz-opacity: 0.6;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  display: none;
+}
+
+/* line 1749, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.zoomWrapperImage {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  z-index: 110;
+}
+
+/* line 1756, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.zoomWrapperImage img {
+  border: 0px;
+  display: block;
+  position: absolute;
+  z-index: 101;
+}
+
+/* line 1763, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.zoomIframe {
+  z-index: -1;
+  filter: alpha(opacity=0);
+  -moz-opacity: 0.80;
+  opacity: 0.80;
+  position: absolute;
+  display: block;
+}
+
+/* line 1772, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.block {
+  background: #fff;
+  border: 1px solid #dddddd;
+  padding: 20px;
+  font-size: 11px;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 1783, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+table.orders {
+  width: 100%;
+}
+
+/* line 1787, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.orders thead tr {
+  border-bottom: 1px solid #d4d4d4;
+}
+
+/* line 1790, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.orders thead th {
+  padding: 10px;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: black;
+}
+
+/* line 1797, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.orders td {
+  vertical-align: middle;
+  text-align: left;
+}
+
+/* line 1802, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.orders tbody:before {
+  content: '';
+  display: block;
+  height: 20px;
+}
+
+/* line 1808, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.cart_container {
+  width: 750px;
+  clear: both;
+  margin: 0 auto;
+  min-height: 250px;
+}
+
+/* line 1819, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.cart-item-image img, [data-hook="order_item_image"] img {
+  vertical-align: middle;
+  border: 0;
+}
+
+/* line 1824, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.cart-item-description h4, [data-hook="order_item_description"] h4 {
+  font-weight: 600;
+}
+
+/* line 1828, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.cart-item-description h4 a, [data-hook="order_item_description"] h4 a {
+  text-decoration: none;
+  font-size: 12px;
+}
+
+/* line 1833, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.cart-item-description h4 a:visited, [data-hook="order_item_description"] h4 a:visited {
+  color: black;
+}
+
+/* line 1837, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.cart-item-description p, [data-hook="order_item_description"] p {
+  margin-top: 5px;
+  color: #7C7B7B;
+}
+
+/* line 1841, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.cart-item-total, [data-hook="order_item_total"] {
+  font-weight: normal;
+  font-size: 12px;
+}
+
+/* line 1846, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.cart-item-quantity .opc-input-text, [data-hook="order_item_qty"] {
+  width: 64px;
+}
+
+/* line 1849, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.coupon_form {
+  border-bottom: 1px solid #d4d4d4;
+  padding: 0px 0 15px 0;
+}
+
+/* line 1854, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.coupon_form .opc-input-text {
+  width: 128px;
+}
+
+/* line 1858, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.coupon_form #update-button {
+  background: #000;
+  border: none;
+  color: #FFFFFF;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 100%;
+  padding: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 1874, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.continue {
+  text-decoration: none;
+}
+
+/* line 1877, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.button {
+  cursor: pointer;
+  height: 30px;
+  padding: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+/* line 1887, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.gray {
+  background: #E3E3E3;
+  color: #5c5c5c;
+}
+
+/* line 1892, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.left {
+  float: left;
+  padding: 15px 0 0 0;
+}
+
+/* line 1896, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.right {
+  float: right;
+  padding: 0;
+}
+
+/* line 1901, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.cart-total td {
+  padding: 20px 0;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+/* line 1905, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.cart-total h2 {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/* line 1910, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.cart-total span {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* line 1915, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.cart_actions, .order_actions {
+  margin: 20px 0 0 0;
+}
+
+/* line 1919, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.line-item td {
+  padding: 10px 0;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+/* line 1924, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.center {
+  margin: 0 auto;
+  display: block;
+}
+
+/* line 1929, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.grid_7 {
+  width: 380px;
+}
+
+/* line 1933, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.centeral_block {
+  width: 360px;
+  margin: 0 auto;
+}
+
+/* line 1939, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.content-header {
+  padding: 0 0 10px 0;
+  width: 100px;
+  margin: 0 auto;
+}
+
+/* line 1945, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.content-header h2 {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* line 1950, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.actions {
+  margin: 20px 0 0 0;
+}
+
+/* line 1954, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.alternative {
+  float: right;
+  padding: 15px 0 0 0;
+}
+
+/* line 1958, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.main-actions {
+  flaot: left;
+}
+
+/* line 1962, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.auth .control-group {
+  margin: 25px 0 0 0;
+}
+
+/* line 1966, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.step-container ul.steps > li {
+  float: left;
+  color: #d0d0d0;
+}
+
+/* line 1971, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.step-container ul.steps > li.active {
+  color: gray;
+}
+
+/* line 1975, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.step-container > ul.steps li.active span.step-number {
+  background: #ff6600;
+}
+
+/* line 1979, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.step-container ul.steps {
+  clear: both;
+}
+
+/* line 1987, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+html {
+  -webkit-text-size-adjust: none;
+}
+
+/* line 1992, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#order_details .steps-data div.columns,
+#order_summary .steps-data div.columns {
+  padding: 0;
+  margin: 0;
+}
+/* line 1996, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#order_details .steps-data div.columns:first-child,
+#order_summary .steps-data div.columns:first-child {
+  margin: 0;
+}
+
+/* line 2002, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+form span.required {
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1px;
+  padding: 2px;
+}
+
+/* line 2010, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#order_details table[data-hook="order_details"] {
+  width: 100%;
+}
+
+/* line 2014, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#order_details {
+  margin-top: 10px;
+  padding: 10px;
+}
+/* line 2018, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#order_details legend {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  color: #666;
+  padding: 5px;
+  margin-left: 15px;
+}
+
+/* line 2032, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+table[data-hook="order_details"] tbody tr td[data-hook="cart_item_description"], table[data-hook="order_details"] tbody tr td[data-hook="order_item_description"] {
+  font-size: 11px;
+  line-height: 15px;
+  width: 100px;
+}
+/* line 2037, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+table[data-hook="order_details"] tbody tr td[data-hook="cart_item_description"] h4, table[data-hook="order_details"] tbody tr td[data-hook="order_item_description"] h4 {
+  font-size: 14px;
+  line-height: 17px;
+  margin-bottom: 10px;
+}
+/* line 2044, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+table[data-hook="order_details"] tbody tr td[data-hook="cart_item_price"], table[data-hook="order_details"] tbody tr td[data-hook="cart_item_total"],
+table[data-hook="order_details"] tbody tr td[data-hook="order_item_price"], table[data-hook="order_details"] tbody tr td[data-hook="order_item_total"] {
+  font-size: 12px;
+}
+/* line 2048, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+table[data-hook="order_details"] tbody tr td[data-hook="cart_item_image"] img, table[data-hook="order_details"] tbody tr td[data-hook="order_item_image"] img {
+  width: 70px;
+}
+
+/* line 2056, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#order_details, #order_summary {
+  padding: 0;
+}
+/* line 2059, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#order_details div:last-child, #order_summary div:last-child {
+  margin-left: -1px;
+}
+/* line 2065, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#order_details .payment-info .cc-type img, #order_summary .payment-info .cc-type img {
+  vertical-align: middle;
+}
+/* line 2077, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#order_details table tfoot, #order_summary table tfoot {
+  text-align: right;
+  color: white;
+}
+/* line 2081, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#order_details table tfoot tr, #order_summary table tfoot tr {
+  border: none;
+}
+/* line 2085, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#order_details table tfoot#order-total, #order_summary table tfoot#order-total {
+  text-transform: uppercase;
+  font-size: 16px;
+  color: white;
+}
+/* line 2090, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#order_details table tfoot#order-total tr, #order_summary table tfoot#order-total tr {
+  border-top: 1px solid white;
+}
+/* line 2093, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#order_details table tfoot#order-total tr td, #order_summary table tfoot#order-total tr td {
+  padding: 10px;
+}
+/* line 2099, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#order_details table tfoot#subtotal, #order_summary table tfoot#subtotal {
+  text-transform: uppercase;
+  font-size: 16px;
+  color: white;
+}
+/* line 2107, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#order_details .steps-data div.columns, #order_summary .steps-data div.columns {
+  padding: 5px;
+  margin: 0;
+}
+/* line 2111, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#order_details .steps-data div.columns:first-child, #order_summary .steps-data div.columns:first-child {
+  margin-left: 10px;
+}
+/* line 2116, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#order_details .steps-data h6, #order_summary .steps-data h6 {
+  border-bottom: 1px solid white;
+  margin-bottom: 5px;
+}
+
+/* line 2123, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+h6 {
+  font-size: 1.5em;
+  margin: 0 0 10px 0;
+}
+
+/* line 2127, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.columns.alpha.four {
+  margin: 0 0 10px 0;
+}
+
+/* line 2132, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+/* line 2133, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+#helper {
+  display: none;
+  z-index: 10;
+  position: relative;
+  margin: 0 auto;
+  width: 640px;
+  height: 480px;
+}
+
+/* line 2135, /Users/tsyren/code/m2store/app/assets/stylesheets/style.css.scss */
+.product-details span.tax {
+  color: gray;
+}
