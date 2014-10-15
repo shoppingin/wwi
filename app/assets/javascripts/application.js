@@ -23,7 +23,6 @@
 $(function(){
   $(document.body).on('click', '.css-checkbox', function(e){
     e.preventDefault()
-    debugger;
     $(this).parents('form').submit()
     return true;
   })
