@@ -62,3 +62,7 @@ gem 'spree_static_content', github: 'spree/spree_static_content', branch: '2-3-s
 gem 'pry', group: [:development, :test]
 
 gem "spree_google_base", github: "shoppingin/spree-google-base"
+
+group :production do
+  gem 'rails_12factor'
+end
