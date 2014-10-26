@@ -6,9 +6,10 @@
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
     ga('create', '<%= tracker.analytics_id %>','<%= current_store.url.sub(/(^www.)?/,'') %>');
+    ga('require', 'displayfeatures');
     ga('send', 'pageview');
 
-    <% if order_just_completed?(@order) %>
+    <% if @order && order_just_completed?(@order) %>
       <%# more info: https://developers.google.com/analytics/devguides/collection/analyticsjs/ecommerce %>
       ga('require', 'ecommerce', 'ecommerce.js');
       ga('ecommerce:addTransaction', {
@@ -23,7 +24,7 @@
         ga('ecommerce:addItem', {
           'id': '<%= j @order.number %>',                        // Transaction ID. Required.
           'name': '<%= j line_item.variant.product.name %>',    // Product name. Required.
-          'sku': '<%= j line_item.variant.sku %>',             // SKU/code.
+          'sku': '<%= j (line_item.variant.sku || line_item.variant_id) %>', // SKU/code.
           'category': '',                                     // Category or variation.
           'price': '<%= line_item.price %>',                 // Unit price.
           'quantity': '<%= line_item.quantity %>'           // Quantity.
